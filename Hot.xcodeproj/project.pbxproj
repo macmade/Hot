@@ -336,6 +336,7 @@
 			buildPhases = (
 				05AA4072251CF3D200106CEA /* Sources */,
 				05AA4073251CF3D200106CEA /* Frameworks */,
+				057F8B69251D2E560048F1E1 /* ShellScript */,
 				05AA4074251CF3D200106CEA /* Resources */,
 				057F8B66251D2D620048F1E1 /* CopyFiles */,
 			);
@@ -418,6 +419,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		057F8B69251D2E560048F1E1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\nif [ \"${CONFIGURATION}\" = \"Release\" ]; then\n    plist=\"Hot/Info.plist\"\n    rev=$(git rev-list `git branch | grep -e \"^*\" | cut -d' ' -f 2` | wc -l)\n    /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $rev\" \"$plist\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		05AA4072251CF3D200106CEA /* Sources */ = {
