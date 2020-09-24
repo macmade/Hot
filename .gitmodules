@@ -1,0 +1,3 @@
+[submodule "Submodules/xcconfig"]
+	path = Submodules/xcconfig
+	url = https://github.com/macmade/xcconfig.git
