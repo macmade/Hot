@@ -12,7 +12,9 @@ Hot
 
 ### About
 
-macOS thermal status menu bar app.
+Hot is macOS menu bar application that displays the CPU speed limit due to thermal issues.
+
+![Menu](Assets/menu.png "Menu")
 
 License
 -------
