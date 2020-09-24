@@ -1,0 +1,4 @@
+language: objective-c
+osx_image: xcode12
+script:
+- set -o pipefail && xcodebuild -project "Hot.xcodeproj" -scheme "Hot" build | xcpretty
