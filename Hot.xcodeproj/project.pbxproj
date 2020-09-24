@@ -1,0 +1,440 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		057F8B00251D22360048F1E1 /* StatusIconTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 057F8AFF251D22360048F1E1 /* StatusIconTemplate.pdf */; };
+		057F8B0C251D273E0048F1E1 /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057F8B0B251D273E0048F1E1 /* AboutWindowController.swift */; };
+		057F8B11251D274C0048F1E1 /* NSApplication+LaunchServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 057F8B10251D274C0048F1E1 /* NSApplication+LaunchServices.m */; };
+		057F8B15251D27650048F1E1 /* AboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 057F8B13251D27650048F1E1 /* AboutWindowController.xib */; };
+		057F8B1B251D2A970048F1E1 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 057F8B1A251D2A970048F1E1 /* Icon.icns */; };
+		05AA407A251CF3D200106CEA /* ApplicationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AA4079251CF3D200106CEA /* ApplicationDelegate.swift */; };
+		05AA407F251CF3D600106CEA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05AA407D251CF3D600106CEA /* MainMenu.xib */; };
+		05AA408D251CFA0600106CEA /* ThermalLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AA408C251CFA0600106CEA /* ThermalLog.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		057F8AFF251D22360048F1E1 /* StatusIconTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = StatusIconTemplate.pdf; sourceTree = "<group>"; };
+		057F8B0B251D273E0048F1E1 /* AboutWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
+		057F8B0E251D274C0048F1E1 /* Hot-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hot-Bridging-Header.h"; sourceTree = "<group>"; };
+		057F8B0F251D274C0048F1E1 /* NSApplication+LaunchServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSApplication+LaunchServices.h"; sourceTree = "<group>"; };
+		057F8B10251D274C0048F1E1 /* NSApplication+LaunchServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSApplication+LaunchServices.m"; sourceTree = "<group>"; };
+		057F8B14251D27650048F1E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AboutWindowController.xib; sourceTree = "<group>"; };
+		057F8B1A251D2A970048F1E1 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
+		057F8B1E251D2B900048F1E1 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		057F8B1F251D2B900048F1E1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		057F8B21251D2C840048F1E1 /* Release - ccache.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Release - ccache.xcconfig"; sourceTree = "<group>"; };
+		057F8B22251D2C840048F1E1 /* Common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
+		057F8B23251D2C840048F1E1 /* Debug - ccache.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Debug - ccache.xcconfig"; sourceTree = "<group>"; };
+		057F8B24251D2C840048F1E1 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		057F8B25251D2C840048F1E1 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		057F8B26251D2C840048F1E1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		057F8B27251D2C840048F1E1 /* Release - Library.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Release - Library.xcconfig"; sourceTree = "<group>"; };
+		057F8B29251D2C840048F1E1 /* Signing.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Signing.xcconfig; sourceTree = "<group>"; };
+		057F8B2A251D2C840048F1E1 /* Architectures.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Architectures.xcconfig; sourceTree = "<group>"; };
+		057F8B2C251D2C840048F1E1 /* Issues.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Issues.xcconfig; sourceTree = "<group>"; };
+		057F8B2E251D2C840048F1E1 /* Apple-APIs.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Apple-APIs.xcconfig"; sourceTree = "<group>"; };
+		057F8B2F251D2C840048F1E1 /* Generic-Issues.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Generic-Issues.xcconfig"; sourceTree = "<group>"; };
+		057F8B30251D2C840048F1E1 /* Security.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Security.xcconfig; sourceTree = "<group>"; };
+		057F8B31251D2C840048F1E1 /* Objective-C.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Objective-C.xcconfig"; sourceTree = "<group>"; };
+		057F8B32251D2C840048F1E1 /* Analysis-Policy.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Analysis-Policy.xcconfig"; sourceTree = "<group>"; };
+		057F8B33251D2C840048F1E1 /* Deployment.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Deployment.xcconfig; sourceTree = "<group>"; };
+		057F8B34251D2C840048F1E1 /* Build-Options.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Build-Options.xcconfig"; sourceTree = "<group>"; };
+		057F8B35251D2C840048F1E1 /* Swift-Compiler.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Swift-Compiler.xcconfig"; sourceTree = "<group>"; };
+		057F8B36251D2C840048F1E1 /* Static-Analyzer.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Static-Analyzer.xcconfig"; sourceTree = "<group>"; };
+		057F8B38251D2C840048F1E1 /* Warnings-Policies.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Warnings-Policies.xcconfig"; sourceTree = "<group>"; };
+		057F8B39251D2C840048F1E1 /* Code-Generation.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Code-Generation.xcconfig"; sourceTree = "<group>"; };
+		057F8B3A251D2C840048F1E1 /* Language.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Language.xcconfig; sourceTree = "<group>"; };
+		057F8B3B251D2C840048F1E1 /* General.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = General.xcconfig; sourceTree = "<group>"; };
+		057F8B3C251D2C840048F1E1 /* Search-Paths.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Search-Paths.xcconfig"; sourceTree = "<group>"; };
+		057F8B3D251D2C840048F1E1 /* Apple-LLVM.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Apple-LLVM.xcconfig"; sourceTree = "<group>"; };
+		057F8B40251D2C840048F1E1 /* Modules.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Modules.xcconfig; sourceTree = "<group>"; };
+		057F8B41251D2C840048F1E1 /* Objective-C.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Objective-C.xcconfig"; sourceTree = "<group>"; };
+		057F8B42251D2C840048F1E1 /* C++.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "C++.xcconfig"; sourceTree = "<group>"; };
+		057F8B43251D2C840048F1E1 /* Code-Generation.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Code-Generation.xcconfig"; sourceTree = "<group>"; };
+		057F8B44251D2C840048F1E1 /* Address-Sanitizer.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Address-Sanitizer.xcconfig"; sourceTree = "<group>"; };
+		057F8B45251D2C840048F1E1 /* Language.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Language.xcconfig; sourceTree = "<group>"; };
+		057F8B46251D2C840048F1E1 /* Warnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
+		057F8B47251D2C840048F1E1 /* Undefined-Behavior-Sanitizer.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Undefined-Behavior-Sanitizer.xcconfig"; sourceTree = "<group>"; };
+		057F8B48251D2C840048F1E1 /* Warning-Policies.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Warning-Policies.xcconfig"; sourceTree = "<group>"; };
+		057F8B4A251D2C840048F1E1 /* Objective-C-ARC.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Objective-C-ARC.xcconfig"; sourceTree = "<group>"; };
+		057F8B4B251D2C840048F1E1 /* Objective-C.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Objective-C.xcconfig"; sourceTree = "<group>"; };
+		057F8B4C251D2C840048F1E1 /* C++.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "C++.xcconfig"; sourceTree = "<group>"; };
+		057F8B4D251D2C840048F1E1 /* All-Languages.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "All-Languages.xcconfig"; sourceTree = "<group>"; };
+		057F8B4E251D2C840048F1E1 /* Preprocessing.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Preprocessing.xcconfig; sourceTree = "<group>"; };
+		057F8B4F251D2C840048F1E1 /* Debug - Library.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Debug - Library.xcconfig"; sourceTree = "<group>"; };
+		057F8B50251D2C840048F1E1 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		057F8B52251D2C840048F1E1 /* ccache-config.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "ccache-config.sh"; sourceTree = "<group>"; };
+		057F8B53251D2C840048F1E1 /* ccache.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ccache.sh; sourceTree = "<group>"; };
+		057F8B54251D2C840048F1E1 /* Debug - zld.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Debug - zld.xcconfig"; sourceTree = "<group>"; };
+		05AA4076251CF3D200106CEA /* Hot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		05AA4079251CF3D200106CEA /* ApplicationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDelegate.swift; sourceTree = "<group>"; };
+		05AA407E251CF3D600106CEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		05AA4080251CF3D600106CEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		05AA4081251CF3D600106CEA /* Hot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hot.entitlements; sourceTree = "<group>"; };
+		05AA408C251CFA0600106CEA /* ThermalLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThermalLog.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		05AA4073251CF3D200106CEA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		057F8AFE251D22360048F1E1 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				057F8B1A251D2A970048F1E1 /* Icon.icns */,
+				057F8AFF251D22360048F1E1 /* StatusIconTemplate.pdf */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		057F8B20251D2C840048F1E1 /* xcconfig */ = {
+			isa = PBXGroup;
+			children = (
+				057F8B21251D2C840048F1E1 /* Release - ccache.xcconfig */,
+				057F8B22251D2C840048F1E1 /* Common.xcconfig */,
+				057F8B23251D2C840048F1E1 /* Debug - ccache.xcconfig */,
+				057F8B24251D2C840048F1E1 /* Debug.xcconfig */,
+				057F8B25251D2C840048F1E1 /* Release.xcconfig */,
+				057F8B26251D2C840048F1E1 /* README.md */,
+				057F8B27251D2C840048F1E1 /* Release - Library.xcconfig */,
+				057F8B28251D2C840048F1E1 /* Common */,
+				057F8B4F251D2C840048F1E1 /* Debug - Library.xcconfig */,
+				057F8B50251D2C840048F1E1 /* .gitignore */,
+				057F8B51251D2C840048F1E1 /* Scripts */,
+				057F8B54251D2C840048F1E1 /* Debug - zld.xcconfig */,
+			);
+			name = xcconfig;
+			path = Submodules/xcconfig;
+			sourceTree = "<group>";
+		};
+		057F8B28251D2C840048F1E1 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				057F8B29251D2C840048F1E1 /* Signing.xcconfig */,
+				057F8B2A251D2C840048F1E1 /* Architectures.xcconfig */,
+				057F8B2B251D2C840048F1E1 /* Static-Analyzer */,
+				057F8B33251D2C840048F1E1 /* Deployment.xcconfig */,
+				057F8B34251D2C840048F1E1 /* Build-Options.xcconfig */,
+				057F8B35251D2C840048F1E1 /* Swift-Compiler.xcconfig */,
+				057F8B36251D2C840048F1E1 /* Static-Analyzer.xcconfig */,
+				057F8B37251D2C840048F1E1 /* Swift-Compiler */,
+				057F8B3C251D2C840048F1E1 /* Search-Paths.xcconfig */,
+				057F8B3D251D2C840048F1E1 /* Apple-LLVM.xcconfig */,
+				057F8B3E251D2C840048F1E1 /* Apple-LLVM */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		057F8B2B251D2C840048F1E1 /* Static-Analyzer */ = {
+			isa = PBXGroup;
+			children = (
+				057F8B2C251D2C840048F1E1 /* Issues.xcconfig */,
+				057F8B2D251D2C840048F1E1 /* Issues */,
+			);
+			path = "Static-Analyzer";
+			sourceTree = "<group>";
+		};
+		057F8B2D251D2C840048F1E1 /* Issues */ = {
+			isa = PBXGroup;
+			children = (
+				057F8B2E251D2C840048F1E1 /* Apple-APIs.xcconfig */,
+				057F8B2F251D2C840048F1E1 /* Generic-Issues.xcconfig */,
+				057F8B30251D2C840048F1E1 /* Security.xcconfig */,
+				057F8B31251D2C840048F1E1 /* Objective-C.xcconfig */,
+				057F8B32251D2C840048F1E1 /* Analysis-Policy.xcconfig */,
+			);
+			path = Issues;
+			sourceTree = "<group>";
+		};
+		057F8B37251D2C840048F1E1 /* Swift-Compiler */ = {
+			isa = PBXGroup;
+			children = (
+				057F8B38251D2C840048F1E1 /* Warnings-Policies.xcconfig */,
+				057F8B39251D2C840048F1E1 /* Code-Generation.xcconfig */,
+				057F8B3A251D2C840048F1E1 /* Language.xcconfig */,
+				057F8B3B251D2C840048F1E1 /* General.xcconfig */,
+			);
+			path = "Swift-Compiler";
+			sourceTree = "<group>";
+		};
+		057F8B3E251D2C840048F1E1 /* Apple-LLVM */ = {
+			isa = PBXGroup;
+			children = (
+				057F8B3F251D2C840048F1E1 /* Language */,
+				057F8B43251D2C840048F1E1 /* Code-Generation.xcconfig */,
+				057F8B44251D2C840048F1E1 /* Address-Sanitizer.xcconfig */,
+				057F8B45251D2C840048F1E1 /* Language.xcconfig */,
+				057F8B46251D2C840048F1E1 /* Warnings.xcconfig */,
+				057F8B47251D2C840048F1E1 /* Undefined-Behavior-Sanitizer.xcconfig */,
+				057F8B48251D2C840048F1E1 /* Warning-Policies.xcconfig */,
+				057F8B49251D2C840048F1E1 /* Warnings */,
+				057F8B4E251D2C840048F1E1 /* Preprocessing.xcconfig */,
+			);
+			path = "Apple-LLVM";
+			sourceTree = "<group>";
+		};
+		057F8B3F251D2C840048F1E1 /* Language */ = {
+			isa = PBXGroup;
+			children = (
+				057F8B40251D2C840048F1E1 /* Modules.xcconfig */,
+				057F8B41251D2C840048F1E1 /* Objective-C.xcconfig */,
+				057F8B42251D2C840048F1E1 /* C++.xcconfig */,
+			);
+			path = Language;
+			sourceTree = "<group>";
+		};
+		057F8B49251D2C840048F1E1 /* Warnings */ = {
+			isa = PBXGroup;
+			children = (
+				057F8B4A251D2C840048F1E1 /* Objective-C-ARC.xcconfig */,
+				057F8B4B251D2C840048F1E1 /* Objective-C.xcconfig */,
+				057F8B4C251D2C840048F1E1 /* C++.xcconfig */,
+				057F8B4D251D2C840048F1E1 /* All-Languages.xcconfig */,
+			);
+			path = Warnings;
+			sourceTree = "<group>";
+		};
+		057F8B51251D2C840048F1E1 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				057F8B52251D2C840048F1E1 /* ccache-config.sh */,
+				057F8B53251D2C840048F1E1 /* ccache.sh */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
+		05AA406D251CF3D200106CEA = {
+			isa = PBXGroup;
+			children = (
+				057F8B1E251D2B900048F1E1 /* LICENSE */,
+				057F8B1F251D2B900048F1E1 /* README.md */,
+				057F8B20251D2C840048F1E1 /* xcconfig */,
+				05AA4078251CF3D200106CEA /* Hot */,
+				05AA4077251CF3D200106CEA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		05AA4077251CF3D200106CEA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				05AA4076251CF3D200106CEA /* Hot.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		05AA4078251CF3D200106CEA /* Hot */ = {
+			isa = PBXGroup;
+			children = (
+				05AA4089251CF3FC00106CEA /* UI */,
+				05AA4088251CF3F400106CEA /* Classes */,
+				05AA4080251CF3D600106CEA /* Info.plist */,
+				05AA4081251CF3D600106CEA /* Hot.entitlements */,
+			);
+			path = Hot;
+			sourceTree = "<group>";
+		};
+		05AA4088251CF3F400106CEA /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				057F8B0F251D274C0048F1E1 /* NSApplication+LaunchServices.h */,
+				057F8B10251D274C0048F1E1 /* NSApplication+LaunchServices.m */,
+				057F8B0B251D273E0048F1E1 /* AboutWindowController.swift */,
+				05AA4079251CF3D200106CEA /* ApplicationDelegate.swift */,
+				05AA408C251CFA0600106CEA /* ThermalLog.swift */,
+				057F8B0E251D274C0048F1E1 /* Hot-Bridging-Header.h */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		05AA4089251CF3FC00106CEA /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				057F8AFE251D22360048F1E1 /* Images */,
+				05AA407D251CF3D600106CEA /* MainMenu.xib */,
+				057F8B13251D27650048F1E1 /* AboutWindowController.xib */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		05AA4075251CF3D200106CEA /* Hot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 05AA4084251CF3D600106CEA /* Build configuration list for PBXNativeTarget "Hot" */;
+			buildPhases = (
+				05AA4072251CF3D200106CEA /* Sources */,
+				05AA4073251CF3D200106CEA /* Frameworks */,
+				05AA4074251CF3D200106CEA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Hot;
+			productName = Hot;
+			productReference = 05AA4076251CF3D200106CEA /* Hot.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		05AA406E251CF3D200106CEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					05AA4075251CF3D200106CEA = {
+						CreatedOnToolsVersion = 12.0;
+						LastSwiftMigration = 1200;
+					};
+				};
+			};
+			buildConfigurationList = 05AA4071251CF3D200106CEA /* Build configuration list for PBXProject "Hot" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 05AA406D251CF3D200106CEA;
+			productRefGroup = 05AA4077251CF3D200106CEA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				05AA4075251CF3D200106CEA /* Hot */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		05AA4074251CF3D200106CEA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				057F8B00251D22360048F1E1 /* StatusIconTemplate.pdf in Resources */,
+				057F8B1B251D2A970048F1E1 /* Icon.icns in Resources */,
+				057F8B15251D27650048F1E1 /* AboutWindowController.xib in Resources */,
+				05AA407F251CF3D600106CEA /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		05AA4072251CF3D200106CEA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				057F8B11251D274C0048F1E1 /* NSApplication+LaunchServices.m in Sources */,
+				057F8B0C251D273E0048F1E1 /* AboutWindowController.swift in Sources */,
+				05AA408D251CFA0600106CEA /* ThermalLog.swift in Sources */,
+				05AA407A251CF3D200106CEA /* ApplicationDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		057F8B13251D27650048F1E1 /* AboutWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				057F8B14251D27650048F1E1 /* Base */,
+			);
+			name = AboutWindowController.xib;
+			sourceTree = "<group>";
+		};
+		05AA407D251CF3D600106CEA /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				05AA407E251CF3D600106CEA /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		05AA4082251CF3D600106CEA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 057F8B24251D2C840048F1E1 /* Debug.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		05AA4083251CF3D600106CEA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 057F8B25251D2C840048F1E1 /* Release.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		05AA4085251CF3D600106CEA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Hot/Hot.entitlements;
+				INFOPLIST_FILE = Hot/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.Hot";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Hot/Classes/Hot-Bridging-Header.h";
+			};
+			name = Debug;
+		};
+		05AA4086251CF3D600106CEA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Hot/Hot.entitlements;
+				INFOPLIST_FILE = Hot/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.Hot";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Hot/Classes/Hot-Bridging-Header.h";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		05AA4071251CF3D200106CEA /* Build configuration list for PBXProject "Hot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05AA4082251CF3D600106CEA /* Debug */,
+				05AA4083251CF3D600106CEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		05AA4084251CF3D600106CEA /* Build configuration list for PBXNativeTarget "Hot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05AA4085251CF3D600106CEA /* Debug */,
+				05AA4086251CF3D600106CEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 05AA406E251CF3D200106CEA /* Project object */;
+}
