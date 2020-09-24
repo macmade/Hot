@@ -23,6 +23,7 @@
  ******************************************************************************/
 
 import Cocoa
+import GitHubUpdates
 
 @NSApplicationMain
 class ApplicationDelegate: NSObject, NSApplicationDelegate
@@ -32,7 +33,8 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
     private var observations:          [ NSKeyValueObservation ] = []
     private var aboutWindowController: AboutWindowController?
     
-    @IBOutlet private var menu: NSMenu!
+    @IBOutlet private var menu:    NSMenu!
+    @IBOutlet private var updater: GitHubUpdater!
     
     @objc public dynamic var log          = ThermalLog()
     @objc public dynamic var startAtLogin = false
@@ -65,6 +67,11 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
         }
         
         self.log.refresh()
+        
+        DispatchQueue.main.asyncAfter( deadline: .now() + .seconds( 10 ) )
+        {
+            self.updater.checkForUpdatesInBackground()
+        }
     }
     
     func applicationWillTerminate( _ notification: Notification )
@@ -87,6 +94,11 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
         }
         
         window.makeKeyAndOrderFront( nil )
+    }
+    
+    @IBAction public func checkForUpdates( _ sender: Any? )
+    {
+        self.updater.checkForUpdates( sender )
     }
     
     private func update()

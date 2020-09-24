@@ -15,6 +15,7 @@
         <customObject id="Voe-Tx-rLC" customClass="ApplicationDelegate" customModule="Hot" customModuleProvider="target">
             <connections>
                 <outlet property="menu" destination="YdR-H7-b4a" id="jeu-CN-jol"/>
+                <outlet property="updater" destination="O40-Rx-Vw9" id="ApT-sO-5me"/>
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
@@ -705,6 +706,12 @@
                         <binding destination="Voe-Tx-rLC" name="value" keyPath="self.startAtLogin" id="DEd-fD-Au5"/>
                     </connections>
                 </menuItem>
+                <menuItem title="Check for Updates..." id="HLn-la-Ngo">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="checkForUpdates:" target="Voe-Tx-rLC" id="Ghz-8l-CJH"/>
+                    </connections>
+                </menuItem>
                 <menuItem isSeparatorItem="YES" id="EM4-fa-dhP"/>
                 <menuItem title="Quit" keyEquivalent="q" id="Yb3-F9-S6J">
                     <connections>
@@ -714,5 +721,11 @@
             </items>
             <point key="canvasLocation" x="-226" y="47"/>
         </menu>
+        <customObject id="O40-Rx-Vw9" customClass="GitHubUpdater">
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="string" keyPath="user" value="macmade"/>
+                <userDefinedRuntimeAttribute type="string" keyPath="repository" value="Hot"/>
+            </userDefinedRuntimeAttributes>
+        </customObject>
     </objects>
 </document>
