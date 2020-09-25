@@ -29,6 +29,7 @@ public class ThermalLog: NSObject
     @objc public dynamic var schedulerLimit: NSNumber?
     @objc public dynamic var availableCPUs:  NSNumber?
     @objc public dynamic var speedLimit:     NSNumber?
+    @objc public dynamic var cpuTemperature: NSNumber?
     
     private var refreshing = false
     

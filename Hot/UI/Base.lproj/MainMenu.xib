@@ -699,6 +699,9 @@
                 <menuItem title="Item 3" tag="3" hidden="YES" id="oOW-X3-CiU">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
+                <menuItem title="Item 4" tag="4" hidden="YES" id="isZ-I0-Ur7">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
                 <menuItem isSeparatorItem="YES" id="XCF-fq-sNA"/>
                 <menuItem title="Start at Login" id="JFH-mp-6PU">
                     <modifierMask key="keyEquivalentModifierMask"/>

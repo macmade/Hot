@@ -106,6 +106,7 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
         let item1 = self.menu.item( withTag: 1 )
         let item2 = self.menu.item( withTag: 2 )
         let item3 = self.menu.item( withTag: 3 )
+        let item4 = self.menu.item( withTag: 4 )
         
         if let n = self.log.schedulerLimit?.intValue
         {
@@ -140,6 +141,17 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
             item3?.isHidden                = true
             item3?.title                   = ""
             self.statusItem?.button?.title = ""
+        }
+        
+        if let n = self.log.cpuTemperature?.intValue
+        {
+            item4?.isHidden = false
+            item4?.title    = "CPU  Temperature: \( n )"
+        }
+        else
+        {
+            item4?.isHidden = true
+            item4?.title    = ""
         }
     }
 }
