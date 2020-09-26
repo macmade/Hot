@@ -11,6 +11,10 @@
 		052FBC38251ECB8B00C4322E /* SMC.c in Sources */ = {isa = PBXBuildFile; fileRef = 052FBC37251ECB8B00C4322E /* SMC.c */; };
 		052FBCA3251EE43B00C4322E /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052FBCA2251EE43B00C4322E /* PreferencesWindowController.swift */; };
 		052FBCA7251EE46700C4322E /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 052FBCA5251EE46700C4322E /* PreferencesWindowController.xib */; };
+		052FBCD4251F842C00C4322E /* SpeedTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 052FBCCF251F842C00C4322E /* SpeedTemplate.pdf */; };
+		052FBCD5251F842C00C4322E /* CPUTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 052FBCD1251F842C00C4322E /* CPUTemplate.pdf */; };
+		052FBCD6251F842C00C4322E /* TemperatureTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 052FBCD2251F842C00C4322E /* TemperatureTemplate.pdf */; };
+		052FBCD7251F842C00C4322E /* SchedulerTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 052FBCD3251F842C00C4322E /* SchedulerTemplate.pdf */; };
 		057F8B00251D22360048F1E1 /* StatusIconTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 057F8AFF251D22360048F1E1 /* StatusIconTemplate.pdf */; };
 		057F8B0C251D273E0048F1E1 /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057F8B0B251D273E0048F1E1 /* AboutWindowController.swift */; };
 		057F8B11251D274C0048F1E1 /* NSApplication+LaunchServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 057F8B10251D274C0048F1E1 /* NSApplication+LaunchServices.m */; };
@@ -66,6 +70,10 @@
 		052FBC37251ECB8B00C4322E /* SMC.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SMC.c; sourceTree = "<group>"; };
 		052FBCA2251EE43B00C4322E /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		052FBCA6251EE46700C4322E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreferencesWindowController.xib; sourceTree = "<group>"; };
+		052FBCCF251F842C00C4322E /* SpeedTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = SpeedTemplate.pdf; sourceTree = "<group>"; };
+		052FBCD1251F842C00C4322E /* CPUTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = CPUTemplate.pdf; sourceTree = "<group>"; };
+		052FBCD2251F842C00C4322E /* TemperatureTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TemperatureTemplate.pdf; sourceTree = "<group>"; };
+		052FBCD3251F842C00C4322E /* SchedulerTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = SchedulerTemplate.pdf; sourceTree = "<group>"; };
 		057F8AFF251D22360048F1E1 /* StatusIconTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = StatusIconTemplate.pdf; sourceTree = "<group>"; };
 		057F8B0B251D273E0048F1E1 /* AboutWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
 		057F8B0E251D274C0048F1E1 /* Hot-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hot-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -144,8 +152,12 @@
 		057F8AFE251D22360048F1E1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				052FBCD1251F842C00C4322E /* CPUTemplate.pdf */,
 				057F8B1A251D2A970048F1E1 /* Icon.icns */,
+				052FBCD3251F842C00C4322E /* SchedulerTemplate.pdf */,
+				052FBCCF251F842C00C4322E /* SpeedTemplate.pdf */,
 				057F8AFF251D22360048F1E1 /* StatusIconTemplate.pdf */,
+				052FBCD2251F842C00C4322E /* TemperatureTemplate.pdf */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -426,11 +438,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				052FBCD4251F842C00C4322E /* SpeedTemplate.pdf in Resources */,
+				052FBCD6251F842C00C4322E /* TemperatureTemplate.pdf in Resources */,
 				057F8B00251D22360048F1E1 /* StatusIconTemplate.pdf in Resources */,
 				057F8B1B251D2A970048F1E1 /* Icon.icns in Resources */,
+				052FBCD5251F842C00C4322E /* CPUTemplate.pdf in Resources */,
 				057F8B15251D27650048F1E1 /* AboutWindowController.xib in Resources */,
 				052FBCA7251EE46700C4322E /* PreferencesWindowController.xib in Resources */,
 				05AA407F251CF3D600106CEA /* MainMenu.xib in Resources */,
+				052FBCD7251F842C00C4322E /* SchedulerTemplate.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
