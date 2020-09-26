@@ -28,27 +28,30 @@ import GitHubUpdates
 @NSApplicationMain
 class ApplicationDelegate: NSObject, NSApplicationDelegate
 {
-    private var timer:                 Timer?
-    private var statusItem:            NSStatusItem?
-    private var observations:          [ NSKeyValueObservation ] = []
-    private var aboutWindowController: AboutWindowController?
+    private var timer:                       Timer?
+    private var statusItem:                  NSStatusItem?
+    private var observations:                [ NSKeyValueObservation ] = []
+    private var aboutWindowController:       AboutWindowController?
+    private var preferencesWindowController: PreferencesWindowController?
+    
     
     @IBOutlet private var menu:    NSMenu!
     @IBOutlet private var updater: GitHubUpdater!
     
-    @objc public dynamic var log          = ThermalLog()
-    @objc public dynamic var startAtLogin = false
-    {
-        didSet
-        {
-            NSApp.setLoginItemEnabled( self.startAtLogin )
-        }
-    }
+    @objc public dynamic var log = ThermalLog()
     
     func applicationDidFinishLaunching( _ notification: Notification )
     {
-        self.startAtLogin                      = NSApp.isLoginItemEnabled()
+        if UserDefaults.standard.object( forKey: "LastLaunch" ) == nil
+        {
+            UserDefaults.standard.setValue( true,     forKey: "automaticallyCheckForUpdates" )
+            UserDefaults.standard.setValue( true,     forKey: "displayCPUTemperature" )
+            UserDefaults.standard.setValue( true,     forKey: "colorizeStatusItemText" )
+            UserDefaults.standard.setValue( NSDate(), forKey: "LastLaunch" )
+        }
+        
         self.aboutWindowController             = AboutWindowController()
+        self.preferencesWindowController       = PreferencesWindowController()
         self.statusItem                        = NSStatusBar.system.statusItem( withLength: NSStatusItem.variableLength )
         self.statusItem?.button?.image         = NSImage( named: "StatusIconTemplate" )
         self.statusItem?.button?.imagePosition = .imageLeading
@@ -68,9 +71,22 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
         
         self.log.refresh()
         
-        DispatchQueue.main.asyncAfter( deadline: .now() + .seconds( 10 ) )
+        if UserDefaults.standard.bool( forKey: "automaticallyCheckForUpdates" )
         {
-            self.updater.checkForUpdatesInBackground()
+            DispatchQueue.main.asyncAfter( deadline: .now() + .seconds( 2 ) )
+            {
+                self.updater.checkForUpdatesInBackground()
+            }
+        }
+        
+        Timer.scheduledTimer( withTimeInterval: 3600, repeats: true )
+        {
+            _ in 
+            
+            if UserDefaults.standard.bool( forKey: "automaticallyCheckForUpdates" )
+            {
+                self.updater.checkForUpdatesInBackground()
+            }
         }
     }
     
@@ -82,6 +98,25 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
     @IBAction public func showAboutWindow( _ sender: Any? )
     {
         guard let window = self.aboutWindowController?.window else
+        {
+            NSSound.beep()
+            
+            return
+        }
+        
+        if window.isVisible == false
+        {
+            window.layoutIfNeeded()
+            window.center()
+        }
+        
+        NSApp.activate( ignoringOtherApps: true )
+        window.makeKeyAndOrderFront( nil )
+    }
+    
+    @IBAction public func showPreferencesWindow( _ sender: Any? )
+    {
+        guard let window = self.preferencesWindowController?.window else
         {
             NSSound.beep()
             
@@ -156,7 +191,9 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
         
         var title = ""
         
-        if let n1 = self.log.speedLimit?.intValue, let n2 = self.log.cpuTemperature?.intValue
+        if let n1 = self.log.speedLimit?.intValue,
+           let n2 = self.log.cpuTemperature?.intValue,
+           UserDefaults.standard.bool( forKey: "displayCPUTemperature" )
         {
             title = "\( n1 )% \( n2 )°"
         }
@@ -171,7 +208,7 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
         }
         else
         {
-            let color = self.log.speedLimit?.intValue ?? 100 < 60 ? NSColor.orange : NSColor.white
+            let color = self.log.speedLimit?.intValue ?? 100 < 60 && UserDefaults.standard.bool( forKey: "colorizeStatusItemText" ) ? NSColor.orange : NSColor.white
             
             self.statusItem?.button?.attributedTitle = NSAttributedString( string: title, attributes: [ .foregroundColor : color ] )
         }

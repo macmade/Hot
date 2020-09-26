@@ -703,10 +703,9 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="XCF-fq-sNA"/>
-                <menuItem title="Start at Login" id="JFH-mp-6PU">
-                    <modifierMask key="keyEquivalentModifierMask"/>
+                <menuItem title="Preferences..." keyEquivalent="," id="JFH-mp-6PU">
                     <connections>
-                        <binding destination="Voe-Tx-rLC" name="value" keyPath="self.startAtLogin" id="DEd-fD-Au5"/>
+                        <action selector="showPreferencesWindow:" target="Voe-Tx-rLC" id="E99-rm-GGi"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Check for Updates..." id="HLn-la-Ngo">

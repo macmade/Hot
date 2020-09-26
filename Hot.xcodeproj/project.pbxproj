@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		052FBC34251ECA8600C4322E /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 052FBC33251ECA8600C4322E /* IOKit.framework */; };
 		052FBC38251ECB8B00C4322E /* SMC.c in Sources */ = {isa = PBXBuildFile; fileRef = 052FBC37251ECB8B00C4322E /* SMC.c */; };
+		052FBCA3251EE43B00C4322E /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052FBCA2251EE43B00C4322E /* PreferencesWindowController.swift */; };
+		052FBCA7251EE46700C4322E /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 052FBCA5251EE46700C4322E /* PreferencesWindowController.xib */; };
 		057F8B00251D22360048F1E1 /* StatusIconTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 057F8AFF251D22360048F1E1 /* StatusIconTemplate.pdf */; };
 		057F8B0C251D273E0048F1E1 /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057F8B0B251D273E0048F1E1 /* AboutWindowController.swift */; };
 		057F8B11251D274C0048F1E1 /* NSApplication+LaunchServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 057F8B10251D274C0048F1E1 /* NSApplication+LaunchServices.m */; };
@@ -62,6 +64,8 @@
 		052FBC32251EC69B00C4322E /* SMC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMC.h; sourceTree = "<group>"; };
 		052FBC33251ECA8600C4322E /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		052FBC37251ECB8B00C4322E /* SMC.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SMC.c; sourceTree = "<group>"; };
+		052FBCA2251EE43B00C4322E /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
+		052FBCA6251EE46700C4322E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreferencesWindowController.xib; sourceTree = "<group>"; };
 		057F8AFF251D22360048F1E1 /* StatusIconTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = StatusIconTemplate.pdf; sourceTree = "<group>"; };
 		057F8B0B251D273E0048F1E1 /* AboutWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
 		057F8B0E251D274C0048F1E1 /* Hot-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hot-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -314,14 +318,15 @@
 		05AA4088251CF3F400106CEA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				057F8B0F251D274C0048F1E1 /* NSApplication+LaunchServices.h */,
-				057F8B10251D274C0048F1E1 /* NSApplication+LaunchServices.m */,
 				057F8B0B251D273E0048F1E1 /* AboutWindowController.swift */,
 				05AA4079251CF3D200106CEA /* ApplicationDelegate.swift */,
-				05AA408C251CFA0600106CEA /* ThermalLog.swift */,
-				052FBC32251EC69B00C4322E /* SMC.h */,
-				052FBC37251ECB8B00C4322E /* SMC.c */,
 				057F8B0E251D274C0048F1E1 /* Hot-Bridging-Header.h */,
+				057F8B0F251D274C0048F1E1 /* NSApplication+LaunchServices.h */,
+				057F8B10251D274C0048F1E1 /* NSApplication+LaunchServices.m */,
+				052FBCA2251EE43B00C4322E /* PreferencesWindowController.swift */,
+				052FBC37251ECB8B00C4322E /* SMC.c */,
+				052FBC32251EC69B00C4322E /* SMC.h */,
+				05AA408C251CFA0600106CEA /* ThermalLog.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -329,9 +334,10 @@
 		05AA4089251CF3FC00106CEA /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				057F8B13251D27650048F1E1 /* AboutWindowController.xib */,
 				057F8AFE251D22360048F1E1 /* Images */,
 				05AA407D251CF3D600106CEA /* MainMenu.xib */,
-				057F8B13251D27650048F1E1 /* AboutWindowController.xib */,
+				052FBCA5251EE46700C4322E /* PreferencesWindowController.xib */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -423,6 +429,7 @@
 				057F8B00251D22360048F1E1 /* StatusIconTemplate.pdf in Resources */,
 				057F8B1B251D2A970048F1E1 /* Icon.icns in Resources */,
 				057F8B15251D27650048F1E1 /* AboutWindowController.xib in Resources */,
+				052FBCA7251EE46700C4322E /* PreferencesWindowController.xib in Resources */,
 				05AA407F251CF3D600106CEA /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -454,6 +461,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				052FBCA3251EE43B00C4322E /* PreferencesWindowController.swift in Sources */,
 				057F8B11251D274C0048F1E1 /* NSApplication+LaunchServices.m in Sources */,
 				057F8B0C251D273E0048F1E1 /* AboutWindowController.swift in Sources */,
 				05AA408D251CFA0600106CEA /* ThermalLog.swift in Sources */,
@@ -473,6 +481,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		052FBCA5251EE46700C4322E /* PreferencesWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				052FBCA6251EE46700C4322E /* Base */,
+			);
+			name = PreferencesWindowController.xib;
+			sourceTree = "<group>";
+		};
 		057F8B13251D27650048F1E1 /* AboutWindowController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
