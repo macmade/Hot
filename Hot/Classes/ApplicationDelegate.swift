@@ -90,9 +90,11 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
         
         if window.isVisible == false
         {
+            window.layoutIfNeeded()
             window.center()
         }
         
+        NSApp.activate( ignoringOtherApps: true )
         window.makeKeyAndOrderFront( nil )
     }
     
