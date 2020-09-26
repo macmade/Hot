@@ -34,7 +34,7 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSApplicationIcon" id="GGX-kf-SmE"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="c3B-11-Nnn">
-                                <rect key="frame" x="314" y="239" width="93" height="47"/>
+                                <rect key="frame" x="314" y="219" width="93" height="47"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="Mhf-3U-WaO">
                                     <font key="font" metaFont="systemThin" size="40"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -45,7 +45,7 @@
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yLd-6Z-IaF">
-                                <rect key="frame" x="314" y="208" width="49" height="23"/>
+                                <rect key="frame" x="314" y="188" width="49" height="23"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="GPR-R9-Yud">
                                     <font key="font" metaFont="systemThin" size="20"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -56,7 +56,7 @@
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qK4-am-2Hl">
-                                <rect key="frame" x="314" y="40" width="36" height="16"/>
+                                <rect key="frame" x="314" y="60" width="36" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="CqC-AJ-UHI">
                                     <font key="font" metaFont="systemThin" size="13"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -68,7 +68,7 @@
                             </textField>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="qK4-am-2Hl" firstAttribute="bottom" secondItem="bkJ-Ud-XM8" secondAttribute="bottom" constant="-10" id="4eU-i4-CHR"/>
+                            <constraint firstItem="qK4-am-2Hl" firstAttribute="bottom" secondItem="bkJ-Ud-XM8" secondAttribute="bottom" constant="-30" id="4eU-i4-CHR"/>
                             <constraint firstItem="c3B-11-Nnn" firstAttribute="leading" secondItem="bkJ-Ud-XM8" secondAttribute="trailing" constant="30" id="BpG-VA-Nxl"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yLd-6Z-IaF" secondAttribute="trailing" constant="30" id="IQu-ql-HkC"/>
                             <constraint firstItem="qK4-am-2Hl" firstAttribute="leading" secondItem="c3B-11-Nnn" secondAttribute="leading" id="Yot-mk-hra"/>
@@ -77,7 +77,7 @@
                             <constraint firstItem="bkJ-Ud-XM8" firstAttribute="leading" secondItem="ls5-I3-hMR" secondAttribute="leading" constant="30" id="mLH-C3-hte"/>
                             <constraint firstAttribute="bottom" secondItem="bkJ-Ud-XM8" secondAttribute="bottom" constant="30" id="nEf-eO-eJA"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="c3B-11-Nnn" secondAttribute="trailing" constant="30" id="oqv-O4-gKi"/>
-                            <constraint firstItem="c3B-11-Nnn" firstAttribute="top" secondItem="bkJ-Ud-XM8" secondAttribute="top" id="ryd-fl-aVO"/>
+                            <constraint firstItem="c3B-11-Nnn" firstAttribute="top" secondItem="bkJ-Ud-XM8" secondAttribute="top" constant="20" id="ryd-fl-aVO"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qK4-am-2Hl" secondAttribute="trailing" constant="30" id="xUl-C7-IqA"/>
                             <constraint firstItem="yLd-6Z-IaF" firstAttribute="leading" secondItem="c3B-11-Nnn" secondAttribute="leading" id="zma-HZ-8Vb"/>
                         </constraints>
