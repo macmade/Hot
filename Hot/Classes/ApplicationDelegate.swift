@@ -52,7 +52,7 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
         self.statusItem                        = NSStatusBar.system.statusItem( withLength: NSStatusItem.variableLength )
         self.statusItem?.button?.image         = NSImage( named: "StatusIconTemplate" )
         self.statusItem?.button?.imagePosition = .imageLeading
-        self.statusItem?.button?.font          = NSFont.systemFont( ofSize: NSFont.smallSystemFontSize )
+        self.statusItem?.button?.font          = NSFont.monospacedSystemFont( ofSize: NSFont.smallSystemFontSize, weight: .light )
         self.statusItem?.menu                  = self.menu
         
         let o1 = self.log.observe( \.schedulerLimit ) { [ weak self ] _, _ in self?.update() }
@@ -111,7 +111,7 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
         if let n = self.log.schedulerLimit?.intValue
         {
             item1?.isHidden = false
-            item1?.title    = "Scheduler Limit: \( n )"
+            item1?.title    = "Scheduler Limit: \( n )%"
         }
         else
         {
@@ -132,26 +132,46 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
         
         if let n = self.log.speedLimit?.intValue
         {
-            item3?.isHidden                = false
-            item3?.title                   = "Speed Limit: \( n )"
-            self.statusItem?.button?.title = "\( n )%"
+            item3?.isHidden = false
+            item3?.title    = "Speed Limit: \( n )%"
         }
         else
         {
-            item3?.isHidden                = true
-            item3?.title                   = ""
-            self.statusItem?.button?.title = ""
+            item3?.isHidden = true
+            item3?.title    = ""
         }
         
         if let n = self.log.cpuTemperature?.intValue
         {
             item4?.isHidden = false
-            item4?.title    = "CPU  Temperature: \( n )"
+            item4?.title    = "CPU  Temperature: \( n )°"
         }
         else
         {
             item4?.isHidden = true
             item4?.title    = ""
+        }
+        
+        var title = ""
+        
+        if let n1 = self.log.speedLimit?.intValue, let n2 = self.log.cpuTemperature?.intValue
+        {
+            title = "\( n1 )% \( n2 )°"
+        }
+        else if let n = self.log.speedLimit?.intValue
+        {
+            title = "\( n )%"
+        }
+        
+        if title.count == 0
+        {
+            self.statusItem?.button?.title = ""
+        }
+        else
+        {
+            let color = self.log.speedLimit?.intValue ?? 100 < 60 ? NSColor.orange : NSColor.white
+            
+            self.statusItem?.button?.attributedTitle = NSAttributedString( string: title, attributes: [ .foregroundColor : color ] )
         }
     }
 }

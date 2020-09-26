@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		052FBC34251ECA8600C4322E /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 052FBC33251ECA8600C4322E /* IOKit.framework */; };
+		052FBC38251ECB8B00C4322E /* SMC.c in Sources */ = {isa = PBXBuildFile; fileRef = 052FBC37251ECB8B00C4322E /* SMC.c */; };
 		057F8B00251D22360048F1E1 /* StatusIconTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 057F8AFF251D22360048F1E1 /* StatusIconTemplate.pdf */; };
 		057F8B0C251D273E0048F1E1 /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057F8B0B251D273E0048F1E1 /* AboutWindowController.swift */; };
 		057F8B11251D274C0048F1E1 /* NSApplication+LaunchServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 057F8B10251D274C0048F1E1 /* NSApplication+LaunchServices.m */; };
@@ -57,6 +59,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		052FBC32251EC69B00C4322E /* SMC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMC.h; sourceTree = "<group>"; };
+		052FBC33251ECA8600C4322E /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		052FBC37251ECB8B00C4322E /* SMC.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SMC.c; sourceTree = "<group>"; };
 		057F8AFF251D22360048F1E1 /* StatusIconTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = StatusIconTemplate.pdf; sourceTree = "<group>"; };
 		057F8B0B251D273E0048F1E1 /* AboutWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
 		057F8B0E251D274C0048F1E1 /* Hot-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hot-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -124,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				052FBC34251ECA8600C4322E /* IOKit.framework in Frameworks */,
 				057F8B65251D2D5F0048F1E1 /* GitHubUpdates.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,6 +274,7 @@
 		057F8B64251D2D5F0048F1E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				052FBC33251ECA8600C4322E /* IOKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -312,6 +319,8 @@
 				057F8B0B251D273E0048F1E1 /* AboutWindowController.swift */,
 				05AA4079251CF3D200106CEA /* ApplicationDelegate.swift */,
 				05AA408C251CFA0600106CEA /* ThermalLog.swift */,
+				052FBC32251EC69B00C4322E /* SMC.h */,
+				052FBC37251ECB8B00C4322E /* SMC.c */,
 				057F8B0E251D274C0048F1E1 /* Hot-Bridging-Header.h */,
 			);
 			path = Classes;
@@ -449,6 +458,7 @@
 				057F8B0C251D273E0048F1E1 /* AboutWindowController.swift in Sources */,
 				05AA408D251CFA0600106CEA /* ThermalLog.swift in Sources */,
 				05AA407A251CF3D200106CEA /* ApplicationDelegate.swift in Sources */,
+				052FBC38251ECB8B00C4322E /* SMC.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

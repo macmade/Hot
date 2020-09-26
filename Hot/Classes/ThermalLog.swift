@@ -52,6 +52,13 @@ public class ThermalLog: NSObject
             
             self.refreshing = true
             
+            let temp = SMCGetCPUTemperature()
+            
+            if temp > 1
+            {
+                self.cpuTemperature = NSNumber( value: temp )
+            }
+            
             let pipe            = Pipe()
             let task            = Process()
             task.launchPath     = "/usr/bin/pmset"
