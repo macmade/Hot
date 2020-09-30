@@ -208,7 +208,7 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
         }
         else
         {
-            let color = self.log.speedLimit?.intValue ?? 100 < 60 && UserDefaults.standard.bool( forKey: "colorizeStatusItemText" ) ? NSColor.orange : NSColor.white
+            let color = self.log.speedLimit?.intValue ?? 100 < 60 && UserDefaults.standard.bool( forKey: "colorizeStatusItemText" ) ? NSColor.orange : NSColor.controlTextColor
             
             self.statusItem?.button?.attributedTitle = NSAttributedString( string: title, attributes: [ .foregroundColor : color ] )
         }
