@@ -55,10 +55,14 @@ public class InfoViewController: NSViewController
         
         self.observations.append( contentsOf: [ o1, o2, o3 ] )
         
-        self.timer = Timer.scheduledTimer( withTimeInterval: 2, repeats: true )
+        let timer = Timer( timeInterval: 2, repeats: true )
         {
             _ in self.log.refresh()
         }
+        
+        RunLoop.main.add( timer, forMode: .common )
+        
+        self.timer = timer
         
         self.log.refresh()
     }
