@@ -20,6 +20,7 @@
 		055A932525277E9E0070F771 /* IntegerToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055A932425277E9E0070F771 /* IntegerToString.swift */; };
 		055A932725277F6E0070F771 /* TemperatureToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055A932625277F6E0070F771 /* TemperatureToString.swift */; };
 		055A932925277F990070F771 /* PercentToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055A932825277F990070F771 /* PercentToString.swift */; };
+		055A932B252780FD0070F771 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055A932A252780FD0070F771 /* GraphView.swift */; };
 		057F8B00251D22360048F1E1 /* StatusIconTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 057F8AFF251D22360048F1E1 /* StatusIconTemplate.pdf */; };
 		057F8B0C251D273E0048F1E1 /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057F8B0B251D273E0048F1E1 /* AboutWindowController.swift */; };
 		057F8B11251D274C0048F1E1 /* NSApplication+LaunchServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 057F8B10251D274C0048F1E1 /* NSApplication+LaunchServices.m */; };
@@ -84,6 +85,7 @@
 		055A932425277E9E0070F771 /* IntegerToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegerToString.swift; sourceTree = "<group>"; };
 		055A932625277F6E0070F771 /* TemperatureToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureToString.swift; sourceTree = "<group>"; };
 		055A932825277F990070F771 /* PercentToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentToString.swift; sourceTree = "<group>"; };
+		055A932A252780FD0070F771 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		057F8AFF251D22360048F1E1 /* StatusIconTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = StatusIconTemplate.pdf; sourceTree = "<group>"; };
 		057F8B0B251D273E0048F1E1 /* AboutWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
 		057F8B0E251D274C0048F1E1 /* Hot-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hot-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 			children = (
 				057F8B0B251D273E0048F1E1 /* AboutWindowController.swift */,
 				05AA4079251CF3D200106CEA /* ApplicationDelegate.swift */,
+				055A932A252780FD0070F771 /* GraphView.swift */,
 				057F8B0E251D274C0048F1E1 /* Hot-Bridging-Header.h */,
 				055A931F252778C10070F771 /* InfoViewController.swift */,
 				055A932425277E9E0070F771 /* IntegerToString.swift */,
@@ -496,6 +499,7 @@
 				055A932525277E9E0070F771 /* IntegerToString.swift in Sources */,
 				055A932725277F6E0070F771 /* TemperatureToString.swift in Sources */,
 				052FBCA3251EE43B00C4322E /* PreferencesWindowController.swift in Sources */,
+				055A932B252780FD0070F771 /* GraphView.swift in Sources */,
 				057F8B11251D274C0048F1E1 /* NSApplication+LaunchServices.m in Sources */,
 				057F8B0C251D273E0048F1E1 /* AboutWindowController.swift in Sources */,
 				055A9320252778C10070F771 /* InfoViewController.swift in Sources */,
