@@ -94,5 +94,23 @@ public class GraphView: NSView
         
         NSColor.systemOrange.withAlphaComponent( 0.75 ).setStroke()
         path2.stroke()
+        
+        let circle1 = NSBezierPath( ovalIn: NSMakeRect( rect.origin.x, rect.origin.y + 10, 7.5, 7.5 ) )
+        let circle2 = NSBezierPath( ovalIn: NSMakeRect( rect.origin.x, rect.origin.y,      7.5, 7.5 ) )
+        
+        NSColor.systemBlue.withAlphaComponent( 0.75 ).setFill()
+        circle1.fill()
+        
+        NSColor.systemOrange.withAlphaComponent( 0.75 ).setFill()
+        circle2.fill()
+        
+        let attributes: [ NSAttributedString.Key : Any ] =
+        [
+            .foregroundColor : NSColor.controlTextColor.withAlphaComponent( 0.75 ),
+            .font            : NSFont.systemFont( ofSize: 8 )
+        ]
+        
+        ( "Speed"       as NSString ).draw( at: NSMakePoint( rect.origin.x + 10, rect.origin.y + 9 ), withAttributes: attributes )
+        ( "Temperature" as NSString ).draw( at: NSMakePoint( rect.origin.x + 10, rect.origin.y - 1 ), withAttributes: attributes )
     }
 }
