@@ -80,6 +80,11 @@ public class GraphView: NSView
             line.stroke()
         }
         
+        var start1 = NSMakePoint( 0, 0 )
+        var start2 = NSMakePoint( 0, 0 )
+        var end1   = NSMakePoint( 0, 0 )
+        var end2   = NSMakePoint( 0, 0 )
+        
         for value in self.data
         {
             let n1 = value.speed       > 100 ? CGFloat( 100 ) : CGFloat( value.speed )
@@ -90,13 +95,20 @@ public class GraphView: NSView
             
             if i == 0
             {
-                path1.move( to: NSMakePoint( x, y1 ) )
-                path2.move( to: NSMakePoint( x, y2 ) )
+                start1 = NSMakePoint( x, y1 )
+                start2 = NSMakePoint( x, y2 )
+                
+                path1.move( to: start1 )
+                path2.move( to: start2 )
+                
             }
             else
             {
-                path1.line( to: NSMakePoint( x, y1 ) )
-                path2.line( to: NSMakePoint( x, y2 ) )
+                end1 = NSMakePoint( x, y1 )
+                end2 = NSMakePoint( x, y2 )
+                
+                path1.line( to: end1 )
+                path2.line( to: end2 )
             }
             
             i += 1
@@ -112,6 +124,23 @@ public class GraphView: NSView
         
         NSColor.systemOrange.withAlphaComponent( 0.75 ).setStroke()
         path2.stroke()
+        
+        if UserDefaults.standard.bool( forKey: "DrawGraphGradient" )
+        {
+            let fill1 = path1.copy() as! NSBezierPath
+            let fill2 = path2.copy() as! NSBezierPath
+            
+            fill1.line( to: NSMakePoint( end1.x, rect.origin.y ) )
+            fill2.line( to: NSMakePoint( end2.x, rect.origin.y ) )
+            fill1.line( to: NSMakePoint( rect.origin.x, rect.origin.y ) )
+            fill2.line( to: NSMakePoint( rect.origin.x, rect.origin.y ) )
+            
+            fill1.close()
+            fill2.close()
+            
+            NSGradient( colors: [ NSColor.systemBlue.withAlphaComponent( 0.5 ),   NSColor.clear ] )?.draw( in: fill1, angle: -90 )
+            NSGradient( colors: [ NSColor.systemOrange.withAlphaComponent( 0.5 ), NSColor.clear ] )?.draw( in: fill2, angle: -90 )
+        }
         
         let circle1 = NSBezierPath( ovalIn: NSMakeRect( rect.origin.x, rect.origin.y + 10, 7.5, 7.5 ) )
         let circle2 = NSBezierPath( ovalIn: NSMakeRect( rect.origin.x, rect.origin.y,      7.5, 7.5 ) )
