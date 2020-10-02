@@ -690,16 +690,7 @@
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="seQ-hq-eZH"/>
-                <menuItem title="Item 1" image="SchedulerTemplate" tag="1" hidden="YES" id="w69-Up-zYf">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem title="Item 2" image="CPUTemplate" tag="2" hidden="YES" id="1KQ-68-L2h">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem title="Item 3" image="SpeedTemplate" tag="3" hidden="YES" id="oOW-X3-CiU">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem title="Item 4" image="TemperatureTemplate" tag="4" hidden="YES" id="isZ-I0-Ur7">
+                <menuItem tag="1" id="Zdf-1z-Pm5">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="XCF-fq-sNA"/>
@@ -730,10 +721,4 @@
             </userDefinedRuntimeAttributes>
         </customObject>
     </objects>
-    <resources>
-        <image name="CPUTemplate" width="20" height="20"/>
-        <image name="SchedulerTemplate" width="20" height="20"/>
-        <image name="SpeedTemplate" width="20" height="20"/>
-        <image name="TemperatureTemplate" width="20" height="20"/>
-    </resources>
 </document>

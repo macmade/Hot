@@ -28,17 +28,14 @@ import GitHubUpdates
 @NSApplicationMain
 class ApplicationDelegate: NSObject, NSApplicationDelegate
 {
-    private var timer:                       Timer?
     private var statusItem:                  NSStatusItem?
-    private var observations:                [ NSKeyValueObservation ] = []
     private var aboutWindowController:       AboutWindowController?
     private var preferencesWindowController: PreferencesWindowController?
-    
+    private var infoViewController:          InfoViewController?
+    private var observations:                [ NSKeyValueObservation ] = []
     
     @IBOutlet private var menu:    NSMenu!
     @IBOutlet private var updater: GitHubUpdater!
-    
-    @objc public dynamic var log = ThermalLog()
     
     func applicationDidFinishLaunching( _ notification: Notification )
     {
@@ -58,18 +55,14 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
         self.statusItem?.button?.font          = NSFont.monospacedSystemFont( ofSize: NSFont.smallSystemFontSize, weight: .light )
         self.statusItem?.menu                  = self.menu
         
-        let o1 = self.log.observe( \.schedulerLimit ) { [ weak self ] _, _ in self?.update() }
-        let o2 = self.log.observe( \.availableCPUs  ) { [ weak self ] _, _ in self?.update() }
-        let o3 = self.log.observe( \.speedLimit     ) { [ weak self ] _, _ in self?.update() }
+        let infoViewController             = InfoViewController()
+        self.infoViewController            = infoViewController
+        self.menu.item( withTag: 1 )?.view = infoViewController.view
         
-        self.observations.append( contentsOf: [ o1, o2, o3 ] )
+        let o1 = infoViewController.observe( \.speedLimit     ) { [ weak self ] _, _ in self?.updateTitle() }
+        let o2 = infoViewController.observe( \.cpuTemperature ) { [ weak self ] _, _ in self?.updateTitle() }
         
-        self.timer = Timer.scheduledTimer( withTimeInterval: 2, repeats: true )
-        {
-            _ in self.log.refresh()
-        }
-        
-        self.log.refresh()
+        self.observations.append( contentsOf: [ o1, o2 ] )
         
         if UserDefaults.standard.bool( forKey: "automaticallyCheckForUpdates" )
         {
@@ -88,11 +81,6 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
                 self.updater.checkForUpdatesInBackground()
             }
         }
-    }
-    
-    func applicationWillTerminate( _ notification: Notification )
-    {
-        self.timer?.invalidate()
     }
     
     @IBAction public func showAboutWindow( _ sender: Any? )
@@ -138,66 +126,19 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
         self.updater.checkForUpdates( sender )
     }
     
-    private func update()
+    private func updateTitle()
     {
-        let item1 = self.menu.item( withTag: 1 )
-        let item2 = self.menu.item( withTag: 2 )
-        let item3 = self.menu.item( withTag: 3 )
-        let item4 = self.menu.item( withTag: 4 )
-        
-        if let n = self.log.schedulerLimit?.intValue
-        {
-            item1?.isHidden = false
-            item1?.title    = "Scheduler Limit: \( n )%"
-        }
-        else
-        {
-            item1?.isHidden = true
-            item1?.title    = ""
-        }
-        
-        if let n = self.log.availableCPUs?.intValue
-        {
-            item2?.isHidden = false
-            item2?.title    = "Available CPUs: \( n )"
-        }
-        else
-        {
-            item2?.isHidden = true
-            item2?.title    = ""
-        }
-        
-        if let n = self.log.speedLimit?.intValue
-        {
-            item3?.isHidden = false
-            item3?.title    = "Speed Limit: \( n )%"
-        }
-        else
-        {
-            item3?.isHidden = true
-            item3?.title    = ""
-        }
-        
-        if let n = self.log.cpuTemperature?.intValue
-        {
-            item4?.isHidden = false
-            item4?.title    = "CPU  Temperature: \( n )°"
-        }
-        else
-        {
-            item4?.isHidden = true
-            item4?.title    = ""
-        }
-        
         var title = ""
         
-        if let n1 = self.log.speedLimit?.intValue,
-           let n2 = self.log.cpuTemperature?.intValue,
-           UserDefaults.standard.bool( forKey: "displayCPUTemperature" )
+        if let n1 = self.infoViewController?.speedLimit,
+           let n2 = self.infoViewController?.cpuTemperature,
+           UserDefaults.standard.bool( forKey: "displayCPUTemperature" ),
+           n1 > 0,
+           n2 > 0
         {
             title = "\( n1 )% \( n2 )°"
         }
-        else if let n = self.log.speedLimit?.intValue
+        else if let n = self.infoViewController?.speedLimit, n > 0
         {
             title = "\( n )%"
         }
@@ -208,7 +149,7 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
         }
         else
         {
-            let color = self.log.speedLimit?.intValue ?? 100 < 60 && UserDefaults.standard.bool( forKey: "colorizeStatusItemText" ) ? NSColor.orange : NSColor.controlTextColor
+            let color = self.infoViewController?.speedLimit ?? 100 < 60 && UserDefaults.standard.bool( forKey: "colorizeStatusItemText" ) ? NSColor.orange : NSColor.controlTextColor
             
             self.statusItem?.button?.attributedTitle = NSAttributedString( string: title, attributes: [ .foregroundColor : color ] )
         }
