@@ -57,11 +57,8 @@ public class GraphView: NSView
         
         let path1  = NSBezierPath()
         let path2  = NSBezierPath()
-        
-        var i = CGFloat( 0 )
-        
-        let rect = rect.insetBy( dx: 10, dy: 10 )
-        
+        var i      = CGFloat( 0 )
+        let rect   = rect.insetBy( dx: 10, dy: 10 )
         
         for i in 0 ... 100
         {
@@ -80,10 +77,12 @@ public class GraphView: NSView
             line.stroke()
         }
         
-        var start1 = NSMakePoint( 0, 0 )
-        var start2 = NSMakePoint( 0, 0 )
-        var end1   = NSMakePoint( 0, 0 )
-        var end2   = NSMakePoint( 0, 0 )
+        var start1  = NSMakePoint( 0, 0 )
+        var start2  = NSMakePoint( 0, 0 )
+        var end1    = NSMakePoint( 0, 0 )
+        var end2    = NSMakePoint( 0, 0 )
+        var lowest1 = CGFloat( 100 )
+        var lowest2 = CGFloat( 100 )
         
         for value in self.data
         {
@@ -92,6 +91,16 @@ public class GraphView: NSView
             let x  = (  i * ( rect.size.width  / CGFloat( self.data.count - 1 ) ) ) + rect.origin.x
             let y1 = ( n1 * ( rect.size.height / 100 ) ) + rect.origin.y
             let y2 = ( n2 * ( rect.size.height / 100 ) ) + rect.origin.y
+            
+            if y1 < lowest1
+            {
+                lowest1 = y1
+            }
+            
+            if y2 < lowest2
+            {
+                lowest2 = y2
+            }
             
             if i == 0
             {
@@ -130,16 +139,16 @@ public class GraphView: NSView
             let fill1 = path1.copy() as! NSBezierPath
             let fill2 = path2.copy() as! NSBezierPath
             
-            fill1.line( to: NSMakePoint( end1.x, rect.origin.y ) )
-            fill2.line( to: NSMakePoint( end2.x, rect.origin.y ) )
-            fill1.line( to: NSMakePoint( rect.origin.x, rect.origin.y ) )
-            fill2.line( to: NSMakePoint( rect.origin.x, rect.origin.y ) )
+            fill1.line( to: NSMakePoint( end1.x, lowest1 - 20 ) )
+            fill2.line( to: NSMakePoint( end2.x, lowest2 - 20 ) )
+            fill1.line( to: NSMakePoint( rect.origin.x, lowest1 - 20 ) )
+            fill2.line( to: NSMakePoint( rect.origin.x, lowest2 - 20 ) )
             
             fill1.close()
             fill2.close()
             
-            NSGradient( colors: [ NSColor.systemBlue.withAlphaComponent( 0.5 ),   NSColor.clear ] )?.draw( in: fill1, angle: -90 )
-            NSGradient( colors: [ NSColor.systemOrange.withAlphaComponent( 0.5 ), NSColor.clear ] )?.draw( in: fill2, angle: -90 )
+            NSGradient( colors: [ NSColor.systemBlue.withAlphaComponent( 0.75 ),   NSColor.clear ] )?.draw( in: fill1, angle: -90 )
+            NSGradient( colors: [ NSColor.systemOrange.withAlphaComponent( 0.75 ), NSColor.clear ] )?.draw( in: fill2, angle: -90 )
         }
         
         let circle1 = NSBezierPath( ovalIn: NSMakeRect( rect.origin.x, rect.origin.y + 10, 7.5, 7.5 ) )
