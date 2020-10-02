@@ -62,6 +62,24 @@ public class GraphView: NSView
         
         let rect = rect.insetBy( dx: 10, dy: 10 )
         
+        
+        for i in 0 ... 100
+        {
+            if i % 10 != 0 || i < 30
+            {
+                continue
+            }
+            
+            let line = NSBezierPath()
+            let y    = CGFloat( rect.origin.y + ( CGFloat( i ) * rect.size.height / CGFloat( 100 ) ) )
+            
+            line.move( to: NSMakePoint( rect.origin.x, y ) )
+            line.line( to: NSMakePoint( rect.origin.x + rect.size.width, y ) )
+            
+            NSColor.controlTextColor.withAlphaComponent( 0.075 ).setStroke()
+            line.stroke()
+        }
+        
         for value in self.data
         {
             let n1 = value.speed       > 100 ? CGFloat( 100 ) : CGFloat( value.speed )
