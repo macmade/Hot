@@ -75,10 +75,9 @@ public class ThermalLog: NSObject
                 return
             }
             
-            guard let data  = try? pipe.fileHandleForReading.readToEnd(),
-                  let str   = String( data: data, encoding: .utf8 ),
-                  str.count > 0
-            else
+            let data = pipe.fileHandleForReading.readDataToEndOfFile()
+            
+            guard let str = String( data: data, encoding: .utf8 ), str.count > 0 else
             {
                 self.refreshing = false
                 
