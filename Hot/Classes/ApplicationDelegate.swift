@@ -136,7 +136,8 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
            n1 > 0,
            n2 > 0
         {
-            title = "\( n1 )% \( n2 )°"
+            let unit = UserDefaults.standard.bool( forKey: "convertToFahrenheit" ) ? "F" : "C"
+            title = "\( n1 )% \( n2 )°\( unit )"
         }
         else if let n = self.infoViewController?.speedLimit, n > 0
         {

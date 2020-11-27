@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,24 +16,14 @@
         <window title="Hot Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="436" height="161"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
-            <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="638" height="161"/>
+            <rect key="contentRect" x="196" y="240" width="638" height="195"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+            <view key="contentView" wantsLayer="YES" misplaced="YES" id="EiT-Mj-1SZ">
+                <rect key="frame" x="0.0" y="0.0" width="640" height="163"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aiX-U8-MD5">
-                        <rect key="frame" x="18" y="125" width="341" height="18"/>
-                        <buttonCell key="cell" type="check" title="Display CPU temperature in the menu bar if available" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="g0X-sq-6lh">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <binding destination="-2" name="value" keyPath="self.displayCPUTemperature" id="6xq-av-dp9"/>
-                        </connections>
-                    </button>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rog-WF-H8d">
-                        <rect key="frame" x="18" y="99" width="411" height="18"/>
+                    <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rog-WF-H8d">
+                        <rect key="frame" x="18" y="119" width="411" height="18"/>
                         <buttonCell key="cell" type="check" title="Colorize the status item text if the CPU speed limit is below 60%" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="YMx-Az-Ken">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
@@ -66,37 +56,61 @@
                         </connections>
                     </button>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mxk-B1-lA8">
-                        <rect key="frame" x="477" y="20" width="141" height="141"/>
+                        <rect key="frame" x="477" y="20" width="167" height="167"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="mxk-B1-lA8" secondAttribute="height" multiplier="1:1" id="1gH-bx-NiI"/>
                         </constraints>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSApplicationIcon" id="L7y-FV-PXr"/>
                     </imageView>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HBx-Rv-VgA">
+                        <rect key="frame" x="18" y="99" width="338" height="18"/>
+                        <buttonCell key="cell" type="check" title="Display temperature in Fahrenheit instead of Celsius" bezelStyle="regularSquare" imagePosition="left" inset="2" id="mpF-Ss-xf7">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="-2" name="value" keyPath="self.convertToFahrenheit" id="FRu-6B-yNW"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aiX-U8-MD5">
+                        <rect key="frame" x="17" y="139" width="341" height="18"/>
+                        <buttonCell key="cell" type="check" title="Display CPU temperature in the menu bar if available" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="g0X-sq-6lh">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="-2" name="value" keyPath="self.displayCPUTemperature" id="6xq-av-dp9"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="mxk-B1-lA8" firstAttribute="leading" secondItem="O2I-yB-Cqr" secondAttribute="trailing" constant="38" id="2EM-CK-eet"/>
                     <constraint firstItem="mxk-B1-lA8" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="3GX-GM-vTF"/>
                     <constraint firstItem="mxk-B1-lA8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="COq-oL-Uqj" secondAttribute="trailing" constant="50" id="6lQ-SD-jRz"/>
                     <constraint firstAttribute="bottom" secondItem="COq-oL-Uqj" secondAttribute="bottom" constant="20" id="9K5-IZ-MYJ"/>
+                    <constraint firstItem="O2I-yB-Cqr" firstAttribute="top" secondItem="HBx-Rv-VgA" secondAttribute="bottom" constant="20" id="EbX-ls-v4G"/>
                     <constraint firstItem="Rog-WF-H8d" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="Gfd-gx-na2"/>
                     <constraint firstItem="mxk-B1-lA8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Rog-WF-H8d" secondAttribute="trailing" constant="50" id="OGS-GB-AXP"/>
+                    <constraint firstItem="mxk-B1-lA8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HBx-Rv-VgA" secondAttribute="trailing" constant="50" id="Rbc-hx-s0i"/>
                     <constraint firstAttribute="trailing" secondItem="mxk-B1-lA8" secondAttribute="trailing" constant="20" symbolic="YES" id="RfV-f8-i7E"/>
                     <constraint firstItem="mxk-B1-lA8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aiX-U8-MD5" secondAttribute="trailing" constant="50" id="T6j-zV-Abt"/>
                     <constraint firstItem="aiX-U8-MD5" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" id="Wb3-Fd-oKk"/>
                     <constraint firstItem="q1e-VC-3cZ" firstAttribute="top" secondItem="O2I-yB-Cqr" secondAttribute="bottom" constant="20" id="YaM-A7-CiG"/>
                     <constraint firstItem="COq-oL-Uqj" firstAttribute="top" secondItem="q1e-VC-3cZ" secondAttribute="bottom" constant="12" id="aG1-Ih-HhP"/>
+                    <constraint firstItem="HBx-Rv-VgA" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="blQ-RN-mpd"/>
                     <constraint firstItem="aiX-U8-MD5" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="di9-hT-iTi"/>
                     <constraint firstItem="Rog-WF-H8d" firstAttribute="top" secondItem="aiX-U8-MD5" secondAttribute="bottom" constant="12" id="eVP-Jq-sdj"/>
-                    <constraint firstItem="O2I-yB-Cqr" firstAttribute="top" secondItem="Rog-WF-H8d" secondAttribute="bottom" constant="20" id="gFC-UO-cy8"/>
                     <constraint firstItem="q1e-VC-3cZ" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="l67-6x-614"/>
+                    <constraint firstItem="HBx-Rv-VgA" firstAttribute="top" secondItem="Rog-WF-H8d" secondAttribute="bottom" constant="12" id="nTr-Cv-Ffv"/>
                     <constraint firstItem="O2I-yB-Cqr" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="12" id="qWf-Jo-RKH"/>
                     <constraint firstItem="mxk-B1-lA8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="q1e-VC-3cZ" secondAttribute="trailing" constant="50" id="y7U-Xq-6fA"/>
                     <constraint firstAttribute="bottom" secondItem="mxk-B1-lA8" secondAttribute="bottom" constant="20" symbolic="YES" id="zKM-Ly-4wi"/>
                     <constraint firstItem="COq-oL-Uqj" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="zO1-Pk-x1d"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="95" y="190.5"/>
+            <point key="canvasLocation" x="95" y="219.5"/>
         </window>
+        <userDefaultsController representsSharedInstance="YES" id="PTQ-Ge-YCc"/>
     </objects>
     <resources>
         <image name="NSApplicationIcon" width="32" height="32"/>
