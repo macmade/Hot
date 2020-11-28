@@ -56,9 +56,11 @@ public class ThermalLog: NSObject
             
             if temp > 1
             {
-                if UserDefaults.standard.bool( forKey: "convertToFahrenheit" ) {
+                if UserDefaults.standard.bool( forKey: "convertToFahrenheit" )
+                {
                     temp = temp * 1.8 + 32
                 }
+                
                 self.cpuTemperature = NSNumber( value: temp )
             }
             
