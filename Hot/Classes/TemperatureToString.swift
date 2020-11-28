@@ -44,6 +44,8 @@ public class TemperatureToString: ValueTransformer
             return "--" as NSString
         }
         
-        return "\( n )°" as NSString
+        let unit = UserDefaults.standard.bool( forKey: "convertToFahrenheit" ) ? "F" : "C"
+        
+        return "\( n )°\( unit )" as NSString
     }
 }

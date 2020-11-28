@@ -52,10 +52,13 @@ public class ThermalLog: NSObject
             
             self.refreshing = true
             
-            let temp = SMCGetCPUTemperature()
+            var temp = SMCGetCPUTemperature()
             
             if temp > 1
             {
+                if UserDefaults.standard.bool( forKey: "convertToFahrenheit" ) {
+                    temp = temp * 1.8 + 32
+                }
                 self.cpuTemperature = NSNumber( value: temp )
             }
             
