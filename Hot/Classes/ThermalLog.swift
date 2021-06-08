@@ -30,6 +30,7 @@ public class ThermalLog: NSObject
     @objc public dynamic var availableCPUs:  NSNumber?
     @objc public dynamic var speedLimit:     NSNumber?
     @objc public dynamic var cpuTemperature: NSNumber?
+    @objc public dynamic var sensors:        [ String : Double ] = [:]
     
     private var refreshing = false
     
@@ -41,22 +42,24 @@ public class ThermalLog: NSObject
         self.refresh()
     }
     
-    private func getCPUTemperature() -> Double
+    private func readSensors() -> [ String : Double ]
     {
         #if arch( arm64 )
         
-        ReadM1Sensors().filter
-        {
-            $0.key.hasPrefix( "pACC" ) || $0.key.hasPrefix( "eACC" )
-        }
-        .reduce( 0.0 )
-        {
-            r, v in v.value.doubleValue > r ? v.value.doubleValue : r
-        }
+        Dictionary( uniqueKeysWithValues:
+            ReadM1Sensors().filter
+            {
+                $0.key.hasPrefix( "pACC" ) || $0.key.hasPrefix( "eACC" )
+            }
+            .map
+            {
+                ( $0.key, $0.value.doubleValue )
+            }
+        )
         
         #else
         
-        SMCGetCPUTemperature()
+        [ "TCXC" : SMCGetCPUTemperature() ]
         
         #endif
     }
@@ -72,20 +75,18 @@ public class ThermalLog: NSObject
             
             self.refreshing = true
             
-            let temp = self.getCPUTemperature()
+            let sensors = self.readSensors()
+            let temp    = sensors.reduce( 0.0 )
+            {
+                r, v in v.value > r ? v.value : r
+            }
             
             if temp > 1
             {
                 DispatchQueue.main.async
                 {
-                    if UserDefaults.standard.bool( forKey: "convertToFahrenheit" )
-                    {
-                        self.cpuTemperature = NSNumber( value: temp * 1.8 + 32 )
-                    }
-                    else
-                    {
-                        self.cpuTemperature = NSNumber( value: temp )
-                    }
+                    self.sensors        = sensors
+                    self.cpuTemperature = NSNumber( value: temp )
                 }
             }
             

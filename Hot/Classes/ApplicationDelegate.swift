@@ -31,11 +31,14 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
     private var statusItem:                  NSStatusItem?
     private var aboutWindowController:       AboutWindowController?
     private var preferencesWindowController: PreferencesWindowController?
-    private var infoViewController:          InfoViewController?
     private var observations:                [ NSKeyValueObservation ] = []
+    private var sensorViewControllers:       [ SensorViewController  ] = []
     
-    @IBOutlet private var menu:    NSMenu!
-    @IBOutlet private var updater: GitHubUpdater!
+    @IBOutlet private var menu:        NSMenu!
+    @IBOutlet private var sensorsMenu: NSMenu!
+    @IBOutlet private var updater:     GitHubUpdater!
+    
+    @objc public private( set ) dynamic var infoViewController: InfoViewController?
     
     func applicationDidFinishLaunching( _ notification: Notification )
     {
@@ -61,8 +64,9 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
         
         let o1 = infoViewController.observe( \.speedLimit     ) { [ weak self ] _, _ in self?.updateTitle() }
         let o2 = infoViewController.observe( \.cpuTemperature ) { [ weak self ] _, _ in self?.updateTitle() }
+        let o3 = infoViewController.observe( \.log.sensors    ) { [ weak self ] _, _ in self?.updateSensors() }
         
-        self.observations.append( contentsOf: [ o1, o2 ] )
+        self.observations.append( contentsOf: [ o1, o2, o3 ] )
         
         if UserDefaults.standard.bool( forKey: "automaticallyCheckForUpdates" )
         {
@@ -128,7 +132,8 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
     
     private func updateTitle()
     {
-        var title = ""
+        var title       = ""
+        let transformer = TemperatureToString()
         
         if let n1 = self.infoViewController?.speedLimit,
            let n2 = self.infoViewController?.cpuTemperature,
@@ -136,8 +141,8 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
            n1 > 0,
            n2 > 0
         {
-            let unit = UserDefaults.standard.bool( forKey: "convertToFahrenheit" ) ? "F" : "C"
-            title    = "\( n1 )% \( n2 )°\( unit )"
+            let temp = transformer.transformedValue( n2 ) as? String ?? "--"
+            title    = "\( n1 )% \( temp )"
         }
         else if let n = self.infoViewController?.speedLimit, n > 0
         {
@@ -147,8 +152,7 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
                 UserDefaults.standard.bool( forKey: "displayCPUTemperature" ),
                 n > 0
         {
-            let unit = UserDefaults.standard.bool( forKey: "convertToFahrenheit" ) ? "F" : "C"
-            title    = "\( n )°\( unit )"
+            title = transformer.transformedValue( n ) as? String ?? "--"
         }
         
         if title.count == 0
@@ -170,6 +174,27 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
             }()
             
             self.statusItem?.button?.attributedTitle = NSAttributedString( string: title, attributes: [ .foregroundColor : color ] )
+        }
+    }
+    
+    private func updateSensors()
+    {
+        self.sensorsMenu.removeAllItems()
+        self.sensorViewControllers.removeAll()
+        
+        self.infoViewController?.log.sensors.sorted
+        {
+            $0.key.compare( $1.key, options: .numeric, range: nil, locale: nil ) == .orderedAscending
+        }
+        .forEach
+        {
+            let controller   = SensorViewController()
+            controller.name  = $0.key
+            controller.value = Int( $0.value )
+            let item         = NSMenuItem( title: $0.key, action: nil, keyEquivalent: "" )
+            item.view        = controller.view
+            
+            self.sensorsMenu.addItem( item )
         }
     }
 }

@@ -1,18 +1,18 @@
 /*******************************************************************************
  * The MIT License (MIT)
- * 
- * Copyright (c) 2020 Jean-David Gadina - www.xs-labs.com
- * 
+ *
+ * Copyright (c) 2021 Jean-David Gadina - www.xs-labs.com
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,33 +24,13 @@
 
 import Cocoa
 
-@objc( TemperatureToString )
-public class TemperatureToString: ValueTransformer
+public class SensorViewController: NSViewController
 {
-    public override class func transformedValueClass() -> AnyClass
-    {
-        return NSString.self
-    }
+    @objc public dynamic var name:  String = "Unknown"
+    @objc public dynamic var value: Int    = 0
     
-    public override class func allowsReverseTransformation() -> Bool
+    public override var nibName: NSNib.Name?
     {
-        return false
-    }
-    
-    public override func transformedValue( _ value: Any? ) -> Any?
-    {
-        guard var n = value as? Int, n > 0 else
-        {
-            return "--" as NSString
-        }
-        
-        if UserDefaults.standard.bool( forKey: "convertToFahrenheit" )
-        {
-            n = Int( Double( n ) * 1.8 + 32 )
-        }
-        
-        let unit = UserDefaults.standard.bool( forKey: "convertToFahrenheit" ) ? "F" : "C"
-        
-        return "\( n )°\( unit )" as NSString
+        "SensorViewController"
     }
 }

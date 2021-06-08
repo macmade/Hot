@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -15,6 +15,7 @@
         <customObject id="Voe-Tx-rLC" customClass="ApplicationDelegate" customModule="Hot" customModuleProvider="target">
             <connections>
                 <outlet property="menu" destination="YdR-H7-b4a" id="jeu-CN-jol"/>
+                <outlet property="sensorsMenu" destination="ub7-du-ljd" id="LPJ-gc-4R1"/>
                 <outlet property="updater" destination="O40-Rx-Vw9" id="ApT-sO-5me"/>
             </connections>
         </customObject>
@@ -693,7 +694,33 @@
                 <menuItem tag="1" id="Zdf-1z-Pm5">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
-                <menuItem isSeparatorItem="YES" id="XCF-fq-sNA"/>
+                <menuItem isSeparatorItem="YES" id="XCF-fq-sNA">
+                    <connections>
+                        <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.infoViewController.log.sensors" id="9Fz-eC-m7m">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">DictionaryIsEmpty</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </menuItem>
+                <menuItem title="CPU Sensors" id="Uyl-at-zXs">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="CPU Sensors" id="ub7-du-ljd">
+                        <items>
+                            <menuItem title="Item" id="e7y-6X-k2N">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.infoViewController.log.sensors" id="I5E-xc-zkg">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">DictionaryIsEmpty</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="Nbp-cG-gpV"/>
                 <menuItem title="Preferences..." keyEquivalent="," id="JFH-mp-6PU">
                     <connections>
                         <action selector="showPreferencesWindow:" target="Voe-Tx-rLC" id="E99-rm-GGi"/>
