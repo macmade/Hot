@@ -40,6 +40,11 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
     
     @objc public private( set ) dynamic var infoViewController: InfoViewController?
     
+    deinit
+    {
+        UserDefaults.standard.removeObserver( self, forKeyPath: "hideStatusIcon" )
+    }
+    
     func applicationDidFinishLaunching( _ notification: Notification )
     {
         if UserDefaults.standard.object( forKey: "LastLaunch" ) == nil
@@ -68,6 +73,8 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
         
         self.observations.append( contentsOf: [ o1, o2, o3 ] )
         
+        UserDefaults.standard.addObserver( self, forKeyPath: "hideStatusIcon", options: [], context: nil )
+        
         if UserDefaults.standard.bool( forKey: "automaticallyCheckForUpdates" )
         {
             DispatchQueue.main.asyncAfter( deadline: .now() + .seconds( 2 ) )
@@ -84,6 +91,18 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
             {
                 self.updater.checkForUpdatesInBackground()
             }
+        }
+    }
+    
+    override func observeValue( forKeyPath keyPath: String?, of object: Any?, change: [ NSKeyValueChangeKey : Any ]?, context: UnsafeMutableRawPointer? )
+    {
+        if let object = object as? NSObject, object == UserDefaults.standard && keyPath == "hideStatusIcon"
+        {
+            self.updateTitle()
+        }
+        else
+        {
+            super.observeValue( forKeyPath: keyPath, of: object, change: change, context: context )
         }
     }
     
@@ -174,6 +193,15 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
             }()
             
             self.statusItem?.button?.attributedTitle = NSAttributedString( string: title, attributes: [ .foregroundColor : color ] )
+        }
+        
+        if UserDefaults.standard.bool( forKey: "hideStatusIcon" ) && title.count > 0
+        {
+            self.statusItem?.button?.image = nil
+        }
+        else
+        {
+            self.statusItem?.button?.image = NSImage( named: "StatusIconTemplate" )
         }
     }
     

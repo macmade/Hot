@@ -66,6 +66,14 @@ public class PreferencesWindowController: NSWindowController
         }
     }
     
+    @objc public dynamic var hideStatusIcon = UserDefaults.standard.bool( forKey: "hideStatusIcon" )
+    {
+        didSet
+        {
+            UserDefaults.standard.setValue( self.hideStatusIcon, forKey: "hideStatusIcon" )
+        }
+    }
+    
     public override var windowNibName: NSNib.Name?
     {
         return "PreferencesWindowController"
