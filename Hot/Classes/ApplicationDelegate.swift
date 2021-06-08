@@ -42,6 +42,9 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
     
     deinit
     {
+        UserDefaults.standard.removeObserver( self, forKeyPath: "displayCPUTemperature" )
+        UserDefaults.standard.removeObserver( self, forKeyPath: "colorizeStatusItemText" )
+        UserDefaults.standard.removeObserver( self, forKeyPath: "convertToFahrenheit" )
         UserDefaults.standard.removeObserver( self, forKeyPath: "hideStatusIcon" )
     }
     
@@ -73,7 +76,10 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
         
         self.observations.append( contentsOf: [ o1, o2, o3 ] )
         
-        UserDefaults.standard.addObserver( self, forKeyPath: "hideStatusIcon", options: [], context: nil )
+        UserDefaults.standard.addObserver( self, forKeyPath: "displayCPUTemperature",  options: [], context: nil )
+        UserDefaults.standard.addObserver( self, forKeyPath: "colorizeStatusItemText", options: [], context: nil )
+        UserDefaults.standard.addObserver( self, forKeyPath: "convertToFahrenheit",    options: [], context: nil )
+        UserDefaults.standard.addObserver( self, forKeyPath: "hideStatusIcon",         options: [], context: nil )
         
         if UserDefaults.standard.bool( forKey: "automaticallyCheckForUpdates" )
         {
@@ -96,9 +102,18 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
     
     override func observeValue( forKeyPath keyPath: String?, of object: Any?, change: [ NSKeyValueChangeKey : Any ]?, context: UnsafeMutableRawPointer? )
     {
-        if let object = object as? NSObject, object == UserDefaults.standard && keyPath == "hideStatusIcon"
+        let keyPaths =
+        [
+            "displayCPUTemperature",
+            "colorizeStatusItemText",
+            "convertToFahrenheit",
+            "hideStatusIcon"
+        ]
+        
+        if let keyPath = keyPath, let object = object as? NSObject, object == UserDefaults.standard && keyPaths.contains( keyPath )
         {
             self.updateTitle()
+            self.updateSensors()
         }
         else
         {
