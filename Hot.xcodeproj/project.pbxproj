@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05221E62266FD5BD007246FF /* AppleSilicon.m in Sources */ = {isa = PBXBuildFile; fileRef = 05221E61266FD5BD007246FF /* AppleSilicon.m */; };
 		052FBC34251ECA8600C4322E /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 052FBC33251ECA8600C4322E /* IOKit.framework */; };
 		052FBC38251ECB8B00C4322E /* SMC.c in Sources */ = {isa = PBXBuildFile; fileRef = 052FBC37251ECB8B00C4322E /* SMC.c */; };
 		052FBCA3251EE43B00C4322E /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052FBCA2251EE43B00C4322E /* PreferencesWindowController.swift */; };
@@ -71,6 +72,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		05221E60266FD5BD007246FF /* AppleSilicon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppleSilicon.h; sourceTree = "<group>"; };
+		05221E61266FD5BD007246FF /* AppleSilicon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppleSilicon.m; sourceTree = "<group>"; };
 		052FBC32251EC69B00C4322E /* SMC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMC.h; sourceTree = "<group>"; };
 		052FBC33251ECA8600C4322E /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		052FBC37251ECB8B00C4322E /* SMC.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SMC.c; sourceTree = "<group>"; };
@@ -354,6 +357,8 @@
 				052FBCA2251EE43B00C4322E /* PreferencesWindowController.swift */,
 				052FBC37251ECB8B00C4322E /* SMC.c */,
 				052FBC32251EC69B00C4322E /* SMC.h */,
+				05221E60266FD5BD007246FF /* AppleSilicon.h */,
+				05221E61266FD5BD007246FF /* AppleSilicon.m */,
 				055A932625277F6E0070F771 /* TemperatureToString.swift */,
 				05AA408C251CFA0600106CEA /* ThermalLog.swift */,
 			);
@@ -500,6 +505,7 @@
 				055A932725277F6E0070F771 /* TemperatureToString.swift in Sources */,
 				052FBCA3251EE43B00C4322E /* PreferencesWindowController.swift in Sources */,
 				055A932B252780FD0070F771 /* GraphView.swift in Sources */,
+				05221E62266FD5BD007246FF /* AppleSilicon.m in Sources */,
 				057F8B11251D274C0048F1E1 /* NSApplication+LaunchServices.m in Sources */,
 				057F8B0C251D273E0048F1E1 /* AboutWindowController.swift in Sources */,
 				055A9320252778C10070F771 /* InfoViewController.swift in Sources */,

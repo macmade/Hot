@@ -41,6 +41,26 @@ public class ThermalLog: NSObject
         self.refresh()
     }
     
+    private func getCPUTemperature() -> Double
+    {
+        #if arch( arm64 )
+        
+        ReadM1Sensors().filter
+        {
+            $0.key.hasPrefix( "pACC" ) || $0.key.hasPrefix( "eACC" )
+        }
+        .reduce( 0.0 )
+        {
+            r, v in v.value.doubleValue > r ? v.value.doubleValue : r
+        }
+        
+        #else
+        
+        SMCGetCPUTemperature()
+        
+        #endif
+    }
+    
     public func refresh()
     {
         ThermalLog.queue.async
@@ -52,16 +72,21 @@ public class ThermalLog: NSObject
             
             self.refreshing = true
             
-            var temp = SMCGetCPUTemperature()
+            let temp = self.getCPUTemperature()
             
             if temp > 1
             {
-                if UserDefaults.standard.bool( forKey: "convertToFahrenheit" )
+                DispatchQueue.main.async
                 {
-                    temp = temp * 1.8 + 32
+                    if UserDefaults.standard.bool( forKey: "convertToFahrenheit" )
+                    {
+                        self.cpuTemperature = NSNumber( value: temp * 1.8 + 32 )
+                    }
+                    else
+                    {
+                        self.cpuTemperature = NSNumber( value: temp )
+                    }
                 }
-                
-                self.cpuTemperature = NSNumber( value: temp )
             }
             
             let pipe            = Pipe()

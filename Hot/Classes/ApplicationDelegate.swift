@@ -137,11 +137,18 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
            n2 > 0
         {
             let unit = UserDefaults.standard.bool( forKey: "convertToFahrenheit" ) ? "F" : "C"
-            title = "\( n1 )% \( n2 )°\( unit )"
+            title    = "\( n1 )% \( n2 )°\( unit )"
         }
         else if let n = self.infoViewController?.speedLimit, n > 0
         {
             title = "\( n )%"
+        }
+        else if let n = self.infoViewController?.cpuTemperature,
+                UserDefaults.standard.bool( forKey: "displayCPUTemperature" ),
+                n > 0
+        {
+            let unit = UserDefaults.standard.bool( forKey: "convertToFahrenheit" ) ? "F" : "C"
+            title    = "\( n )°\( unit )"
         }
         
         if title.count == 0
@@ -150,7 +157,17 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
         }
         else
         {
-            let color = self.infoViewController?.speedLimit ?? 100 < 60 && UserDefaults.standard.bool( forKey: "colorizeStatusItemText" ) ? NSColor.orange : NSColor.controlTextColor
+            let color: NSColor =
+            {
+                let limit = self.infoViewController?.speedLimit ?? 100
+                
+                if limit > 0 && limit < 60 && UserDefaults.standard.bool( forKey: "colorizeStatusItemText" )
+                {
+                    return .orange
+                }
+                
+                return .controlTextColor
+            }()
             
             self.statusItem?.button?.attributedTitle = NSAttributedString( string: title, attributes: [ .foregroundColor : color ] )
         }

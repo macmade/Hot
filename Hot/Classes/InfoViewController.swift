@@ -52,8 +52,9 @@ public class InfoViewController: NSViewController
         let o1 = self.log.observe( \.schedulerLimit ) { [ weak self ] _, _ in self?.update() }
         let o2 = self.log.observe( \.availableCPUs  ) { [ weak self ] _, _ in self?.update() }
         let o3 = self.log.observe( \.speedLimit     ) { [ weak self ] _, _ in self?.update() }
+        let o4 = self.log.observe( \.cpuTemperature ) { [ weak self ] _, _ in self?.update() }
         
-        self.observations.append( contentsOf: [ o1, o2, o3 ] )
+        self.observations.append( contentsOf: [ o1, o2, o3, o4 ] )
         
         let timer = Timer( timeInterval: 2, repeats: true )
         {
@@ -92,6 +93,10 @@ public class InfoViewController: NSViewController
         if self.speedLimit > 0 && self.cpuTemperature > 0
         {
             self.graphView.addData( speed: self.speedLimit, temperature: self.cpuTemperature )
+        }
+        else if self.cpuTemperature > 0
+        {
+            self.graphView.addData( speed: 100, temperature: self.cpuTemperature )
         }
         
         self.graphViewHeight.constant = self.graphView.canDisplay ? 100 : 0
