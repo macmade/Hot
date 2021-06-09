@@ -26,8 +26,29 @@ import Cocoa
 
 public class SensorViewController: NSViewController
 {
-    @objc public dynamic var name:  String = "Unknown"
-    @objc public dynamic var value: Int    = 0
+    @objc private dynamic var icon  = NSImage( named: "Unknown" )
+    @objc private dynamic var label = "Unknown:"
+    @objc public  dynamic var value = 0
+    @objc public  dynamic var name  = "Unknown"
+    {
+        didSet
+        {
+            self.label = self.name.hasSuffix( ":" ) ? self.name : "\( self.name ):"
+            
+            if self.name.lowercased().hasPrefix( "eacc" )
+            {
+                self.icon = NSImage( named: "eAccTemplate" )
+            }
+            else if self.name.lowercased().hasPrefix( "pacc" )
+            {
+                self.icon = NSImage( named: "pAccTemplate" )
+            }
+            else
+            {
+                self.icon = NSImage( named: "UnknownTemplate" )
+            }
+        }
+    }
     
     public override var nibName: NSNib.Name?
     {
