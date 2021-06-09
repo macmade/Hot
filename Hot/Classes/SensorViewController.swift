@@ -43,6 +43,11 @@ public class SensorViewController: NSViewController
             {
                 self.icon = NSImage( named: "pAccTemplate" )
             }
+            else if self.name.lowercased().hasPrefix( "tcxc" )
+            {
+                self.icon = NSImage( named: "TCXCTemplate" )
+            }
+            
             else
             {
                 self.icon = NSImage( named: "UnknownTemplate" )

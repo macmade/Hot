@@ -38,6 +38,7 @@
 		05B0DFA426714A830068FF9B /* pAccTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 05B0DFA026714A830068FF9B /* pAccTemplate.pdf */; };
 		05B0DFA526714A830068FF9B /* UnknownTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 05B0DFA226714A830068FF9B /* UnknownTemplate.pdf */; };
 		05B0DFA626714A830068FF9B /* eAccTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 05B0DFA326714A830068FF9B /* eAccTemplate.pdf */; };
+		05B0DFAA267150F40068FF9B /* TCXCTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 05B0DFA8267150F40068FF9B /* TCXCTemplate.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,6 +162,7 @@
 		05B0DFA026714A830068FF9B /* pAccTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pAccTemplate.pdf; sourceTree = "<group>"; };
 		05B0DFA226714A830068FF9B /* UnknownTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = UnknownTemplate.pdf; sourceTree = "<group>"; };
 		05B0DFA326714A830068FF9B /* eAccTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = eAccTemplate.pdf; sourceTree = "<group>"; };
+		05B0DFA8267150F40068FF9B /* TCXCTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TCXCTemplate.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 		057F8AFE251D22360048F1E1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				05B0DFA8267150F40068FF9B /* TCXCTemplate.pdf */,
 				05B0DFA326714A830068FF9B /* eAccTemplate.pdf */,
 				05B0DFA026714A830068FF9B /* pAccTemplate.pdf */,
 				05B0DFA226714A830068FF9B /* UnknownTemplate.pdf */,
@@ -492,6 +495,7 @@
 				05AA407F251CF3D600106CEA /* MainMenu.xib in Resources */,
 				052FBCD7251F842C00C4322E /* SchedulerTemplate.pdf in Resources */,
 				05B0DFA626714A830068FF9B /* eAccTemplate.pdf in Resources */,
+				05B0DFAA267150F40068FF9B /* TCXCTemplate.pdf in Resources */,
 				05B0DFA426714A830068FF9B /* pAccTemplate.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
