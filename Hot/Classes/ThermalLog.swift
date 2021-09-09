@@ -46,7 +46,7 @@ public class ThermalLog: NSObject
     {
         #if arch( arm64 )
         
-        Dictionary( uniqueKeysWithValues:
+        return Dictionary( uniqueKeysWithValues:
             ReadM1Sensors().filter
             {
                 $0.key.hasPrefix( "pACC" ) || $0.key.hasPrefix( "eACC" )
@@ -59,7 +59,7 @@ public class ThermalLog: NSObject
         
         #else
         
-        [ "TCXC" : SMCGetCPUTemperature() ]
+        return [ "TCXC" : SMCGetCPUTemperature() ]
         
         #endif
     }
