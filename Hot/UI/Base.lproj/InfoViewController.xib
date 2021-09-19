@@ -180,8 +180,8 @@
                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="PressureTemplate" id="AfK-fl-oW3"/>
                                 </imageView>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="okO-0n-FNv">
-                                    <rect key="frame" x="22" y="0.0" width="111" height="16"/>
-                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Thermal Pressure" id="dEb-s7-1di">
+                                    <rect key="frame" x="22" y="0.0" width="115" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Thermal Pressure:" id="dEb-s7-1di">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
