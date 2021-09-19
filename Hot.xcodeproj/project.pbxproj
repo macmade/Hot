@@ -39,6 +39,8 @@
 		05B0DFA526714A830068FF9B /* UnknownTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 05B0DFA226714A830068FF9B /* UnknownTemplate.pdf */; };
 		05B0DFA626714A830068FF9B /* eAccTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 05B0DFA326714A830068FF9B /* eAccTemplate.pdf */; };
 		05B0DFAA267150F40068FF9B /* TCXCTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 05B0DFA8267150F40068FF9B /* TCXCTemplate.pdf */; };
+		05BA0BAA26F342DA00AA7BFC /* PressureToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BA0BA926F342DA00AA7BFC /* PressureToString.swift */; };
+		05BA0BAD26F347A500AA7BFC /* PressureTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 05BA0BAC26F347A500AA7BFC /* PressureTemplate.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,6 +165,8 @@
 		05B0DFA226714A830068FF9B /* UnknownTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = UnknownTemplate.pdf; sourceTree = "<group>"; };
 		05B0DFA326714A830068FF9B /* eAccTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = eAccTemplate.pdf; sourceTree = "<group>"; };
 		05B0DFA8267150F40068FF9B /* TCXCTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TCXCTemplate.pdf; sourceTree = "<group>"; };
+		05BA0BA926F342DA00AA7BFC /* PressureToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressureToString.swift; sourceTree = "<group>"; };
+		05BA0BAC26F347A500AA7BFC /* PressureTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PressureTemplate.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +194,7 @@
 				052FBCD3251F842C00C4322E /* SchedulerTemplate.pdf */,
 				052FBCCF251F842C00C4322E /* SpeedTemplate.pdf */,
 				057F8AFF251D22360048F1E1 /* StatusIconTemplate.pdf */,
+				05BA0BAC26F347A500AA7BFC /* PressureTemplate.pdf */,
 				052FBCD2251F842C00C4322E /* TemperatureTemplate.pdf */,
 			);
 			path = Images;
@@ -380,6 +385,7 @@
 				05221E60266FD5BD007246FF /* AppleSilicon.h */,
 				05221E61266FD5BD007246FF /* AppleSilicon.m */,
 				055A932625277F6E0070F771 /* TemperatureToString.swift */,
+				05BA0BA926F342DA00AA7BFC /* PressureToString.swift */,
 				05AA408C251CFA0600106CEA /* ThermalLog.swift */,
 			);
 			path = Classes;
@@ -428,7 +434,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1200;
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1250;
 				TargetAttributes = {
 					05AA4075251CF3D200106CEA = {
 						CreatedOnToolsVersion = 12.0;
@@ -483,6 +489,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				052FBCD4251F842C00C4322E /* SpeedTemplate.pdf in Resources */,
+				05BA0BAD26F347A500AA7BFC /* PressureTemplate.pdf in Resources */,
 				052FBCD6251F842C00C4322E /* TemperatureTemplate.pdf in Resources */,
 				057F8B00251D22360048F1E1 /* StatusIconTemplate.pdf in Resources */,
 				057F8B1B251D2A970048F1E1 /* Icon.icns in Resources */,
@@ -540,6 +547,7 @@
 				05AA408D251CFA0600106CEA /* ThermalLog.swift in Sources */,
 				055A932925277F990070F771 /* PercentToString.swift in Sources */,
 				05AA407A251CF3D200106CEA /* ApplicationDelegate.swift in Sources */,
+				05BA0BAA26F342DA00AA7BFC /* PressureToString.swift in Sources */,
 				052FBC38251ECB8B00C4322E /* SMC.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -26,11 +26,12 @@ import Foundation
 
 public class ThermalLog: NSObject
 {
-    @objc public dynamic var schedulerLimit: NSNumber?
-    @objc public dynamic var availableCPUs:  NSNumber?
-    @objc public dynamic var speedLimit:     NSNumber?
-    @objc public dynamic var cpuTemperature: NSNumber?
-    @objc public dynamic var sensors:        [ String : Double ] = [:]
+    @objc public dynamic var schedulerLimit:  NSNumber?
+    @objc public dynamic var availableCPUs:   NSNumber?
+    @objc public dynamic var speedLimit:      NSNumber?
+    @objc public dynamic var cpuTemperature:  NSNumber?
+    @objc public dynamic var thermalPressure: NSNumber?
+    @objc public dynamic var sensors:         [ String : Double ] = [:]
     
     private var refreshing = false
     
@@ -74,6 +75,13 @@ public class ThermalLog: NSObject
             }
             
             self.refreshing = true
+            
+            let pressure = ProcessInfo().thermalState
+            
+            DispatchQueue.main.async
+            {
+                self.thermalPressure = NSNumber( integerLiteral: pressure.rawValue )
+            }
             
             let sensors = self.readSensors()
             let temp    = sensors.reduce( 0.0 )

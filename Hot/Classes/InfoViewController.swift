@@ -29,11 +29,18 @@ public class InfoViewController: NSViewController
     private var timer:        Timer?
     private var observations: [ NSKeyValueObservation ] = []
     
-    @objc public private( set ) dynamic var log                 = ThermalLog()
-    @objc public private( set ) dynamic var schedulerLimit: Int = 0
-    @objc public private( set ) dynamic var availableCPUs:  Int = 0
-    @objc public private( set ) dynamic var speedLimit:     Int = 0
-    @objc public private( set ) dynamic var cpuTemperature: Int = 0
+    @objc public private( set ) dynamic var log                   = ThermalLog()
+    @objc public private( set ) dynamic var schedulerLimit:  Int  = 0
+    @objc public private( set ) dynamic var availableCPUs:   Int  = 0
+    @objc public private( set ) dynamic var speedLimit:      Int  = 0
+    @objc public private( set ) dynamic var cpuTemperature:  Int  = 0
+    @objc public private( set ) dynamic var thermalPressure: Int  = 0
+    
+    #if arch( arm64 )
+    @objc public private( set ) dynamic var isARM = true
+    #else
+    @objc public private( set ) dynamic var isARM = false
+    #endif
     
     @IBOutlet private var graphView:       GraphView!
     @IBOutlet private var graphViewHeight: NSLayoutConstraint!
@@ -49,12 +56,13 @@ public class InfoViewController: NSViewController
         
         self.graphViewHeight.constant = 0
         
-        let o1 = self.log.observe( \.schedulerLimit ) { [ weak self ] _, _ in self?.update() }
-        let o2 = self.log.observe( \.availableCPUs  ) { [ weak self ] _, _ in self?.update() }
-        let o3 = self.log.observe( \.speedLimit     ) { [ weak self ] _, _ in self?.update() }
-        let o4 = self.log.observe( \.cpuTemperature ) { [ weak self ] _, _ in self?.update() }
+        let o1 = self.log.observe( \.schedulerLimit  ) { [ weak self ] _, _ in self?.update() }
+        let o2 = self.log.observe( \.availableCPUs   ) { [ weak self ] _, _ in self?.update() }
+        let o3 = self.log.observe( \.speedLimit      ) { [ weak self ] _, _ in self?.update() }
+        let o4 = self.log.observe( \.cpuTemperature  ) { [ weak self ] _, _ in self?.update() }
+        let o5 = self.log.observe( \.thermalPressure ) { [ weak self ] _, _ in self?.update() }
         
-        self.observations.append( contentsOf: [ o1, o2, o3, o4 ] )
+        self.observations.append( contentsOf: [ o1, o2, o3, o4, o5 ] )
         
         let timer = Timer( timeInterval: 2, repeats: true )
         {
@@ -88,6 +96,11 @@ public class InfoViewController: NSViewController
         if let n = self.log.cpuTemperature?.intValue
         {
             self.cpuTemperature = n
+        }
+        
+        if let n = self.log.thermalPressure?.intValue
+        {
+            self.thermalPressure = n
         }
         
         if self.speedLimit > 0 && self.cpuTemperature > 0

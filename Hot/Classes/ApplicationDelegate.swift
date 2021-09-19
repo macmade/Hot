@@ -204,6 +204,13 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
                     return .orange
                 }
                 
+                if let pressure  = self.infoViewController?.thermalPressure,
+                   let pressure  = ProcessInfo.ThermalState( rawValue: pressure ),
+                       pressure != .nominal
+                {
+                    return .orange
+                }
+                
                 return .controlTextColor
             }()
             

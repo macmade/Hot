@@ -128,8 +128,10 @@ public class GraphView: NSView
         path1.lineCapStyle = .round
         path2.lineCapStyle = .round
         
+        #if !arch( arm64 )
         NSColor.systemBlue.withAlphaComponent( 0.75 ).setStroke()
         path1.stroke()
+        #endif
         
         NSColor.systemOrange.withAlphaComponent( 0.75 ).setStroke()
         path2.stroke()
@@ -151,22 +153,20 @@ public class GraphView: NSView
             NSGradient( colors: [ NSColor.systemOrange.withAlphaComponent( 0.75 ), NSColor.clear ] )?.draw( in: fill2, angle: -90 )
         }
         
-        let circle1 = NSBezierPath( ovalIn: NSMakeRect( rect.origin.x, rect.origin.y + 10, 7.5, 7.5 ) )
-        let circle2 = NSBezierPath( ovalIn: NSMakeRect( rect.origin.x, rect.origin.y,      7.5, 7.5 ) )
-        
-        NSColor.systemBlue.withAlphaComponent( 0.75 ).setFill()
-        circle1.fill()
-        
-        NSColor.systemOrange.withAlphaComponent( 0.75 ).setFill()
-        circle2.fill()
-        
         let attributes: [ NSAttributedString.Key : Any ] =
         [
             .foregroundColor : NSColor.controlTextColor.withAlphaComponent( 0.75 ),
             .font            : NSFont.systemFont( ofSize: 8 )
         ]
         
-        ( "Speed"       as NSString ).draw( at: NSMakePoint( rect.origin.x + 10, rect.origin.y + 9 ), withAttributes: attributes )
+        NSColor.systemOrange.withAlphaComponent( 0.75 ).setFill()
+        NSBezierPath( ovalIn: NSMakeRect( rect.origin.x, rect.origin.y, 7.5, 7.5 ) ).fill()
         ( "Temperature" as NSString ).draw( at: NSMakePoint( rect.origin.x + 10, rect.origin.y - 1 ), withAttributes: attributes )
+        
+        #if !arch( arm64 )
+        NSColor.systemBlue.withAlphaComponent( 0.75 ).setFill()
+        NSBezierPath( ovalIn: NSMakeRect( rect.origin.x, rect.origin.y + 10, 7.5, 7.5 ) ).fill()
+        ( "Speed" as NSString ).draw( at: NSMakePoint( rect.origin.x + 10, rect.origin.y + 9 ), withAttributes: attributes )
+        #endif
     }
 }
