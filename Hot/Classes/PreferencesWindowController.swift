@@ -74,8 +74,21 @@ public class PreferencesWindowController: NSWindowController
         }
     }
     
+    @objc private dynamic var colorizeStatusItemTextLabel: String?
+    
     public override var windowNibName: NSNib.Name?
     {
         return "PreferencesWindowController"
+    }
+    
+    public override func windowDidLoad()
+    {
+        super.windowDidLoad()
+        
+        #if arch( arm64 )
+        self.colorizeStatusItemTextLabel = "Colorize the status item text if the thermal pressure is not nominal"
+        #else
+        self.colorizeStatusItemTextLabel = "Colorize the status item text if the CPU speed limit is below 60%"
+        #endif
     }
 }

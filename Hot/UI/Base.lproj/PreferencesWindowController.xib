@@ -33,13 +33,14 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rog-WF-H8d">
-                        <rect key="frame" x="18" y="160" width="197" height="18"/>
-                        <buttonCell key="cell" type="check" title="Colorize the status item text" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="YMx-Az-Ken">
+                        <rect key="frame" x="18" y="160" width="59" height="18"/>
+                        <buttonCell key="cell" type="check" title="Label" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="YMx-Az-Ken">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
                             <binding destination="-2" name="value" keyPath="self.colorizeStatusItemText" id="1ic-wh-hQ8"/>
+                            <binding destination="-2" name="title" keyPath="self.colorizeStatusItemTextLabel" id="04l-Uc-NeH"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HBx-Rv-VgA">
