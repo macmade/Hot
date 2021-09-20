@@ -76,12 +76,16 @@ public class ThermalLog: NSObject
             
             self.refreshing = true
             
+            #if arch( arm64 )
+            
             let pressure = ProcessInfo().thermalState
             
             DispatchQueue.main.async
             {
                 self.thermalPressure = NSNumber( integerLiteral: pressure.rawValue )
             }
+            
+            #endif
             
             let sensors = self.readSensors()
             let temp    = sensors.reduce( 0.0 )
