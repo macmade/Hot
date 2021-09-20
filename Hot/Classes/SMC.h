@@ -104,8 +104,14 @@ typedef struct
 }
 SMCParamStruct;
 
+extern uint32_t SMCKeyTCXC;
+extern uint32_t SMCKeyCUS1;
+extern uint32_t SMCKeyTC0D;
+extern uint32_t SMCKeyTC0C;
+extern uint32_t SMCKeyTCAD;
+
 IOReturn SMCReadKey( uint32_t key, uint8_t * buf, IOByteCount * maxSize );
 IOReturn SMCCallFunction( uint32_t function, SMCParamStruct * input, SMCParamStruct * output );
-double   SMCGetCPUTemperature( void );
+bool SMCGetCPUTemperature( uint32_t key, double * valueOut );
 
 #endif /* SMC_H */

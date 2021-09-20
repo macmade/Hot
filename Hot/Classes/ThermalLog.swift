@@ -60,7 +60,26 @@ public class ThermalLog: NSObject
         
         #else
         
-        return [ "TCXC" : SMCGetCPUTemperature() ]
+        let sensors =
+        [
+            "TCXC" : SMCKeyTCXC,
+            "CUS1" : SMCKeyCUS1,
+            "TC0D" : SMCKeyTC0D,
+            "TC0C" : SMCKeyTC0C,
+            "TCAD" : SMCKeyTCAD,
+        ]
+        
+        for sensor in sensors
+        {
+            var temp = 0.0
+            
+            if SMCGetCPUTemperature( sensor.value, &temp )
+            {
+                return [ sensor.key : temp ]
+            }
+        }
+        
+        return [:]
         
         #endif
     }

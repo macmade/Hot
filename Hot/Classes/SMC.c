@@ -29,13 +29,23 @@
 
 #include "SMC.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wfour-char-constants"
+
+/* Reference: https://logi.wiki/index.php/SMC_Sensor_Codes */
+uint32_t SMCKeyTCXC = 'TCXC';
+uint32_t SMCKeyCUS1 = 'CUS1';
+uint32_t SMCKeyTC0D = 'TC0D';
+uint32_t SMCKeyTC0C = 'TC0C';
+uint32_t SMCKeyTCAD = 'TCAD';
+
+#pragma clang diagnostic pop
+
 /*
  * Reference:
  *   - https://opensource.apple.com/source/IOKitUser/
  *   - https://opensource.apple.com/source/IOKitUser/IOKitUser-647.6/pwr_mgt.subproj/IOPMLibPrivate.c
  */
-
-#pragma clang diagnostic ignored "-Wfour-char-constants"
 
 IOReturn SMCReadKey( uint32_t key, uint8_t * buf, IOByteCount * maxSize )
 {
@@ -141,7 +151,7 @@ IOReturn SMCCallFunction( uint32_t function, SMCParamStruct * input, SMCParamStr
         return result;
 }
 
-double SMCGetCPUTemperature( void )
+bool SMCGetCPUTemperature( uint32_t key, double * valueOut )
 {
     uint8_t     bytes[ 2 ];
     IOByteCount size;
@@ -150,9 +160,14 @@ double SMCGetCPUTemperature( void )
     
     size = sizeof( bytes );
     
-    if( SMCReadKey( 'TCXC', ( uint8_t * )&bytes, &size ) != kIOReturnSuccess || size != 2 )
+    if( SMCReadKey( key, ( uint8_t * )&bytes, &size ) != kIOReturnSuccess || size != 2 )
     {
-        return 0.0;
+        if( valueOut )
+        {
+            *( valueOut ) = 0.0;
+        }
+        
+        return false;
     }
     
     {
@@ -163,6 +178,11 @@ double SMCGetCPUTemperature( void )
         t2  = bytes[ 1 ];
         t2 /= 1 << 8;
         
-        return t1 + t2;
+        if( valueOut )
+        {
+            *( valueOut ) = t1 + t2;
+        }
+        
+        return true;
     }
 }
