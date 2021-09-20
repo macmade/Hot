@@ -197,9 +197,14 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
         {
             let color: NSColor =
             {
+                if UserDefaults.standard.bool( forKey: "colorizeStatusItemText" ) == false
+                {
+                    return .controlTextColor
+                }
+                
                 let limit = self.infoViewController?.speedLimit ?? 100
                 
-                if limit > 0 && limit < 60 && UserDefaults.standard.bool( forKey: "colorizeStatusItemText" )
+                if limit > 0 && limit < 60
                 {
                     return .orange
                 }
