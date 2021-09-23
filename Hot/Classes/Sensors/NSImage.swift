@@ -1,7 +1,7 @@
 /*******************************************************************************
  * The MIT License (MIT)
  * 
- * Copyright (c) 2020 Jean-David Gadina - www.xs-labs.com
+ * Copyright (c) 2021 Jean-David Gadina - www.xs-labs.com
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,25 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-#import "NSApplication+LaunchServices.h"
-#import "SMC.h"
-#import "AppleSilicon.h"
-#import "Sensors.h"
+import Cocoa
+
+extension NSImage
+{
+    public func tinted( with color: NSColor ) -> NSImage
+    {
+        guard let copy = self.copy() as? NSImage else
+        {
+            return self
+        }
+        
+        copy.isTemplate = false
+        let rect        = NSRect( origin: NSZeroPoint, size: copy.size )
+        
+        copy.lockFocus()
+        color.set()
+        rect.fill( using: .sourceAtop )
+        copy.unlockFocus()
+        
+        return copy;
+    }
+}

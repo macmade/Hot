@@ -26,11 +26,12 @@ import Cocoa
 import GitHubUpdates
 
 @NSApplicationMain
-class ApplicationDelegate: NSObject, NSApplicationDelegate
+class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
 {
     private var statusItem:                  NSStatusItem?
     private var aboutWindowController:       AboutWindowController?
     private var preferencesWindowController: PreferencesWindowController?
+    private var sensorsWindowController:     SensorsWindowController?
     private var observations:                [ NSKeyValueObservation ] = []
     private var sensorViewControllers:       [ SensorViewController  ] = []
     
@@ -251,5 +252,38 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate
             
             self.sensorsMenu.addItem( item )
         }
+    }
+    
+    @IBAction public func viewAllSensors( _ sender: Any? )
+    {
+        if self.sensorsWindowController == nil
+        {
+            self.sensorsWindowController = SensorsWindowController()
+        }
+        
+        guard let window = self.sensorsWindowController?.window else
+        {
+            NSSound.beep()
+            
+            return
+        }
+        
+        window.delegate = self
+        
+        if window.isVisible == false
+        {
+            window.layoutIfNeeded()
+            window.center()
+        }
+        
+        NSApp.activate( ignoringOtherApps: true )
+        window.makeKeyAndOrderFront( nil )
+    }
+    
+    func windowWillClose( _ notification: Notification )
+    {
+        self.sensorsWindowController?.stop()
+        
+        self.sensorsWindowController = nil
     }
 }

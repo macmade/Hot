@@ -58,19 +58,19 @@ public class PreferencesWindowController: NSWindowController
         }
     }
     
-    @objc public dynamic var startAtLogin = NSApp.isLoginItemEnabled()
-    {
-        didSet
-        {
-            NSApp.setLoginItemEnabled( self.startAtLogin )
-        }
-    }
-    
     @objc public dynamic var hideStatusIcon = UserDefaults.standard.bool( forKey: "hideStatusIcon" )
     {
         didSet
         {
             UserDefaults.standard.setValue( self.hideStatusIcon, forKey: "hideStatusIcon" )
+        }
+    }
+    
+    @objc public dynamic var startAtLogin = NSApp.isLoginItemEnabled()
+    {
+        didSet
+        {
+            NSApp.setLoginItemEnabled( self.startAtLogin )
         }
     }
     

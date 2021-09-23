@@ -1,7 +1,7 @@
 /*******************************************************************************
  * The MIT License (MIT)
  * 
- * Copyright (c) 2020 Jean-David Gadina - www.xs-labs.com
+ * Copyright (c) 2021 Jean-David Gadina - www.xs-labs.com
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,20 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-#import "NSApplication+LaunchServices.h"
-#import "SMC.h"
-#import "AppleSilicon.h"
-#import "Sensors.h"
+import Cocoa
+
+public class Colors
+{
+    public class func color( for kind: SensorData.Kind ) -> NSColor
+    {
+        switch kind
+        {
+            case .thermal: return NSColor.systemOrange
+            case .voltage: return NSColor.systemPurple
+            case .current: return NSColor.systemTeal
+        }
+    }
+    
+    private init()
+    {}
+}

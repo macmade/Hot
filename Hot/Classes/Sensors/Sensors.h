@@ -1,7 +1,7 @@
 /*******************************************************************************
  * The MIT License (MIT)
  * 
- * Copyright (c) 2020 Jean-David Gadina - www.xs-labs.com
+ * Copyright (c) 2021 Jean-David Gadina - www.xs-labs.com
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,18 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-#import "NSApplication+LaunchServices.h"
-#import "SMC.h"
-#import "AppleSilicon.h"
-#import "Sensors.h"
+@import Foundation;
+
+NS_ASSUME_NONNULL_BEGIN
+
+@class SensorData;
+
+@interface Sensors: NSObject
+
+@property( atomic, readwrite, strong ) NSArray< SensorData * > * data;
+
+- ( void )stop: ( void ( ^ _Nullable )( void ) )completion;
+
+@end
+
+NS_ASSUME_NONNULL_END

@@ -12,7 +12,20 @@ Hot
 
 Hot is macOS menu bar application that displays the CPU speed limit due to thermal issues.
 
-![Menu](Assets/menu.png "Menu")
+#### Differences between the Intel and Apple Silicon versions
+
+On an Intel machine, Hot will display the CPU temperature, CPU speed limit (throttling), scheduler limit and number of available CPUs.  
+By default, the menu bar text will be colorized in orange if the CPU speed limit falls below 60%.
+
+On Apple Silicon, these informations are not available.  
+Along with the CPU temperatire, Hot will display the system's thermal pressure.  
+The menu bar text will be colorized in orange if the pressure is not nominal.
+
+A graph view for all sensors may also be displayed on Apple Silicon.
+
+![Intel Menu](Assets/menu.png "Intel Menu")
+![Apple Silicon Menu](Assets/menu-arm.png "Apple Silicon Menu")
+![Sensors](Assets/sensors.png "Sensors")
 
 License
 -------

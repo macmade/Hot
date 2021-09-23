@@ -1,7 +1,7 @@
 /*******************************************************************************
  * The MIT License (MIT)
  * 
- * Copyright (c) 2020 Jean-David Gadina - www.xs-labs.com
+ * Copyright (c) 2021 Jean-David Gadina - www.xs-labs.com
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,33 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-#import "NSApplication+LaunchServices.h"
-#import "SMC.h"
-#import "AppleSilicon.h"
-#import "Sensors.h"
+import Cocoa
+
+@objc( SensorIcon )
+public class SensorIcon: ValueTransformer
+{
+    public override class func transformedValueClass() -> AnyClass
+    {
+        NSImage.self
+    }
+    
+    public override class func allowsReverseTransformation() -> Bool
+    {
+        false
+    }
+    
+    public override func transformedValue( _ value: Any? ) -> Any?
+    {
+        guard let data = value as? SensorData else
+        {
+            return nil
+        }
+        
+        switch data.kind
+        {
+            case .thermal: return NSImage( named: "ThermalTemplate" )?.tinted( with: Colors.color( for: data.kind ) )
+            case .voltage: return NSImage( named: "VoltageTemplate" )?.tinted( with: Colors.color( for: data.kind ) )
+            case .current: return NSImage( named: "CurrentTemplate" )?.tinted( with: Colors.color( for: data.kind ) )
+        }
+    }
+}
