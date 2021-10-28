@@ -31,7 +31,6 @@
 		057F8B15251D27650048F1E1 /* AboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 057F8B13251D27650048F1E1 /* AboutWindowController.xib */; };
 		057F8B1B251D2A970048F1E1 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 057F8B1A251D2A970048F1E1 /* Icon.icns */; };
 		057F8B65251D2D5F0048F1E1 /* GitHubUpdates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 057F8B5C251D2D510048F1E1 /* GitHubUpdates.framework */; };
-		057F8B67251D2D680048F1E1 /* GitHubUpdates.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 057F8B5C251D2D510048F1E1 /* GitHubUpdates.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		05A012C226FB9AEB00D3F6B6 /* SensorIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A012B026FB9AEB00D3F6B6 /* SensorIcon.swift */; };
 		05A012C326FB9AEB00D3F6B6 /* SensorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A012B126FB9AEB00D3F6B6 /* SensorData.swift */; };
 		05A012C426FB9AEB00D3F6B6 /* SensorsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A012B226FB9AEB00D3F6B6 /* SensorsWindowController.swift */; };
@@ -88,7 +87,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				057F8B67251D2D680048F1E1 /* GitHubUpdates.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,7 +473,7 @@
 			buildPhases = (
 				05AA4072251CF3D200106CEA /* Sources */,
 				05AA4073251CF3D200106CEA /* Frameworks */,
-				057F8B69251D2E560048F1E1 /* ShellScript */,
+				057F8B69251D2E560048F1E1 /* Bump Version */,
 				05AA4074251CF3D200106CEA /* Resources */,
 				057F8B66251D2D620048F1E1 /* CopyFiles */,
 			);
@@ -574,7 +572,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		057F8B69251D2E560048F1E1 /* ShellScript */ = {
+		057F8B69251D2E560048F1E1 /* Bump Version */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -583,6 +581,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Bump Version";
 			outputFileListPaths = (
 			);
 			outputPaths = (

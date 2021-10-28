@@ -27,6 +27,24 @@ A graph view for all sensors may also be displayed on Apple Silicon.
 ![Apple Silicon Menu](Assets/menu-arm.png "Apple Silicon Menu")
 ![Sensors](Assets/sensors.png "Sensors")
 
+Build
+-----
+
+**Prerequisites**
+
+* Mac
+* Xcode
+
+```sh
+git clone git@github.com:macmade/Hot.git
+cd Hot
+git submodule init 
+git submodule update
+xed .
+```
+
+The last command will open the project in Xcode. Then build and run. You can leave the app running by simply detatching the debugger.
+
 License
 -------
 
