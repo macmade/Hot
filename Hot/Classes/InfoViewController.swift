@@ -46,6 +46,11 @@ public class InfoViewController: NSViewController
     @IBOutlet private var graphView:       GraphView!
     @IBOutlet private var graphViewHeight: NSLayoutConstraint!
     
+    deinit
+    {
+        UserDefaults.standard.removeObserver( self, forKeyPath: "RefreshInterval" )
+    }
+    
     public override var nibName: NSNib.Name?
     {
         "InfoViewController"
@@ -57,7 +62,42 @@ public class InfoViewController: NSViewController
         
         self.graphViewHeight.constant = 0
         
-        let timer = Timer( timeInterval: 2, repeats: true )
+        self.setTimer()
+        self.log.refresh
+        {
+            DispatchQueue.main.async
+            {
+                self.update()
+            }
+        }
+        
+        UserDefaults.standard.addObserver( self, forKeyPath: "RefreshInterval",  options: [], context: nil )
+    }
+    
+    public override func observeValue( forKeyPath keyPath: String?, of object: Any?, change: [ NSKeyValueChangeKey : Any ]?, context: UnsafeMutableRawPointer? )
+    {
+        if let object = object as? NSObject, object == UserDefaults.standard && keyPath == "RefreshInterval"
+        {
+            self.setTimer()
+        }
+        else
+        {
+            super.observeValue( forKeyPath: keyPath, of: object, change: change, context: context )
+        }
+    }
+    
+    private func setTimer()
+    {
+        self.timer?.invalidate()
+        
+        var interval = UserDefaults.standard.integer( forKey: "RefreshInterval" )
+        
+        if interval <= 0
+        {
+            interval = 2
+        }
+        
+        let timer = Timer( timeInterval: Double( interval ), repeats: true )
         {
             _ in self.log.refresh
             {
@@ -71,14 +111,6 @@ public class InfoViewController: NSViewController
         RunLoop.main.add( timer, forMode: .common )
         
         self.timer = timer
-        
-        self.log.refresh
-        {
-            DispatchQueue.main.async
-            {
-                self.update()
-            }
-        }
     }
     
     private func update()

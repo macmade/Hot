@@ -58,6 +58,11 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
             UserDefaults.standard.setValue( NSDate(), forKey: "LastLaunch" )
         }
         
+        if UserDefaults.standard.object( forKey: "RefreshInterval" ) == nil
+        {
+            UserDefaults.standard.setValue( 2, forKey: "RefreshInterval" )
+        }
+        
         self.aboutWindowController             = AboutWindowController()
         self.preferencesWindowController       = PreferencesWindowController()
         self.statusItem                        = NSStatusBar.system.statusItem( withLength: NSStatusItem.variableLength )

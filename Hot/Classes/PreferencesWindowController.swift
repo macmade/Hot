@@ -66,6 +66,14 @@ public class PreferencesWindowController: NSWindowController
         }
     }
     
+    @objc public dynamic var refreshInterval = UserDefaults.standard.integer( forKey: "RefreshInterval" )
+    {
+        didSet
+        {
+            UserDefaults.standard.setValue( self.refreshInterval, forKey: "RefreshInterval" )
+        }
+    }
+    
     @objc public dynamic var startAtLogin = NSApp.isLoginItemEnabled()
     {
         didSet
