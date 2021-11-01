@@ -42,18 +42,16 @@ public class ThermalLog: NSObject
         super.init()
     }
     
-    private func readSensors() -> [ String : Double ]
+    private func readSensors() -> [ String : ( temperature: Double, isCPU: Bool ) ]
     {
         #if arch( arm64 )
         
         return Dictionary( uniqueKeysWithValues:
-            ReadM1Sensors().filter
+            ReadM1Sensors().map
             {
-                $0.key.hasPrefix( "pACC" ) || $0.key.hasPrefix( "eACC" )
-            }
-            .map
-            {
-                ( $0.key, $0.value.doubleValue )
+                let isCPU = $0.key.hasPrefix( "pACC" ) || $0.key.hasPrefix( "eACC" )
+                
+                return ( $0.key, ( temperature: $0.value.doubleValue, isCPU: isCPU ) )
             }
         )
         
@@ -74,7 +72,7 @@ public class ThermalLog: NSObject
             
             if SMCGetCPUTemperature( sensor.value, &temp )
             {
-                return [ sensor.key : temp ]
+                return [ sensor.key : ( temperature: temp, isCPU: true ) ]
             }
         }
         
@@ -104,14 +102,22 @@ public class ThermalLog: NSObject
             #endif
             
             let sensors = self.readSensors()
-            let temp    = sensors.reduce( 0.0 )
+            let cpu     = sensors.filter { $0.value.isCPU }.mapValues { $0.temperature }
+            let all     = sensors.mapValues { $0.temperature }
+            var temp    = 0.0
+            
+            if cpu.count > 0
             {
-                r, v in v.value > r ? v.value : r
+                self.sensors = cpu
+                temp         = cpu.reduce( 0.0 ) { r, v in v.value > r ? v.value : r }
+            }
+            else
+            {
+                temp = all.reduce( 0.0 ) { r, v in v.value > r ? v.value : r }
             }
             
             if temp > 1
             {
-                self.sensors        = sensors
                 self.cpuTemperature = NSNumber( value: temp )
             }
             
