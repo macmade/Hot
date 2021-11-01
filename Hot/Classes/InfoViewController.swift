@@ -48,7 +48,7 @@ public class InfoViewController: NSViewController
     
     deinit
     {
-        UserDefaults.standard.removeObserver( self, forKeyPath: "RefreshInterval" )
+        UserDefaults.standard.removeObserver( self, forKeyPath: "refreshInterval" )
     }
     
     public override var nibName: NSNib.Name?
@@ -71,12 +71,12 @@ public class InfoViewController: NSViewController
             }
         }
         
-        UserDefaults.standard.addObserver( self, forKeyPath: "RefreshInterval",  options: [], context: nil )
+        UserDefaults.standard.addObserver( self, forKeyPath: "refreshInterval",  options: [], context: nil )
     }
     
     public override func observeValue( forKeyPath keyPath: String?, of object: Any?, change: [ NSKeyValueChangeKey : Any ]?, context: UnsafeMutableRawPointer? )
     {
-        if let object = object as? NSObject, object == UserDefaults.standard && keyPath == "RefreshInterval"
+        if let object = object as? NSObject, object == UserDefaults.standard && keyPath == "refreshInterval"
         {
             self.setTimer()
         }
@@ -90,7 +90,7 @@ public class InfoViewController: NSViewController
     {
         self.timer?.invalidate()
         
-        var interval = UserDefaults.standard.integer( forKey: "RefreshInterval" )
+        var interval = UserDefaults.standard.integer( forKey: "refreshInterval" )
         
         if interval <= 0
         {

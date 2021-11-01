@@ -66,11 +66,26 @@ public class PreferencesWindowController: NSWindowController
         }
     }
     
-    @objc public dynamic var refreshInterval = UserDefaults.standard.integer( forKey: "RefreshInterval" )
+    @objc public dynamic var refreshInterval = UserDefaults.standard.integer( forKey: "refreshInterval" )
     {
         didSet
         {
-            UserDefaults.standard.setValue( self.refreshInterval, forKey: "RefreshInterval" )
+            UserDefaults.standard.setValue( self.refreshInterval, forKey: "refreshInterval" )
+        }
+    }
+    
+    @objc public dynamic var fontName = UserDefaults.standard.string( forKey: "fontName" ) ?? "Default"
+    {
+        didSet
+        {
+            if self.fontName == "Default"
+            {
+                UserDefaults.standard.setValue( nil, forKey: "fontName" )
+            }
+            else
+            {
+                UserDefaults.standard.setValue( self.fontName, forKey: "fontName" )
+            }
         }
     }
     
@@ -98,5 +113,34 @@ public class PreferencesWindowController: NSWindowController
         #else
         self.colorizeStatusItemTextLabel = "Colorize the status item text if the CPU speed limit is below 60%"
         #endif
+    }
+    
+    private var fontPanel: NSFontPanel?
+    
+    @IBAction private func chooseFont( _ sender: Any? )
+    {
+        if let panel = self.fontPanel
+        {
+            panel.makeKeyAndOrderFront( sender )
+            
+            return
+        }
+        
+        let panel      = NSFontManager.shared.fontPanel( true )
+        self.fontPanel = panel
+        
+        panel?.makeKeyAndOrderFront( sender )
+    }
+    
+    @IBAction private func resetFont( _ sender: Any? )
+    {
+        self.fontName = "Default"
+    }
+    
+    @IBAction public func changeFont( _ sender: Any? )
+    {
+        let selected  = NSFontManager.shared.selectedFont
+        let font      = NSFontManager.shared.convert( selected ?? NSFont.systemFont( ofSize: NSFont.systemFontSize ) )
+        self.fontName = "\( font.fontName ) \( Int( font.pointSize ) )"
     }
 }

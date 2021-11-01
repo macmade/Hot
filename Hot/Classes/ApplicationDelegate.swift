@@ -58,9 +58,9 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
             UserDefaults.standard.setValue( NSDate(), forKey: "LastLaunch" )
         }
         
-        if UserDefaults.standard.object( forKey: "RefreshInterval" ) == nil
+        if UserDefaults.standard.object( forKey: "refreshInterval" ) == nil
         {
-            UserDefaults.standard.setValue( 2, forKey: "RefreshInterval" )
+            UserDefaults.standard.setValue( 2, forKey: "refreshInterval" )
         }
         
         self.aboutWindowController             = AboutWindowController()
@@ -68,8 +68,9 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
         self.statusItem                        = NSStatusBar.system.statusItem( withLength: NSStatusItem.variableLength )
         self.statusItem?.button?.image         = NSImage( named: "StatusIconTemplate" )
         self.statusItem?.button?.imagePosition = .imageLeading
-        self.statusItem?.button?.font          = NSFont.monospacedDigitSystemFont( ofSize: NSFont.smallSystemFontSize, weight: .light )
         self.statusItem?.menu                  = self.menu
+        
+        self.updateMenuFont()
         
         let infoViewController             = InfoViewController()
         self.infoViewController            = infoViewController
@@ -86,6 +87,7 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
         UserDefaults.standard.addObserver( self, forKeyPath: "colorizeStatusItemText", options: [], context: nil )
         UserDefaults.standard.addObserver( self, forKeyPath: "convertToFahrenheit",    options: [], context: nil )
         UserDefaults.standard.addObserver( self, forKeyPath: "hideStatusIcon",         options: [], context: nil )
+        UserDefaults.standard.addObserver( self, forKeyPath: "fontName",               options: [], context: nil )
         
         if UserDefaults.standard.bool( forKey: "automaticallyCheckForUpdates" )
         {
@@ -106,6 +108,30 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
         }
     }
     
+    private func updateMenuFont()
+    {
+        let system = NSFont.monospacedDigitSystemFont( ofSize: NSFont.smallSystemFontSize, weight: .light )
+        
+        guard let fontName = UserDefaults.standard.string( forKey: "fontName" ) else
+        {
+            self.statusItem?.button?.font = system
+            
+            return
+        }
+        
+        let parts = fontName.split( separator: " " )
+        
+        guard parts.count >= 2, let last = parts.last, let size = Int( String( last ) ) else
+        {
+            self.statusItem?.button?.font = system
+            
+            return
+        }
+        
+        let name                      = parts.dropLast().joined( separator: " " )
+        self.statusItem?.button?.font = NSFont( name: name, size: CGFloat( size ) ) ?? system
+    }
+    
     override func observeValue( forKeyPath keyPath: String?, of object: Any?, change: [ NSKeyValueChangeKey : Any ]?, context: UnsafeMutableRawPointer? )
     {
         let keyPaths =
@@ -113,11 +139,13 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
             "displayCPUTemperature",
             "colorizeStatusItemText",
             "convertToFahrenheit",
-            "hideStatusIcon"
+            "hideStatusIcon",
+            "fontName"
         ]
         
         if let keyPath = keyPath, let object = object as? NSObject, object == UserDefaults.standard && keyPaths.contains( keyPath )
         {
+            self.updateMenuFont()
             self.updateTitle()
             self.updateSensors()
         }
