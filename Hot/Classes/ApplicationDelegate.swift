@@ -261,6 +261,8 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
     
     @IBAction public func viewAllSensors( _ sender: Any? )
     {
+        #if arch( arm64 )
+        
         if self.sensorsWindowController == nil
         {
             self.sensorsWindowController = SensorsWindowController()
@@ -283,6 +285,16 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
         
         NSApp.activate( ignoringOtherApps: true )
         window.makeKeyAndOrderFront( nil )
+        
+        #else
+        
+        let alert             = NSAlert()
+        alert.messageText     = "Feature not available"
+        alert.informativeText = "This feature is only available for Macs with ARM processors."
+        
+        alert.runModal()
+        
+        #endif
     }
     
     func windowWillClose( _ notification: Notification )

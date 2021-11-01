@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19162" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19162"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -694,15 +694,7 @@
                 <menuItem tag="1" id="Zdf-1z-Pm5">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
-                <menuItem isSeparatorItem="YES" id="XCF-fq-sNA">
-                    <connections>
-                        <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.infoViewController.log.sensors" id="9Fz-eC-m7m">
-                            <dictionary key="options">
-                                <string key="NSValueTransformerName">DictionaryIsEmpty</string>
-                            </dictionary>
-                        </binding>
-                    </connections>
-                </menuItem>
+                <menuItem isSeparatorItem="YES" id="XCF-fq-sNA"/>
                 <menuItem title="CPU Sensors" id="Uyl-at-zXs">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="CPU Sensors" id="ub7-du-ljd">
@@ -724,11 +716,6 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="viewAllSensors:" target="Voe-Tx-rLC" id="K7Q-o7-xbP"/>
-                        <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.infoViewController.isARM" id="y1k-9f-cAb">
-                            <dictionary key="options">
-                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                            </dictionary>
-                        </binding>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="Nbp-cG-gpV"/>
