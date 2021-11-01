@@ -40,7 +40,6 @@ public class ThermalLog: NSObject
     public override init()
     {
         super.init()
-        self.refresh()
     }
     
     private func readSensors() -> [ String : Double ]
