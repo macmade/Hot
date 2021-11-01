@@ -83,12 +83,14 @@ public class ThermalLog: NSObject
         #endif
     }
     
-    public func refresh()
+    public func refresh( completion: @escaping () -> Void )
     {
         ThermalLog.queue.async
         {
             if self.refreshing
             {
+                completion()
+                
                 return
             }
             
@@ -96,12 +98,8 @@ public class ThermalLog: NSObject
             
             #if arch( arm64 )
             
-            let pressure = ProcessInfo().thermalState
-            
-            DispatchQueue.main.async
-            {
-                self.thermalPressure = NSNumber( integerLiteral: pressure.rawValue )
-            }
+            let pressure         = ProcessInfo().thermalState
+            self.thermalPressure = NSNumber( integerLiteral: pressure.rawValue )
             
             #endif
             
@@ -113,11 +111,8 @@ public class ThermalLog: NSObject
             
             if temp > 1
             {
-                DispatchQueue.main.async
-                {
-                    self.sensors        = sensors
-                    self.cpuTemperature = NSNumber( value: temp )
-                }
+                self.sensors        = sensors
+                self.cpuTemperature = NSNumber( value: temp )
             }
             
             let pipe            = Pipe()
@@ -133,6 +128,8 @@ public class ThermalLog: NSObject
             {
                 self.refreshing = false
                 
+                completion()
+                
                 return
             }
             
@@ -141,6 +138,8 @@ public class ThermalLog: NSObject
             guard let str = String( data: data, encoding: .utf8 ), str.count > 0 else
             {
                 self.refreshing = false
+                
+                completion()
                 
                 return
             }
@@ -163,19 +162,21 @@ public class ThermalLog: NSObject
                 
                 if( p[ 0 ] == "CPU_Scheduler_Limit" )
                 {
-                    DispatchQueue.main.async { self.schedulerLimit = NSNumber( value: n ) }
+                    self.schedulerLimit = NSNumber( value: n )
                 }
                 else if( p[ 0 ] == "CPU_Available_CPUs" )
                 {
-                    DispatchQueue.main.async { self.availableCPUs = NSNumber( value: n ) }
+                    self.availableCPUs = NSNumber( value: n )
                 }
                 else if( p[ 0 ] == "CPU_Speed_Limit" )
                 {
-                    DispatchQueue.main.async { self.speedLimit = NSNumber( value: n ) }
+                    self.speedLimit = NSNumber( value: n )
                 }
             }
             
             self.refreshing = false
+            
+            completion()
         }
     }
 }

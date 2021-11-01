@@ -26,8 +26,7 @@ import Cocoa
 
 public class InfoViewController: NSViewController
 {
-    private var timer:        Timer?
-    private var observations: [ NSKeyValueObservation ] = []
+    private var timer: Timer?
     
     @objc public private( set ) dynamic var log                   = ThermalLog()
     @objc public private( set ) dynamic var schedulerLimit:  Int  = 0
@@ -58,24 +57,28 @@ public class InfoViewController: NSViewController
         
         self.graphViewHeight.constant = 0
         
-        let o1 = self.log.observe( \.schedulerLimit  ) { [ weak self ] _, _ in self?.update() }
-        let o2 = self.log.observe( \.availableCPUs   ) { [ weak self ] _, _ in self?.update() }
-        let o3 = self.log.observe( \.speedLimit      ) { [ weak self ] _, _ in self?.update() }
-        let o4 = self.log.observe( \.cpuTemperature  ) { [ weak self ] _, _ in self?.update() }
-        let o5 = self.log.observe( \.thermalPressure ) { [ weak self ] _, _ in self?.update() }
-        
-        self.observations.append( contentsOf: [ o1, o2, o3, o4, o5 ] )
-        
         let timer = Timer( timeInterval: 2, repeats: true )
         {
-            _ in self.log.refresh()
+            _ in self.log.refresh
+            {
+                DispatchQueue.main.async
+                {
+                    self.update()
+                }
+            }
         }
         
         RunLoop.main.add( timer, forMode: .common )
         
         self.timer = timer
         
-        self.log.refresh()
+        self.log.refresh
+        {
+            DispatchQueue.main.async
+            {
+                self.update()
+            }
+        }
     }
     
     private func update()
