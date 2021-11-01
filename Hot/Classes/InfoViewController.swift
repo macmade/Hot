@@ -36,6 +36,8 @@ public class InfoViewController: NSViewController
     @objc public private( set ) dynamic var cpuTemperature:  Int  = 0
     @objc public private( set ) dynamic var thermalPressure: Int  = 0
     
+    public var onUpdate: ( () -> Void )?
+    
     #if arch( arm64 )
     @objc public private( set ) dynamic var isARM = true
     #else
@@ -113,5 +115,7 @@ public class InfoViewController: NSViewController
         }
         
         self.graphViewHeight.constant = self.graphView.canDisplay ? 100 : 0
+        
+        self.onUpdate?()
     }
 }

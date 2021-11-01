@@ -32,7 +32,6 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
     private var aboutWindowController:       AboutWindowController?
     private var preferencesWindowController: PreferencesWindowController?
     private var sensorsWindowController:     SensorsWindowController?
-    private var observations:                [ NSKeyValueObservation ] = []
     private var sensorViewControllers:       [ SensorViewController  ] = []
     
     @IBOutlet private var menu:        NSMenu!
@@ -70,12 +69,13 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
         let infoViewController             = InfoViewController()
         self.infoViewController            = infoViewController
         self.menu.item( withTag: 1 )?.view = infoViewController.view
-        
-        let o1 = infoViewController.observe( \.speedLimit     ) { [ weak self ] _, _ in self?.updateTitle() }
-        let o2 = infoViewController.observe( \.cpuTemperature ) { [ weak self ] _, _ in self?.updateTitle() }
-        let o3 = infoViewController.observe( \.log.sensors    ) { [ weak self ] _, _ in self?.updateSensors() }
-        
-        self.observations.append( contentsOf: [ o1, o2, o3 ] )
+        self.infoViewController?.onUpdate  =
+        {
+            [ weak self ] in
+            
+            self?.updateTitle()
+            self?.updateSensors()
+        }
         
         UserDefaults.standard.addObserver( self, forKeyPath: "displayCPUTemperature",  options: [], context: nil )
         UserDefaults.standard.addObserver( self, forKeyPath: "colorizeStatusItemText", options: [], context: nil )
