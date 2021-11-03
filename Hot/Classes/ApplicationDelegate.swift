@@ -63,6 +63,21 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
             UserDefaults.standard.setValue( 2, forKey: "refreshInterval" )
         }
         
+        if UserDefaults.standard.object( forKey: "sensorsWindowShowTemperature" ) == nil
+        {
+            UserDefaults.standard.setValue( true, forKey: "sensorsWindowShowTemperature" )
+        }
+        
+        if UserDefaults.standard.object( forKey: "sensorsWindowShowVoltage" ) == nil
+        {
+            UserDefaults.standard.setValue( true, forKey: "sensorsWindowShowVoltage" )
+        }
+        
+        if UserDefaults.standard.object( forKey: "sensorsWindowShowCurrent" ) == nil
+        {
+            UserDefaults.standard.setValue( true, forKey: "sensorsWindowShowCurrent" )
+        }
+        
         self.aboutWindowController             = AboutWindowController()
         self.preferencesWindowController       = PreferencesWindowController()
         self.statusItem                        = NSStatusBar.system.statusItem( withLength: NSStatusItem.variableLength )

@@ -28,19 +28,31 @@ public class SensorsWindowController: NSWindowController
 {
     @objc private dynamic var sensors: Sensors? = Sensors()
     
-    @objc private dynamic var showTemperature = true
+    @objc private dynamic var showTemperature = UserDefaults.standard.bool( forKey: "sensorsWindowShowTemperature" )
     {
-        didSet { self.updateFilters() }
+        didSet
+        {
+            self.updateFilters()
+            UserDefaults.standard.set( self.showTemperature, forKey: "sensorsWindowShowTemperature" )
+        }
     }
     
-    @objc private dynamic var showVoltage = true
+    @objc private dynamic var showVoltage = UserDefaults.standard.bool( forKey: "sensorsWindowShowVoltage" )
     {
-        didSet { self.updateFilters() }
+        didSet
+        {
+            self.updateFilters()
+            UserDefaults.standard.set( self.showVoltage, forKey: "sensorsWindowShowVoltage" )
+        }
     }
     
-    @objc private dynamic var showCurrent = true
+    @objc private dynamic var showCurrent = UserDefaults.standard.bool( forKey: "sensorsWindowShowCurrent" )
     {
-        didSet { self.updateFilters() }
+        didSet
+        {
+            self.updateFilters()
+            UserDefaults.standard.set( self.showCurrent, forKey: "sensorsWindowShowCurrent" )
+        }
     }
     
     @objc private dynamic var searchText: String?
@@ -67,6 +79,7 @@ public class SensorsWindowController: NSWindowController
     public override func windowDidLoad()
     {
         super.windowDidLoad()
+        self.updateFilters()
         
         self.arrayController.sortDescriptors = [ NSSortDescriptor( key: "name", ascending: true, selector: #selector( NSString.localizedCaseInsensitiveCompare( _: ) ) ) ]
     }
