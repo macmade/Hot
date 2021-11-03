@@ -113,7 +113,14 @@ public class ThermalLog: NSObject
             }
             else
             {
-                temp = all.reduce( 0.0 ) { r, v in v.value > r ? v.value : r }
+                temp = all.filter
+                {
+                    $0.key.lowercased().hasSuffix( "tcal" ) == false
+                }
+                .reduce( 0.0 )
+                {
+                    r, v in v.value > r ? v.value : r
+                }
             }
             
             if temp > 1
