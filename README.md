@@ -18,7 +18,7 @@ On an Intel machine, Hot will display the CPU temperature, CPU speed limit (thro
 By default, the menu bar text will be colorized in orange if the CPU speed limit falls below 60%.
 
 On Apple Silicon, these informations are not available.  
-Along with the CPU temperatire, Hot will display the system's thermal pressure.  
+Along with the CPU temperature, Hot will display the system's thermal pressure.  
 The menu bar text will be colorized in orange if the pressure is not nominal.
 
 A graph view for all sensors may also be displayed on Apple Silicon.
