@@ -78,6 +78,10 @@ int IOHIDEventSystemClientSetMatching(IOHIDEventSystemClientRef client, CFDictio
 
 CFDictionaryRef matching(int page, int usage);
 
+static bool initDone = false;
+static NSMutableArray * services = nil;
+static IOHIDEventSystemClientRef client = nil;
+
 #define IOHIDUsagePageApple 0xFF00
 #define IOHIDUsageAppleTemperatureSensor 0x05
 #define IOHIDEventTemperature 0x0F
@@ -101,17 +105,47 @@ CFDictionaryRef matching(int page, int usage)
 NSDictionary< NSString *, NSNumber * > * ReadM1Sensors( void )
 {
     NSMutableDictionary< NSString *, NSNumber * > * values = [ NSMutableDictionary new ];
-    IOHIDEventSystemClientRef client                       = IOHIDEventSystemClientCreate( kCFAllocatorDefault );
-    
-    if( client != nil )
+
+    if (initDone == false)
     {
-        // This matching of services needs CPU time too, but reduces the array size of services from 141 to 57 before doing the for-loop over it (that then found 52 results). In sum this change reduces CPU time of ReadM1Sensors() compared to overall CPU time of application from around 66% to 56%.
-        CFDictionaryRef tempsensormatching = matching(IOHIDUsagePageApple, IOHIDUsageAppleTemperatureSensor);
-        IOHIDEventSystemClientSetMatching(client, tempsensormatching);
+        // Do this requesting of client and matching of services only first time since this needs too much CPU time. We save services and client for later use as static variables. In sum this change reduces CPU time of ReadM1Sensors() compared to overall CPU time of application from around 56% to 3%.
         
-        NSArray * services = CFBridgingRelease( IOHIDEventSystemClientCopyServices( client ) );
+        client                       = IOHIDEventSystemClientCreate( kCFAllocatorDefault );
         
-        //NSLog(@"matching temperature services = %lu",(unsigned long)services.count);
+        if( client != nil )
+        {
+            // This matching of services needs CPU time too, but reduces the array size of services from 141 to 57 before doing the for-loop over it (that then found 52 results). In sum this change reduces CPU time of ReadM1Sensors() compared to overall CPU time of application from around 66% to 56%.
+            CFDictionaryRef tempsensormatching = matching(IOHIDUsagePageApple, IOHIDUsageAppleTemperatureSensor);
+            IOHIDEventSystemClientSetMatching(client, tempsensormatching);
+            
+            NSArray * servicesArr = CFBridgingRelease( IOHIDEventSystemClientCopyServices( client ) );
+            services = [servicesArr mutableCopy];
+            
+            //NSLog(@"matching temperature services = %lu",(unsigned long)services.count);
+            
+            for( id o in services )
+            {
+                IOHIDServiceClientRef service = ( __bridge IOHIDServiceClientRef )o;
+                NSString            * name    = CFBridgingRelease( IOHIDServiceClientCopyProperty( service, CFSTR( "Product" ) ) );
+                CFTypeRef             event   = IOHIDServiceClientCopyEvent( service, IOHIDEventTemperature, 0, 0 );
+                
+                if( name != nil && event != nil )
+                {
+                    values[ name ] = [ NSNumber numberWithDouble: IOHIDEventGetFloatValue( event, IOHIDEventFieldBaseTemperature ) ];
+                }
+                
+                if( event != nil )
+                {
+                    CFRelease( event );
+                }
+            }
+            
+            initDone = true;
+        }
+    }
+    else
+    {
+        // In all other calls we re-use the previous saved client and services. witch saves a lot of CPU time.
         
         for( id o in services )
         {
@@ -129,10 +163,9 @@ NSDictionary< NSString *, NSNumber * > * ReadM1Sensors( void )
                 CFRelease( event );
             }
         }
-        
-        CFRelease( client );
     }
-    //NSLog(@"event values found = %lu",(unsigned long)values.count);
+    
+    //NSLog(@"event values read = %lu",(unsigned long)values.count);
     
     return [ values copy ];
 }
