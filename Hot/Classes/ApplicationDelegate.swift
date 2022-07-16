@@ -283,22 +283,41 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
     
     private func updateSensors()
     {
-        self.sensorsMenu.removeAllItems()
-        self.sensorViewControllers.removeAll()
-        
-        self.infoViewController?.log.sensors.sorted
+        let sortsensorlist = self.infoViewController?.log.sensors.sorted
         {
             $0.key.compare( $1.key, options: .numeric, range: nil, locale: nil ) == .orderedAscending
         }
-        .forEach
+        
+        if (self.sensorViewControllers.isEmpty)
         {
-            let controller   = SensorViewController()
-            controller.name  = $0.key
-            controller.value = Int( $0.value )
-            let item         = NSMenuItem( title: $0.key, action: nil, keyEquivalent: "" )
-            item.view        = controller.view
+            self.sensorsMenu.removeAllItems() // there is one menu item already in the menu item list there at the start of application (name 'Item') so we clear it
             
-            self.sensorsMenu.addItem( item )
+            // only create the menu item list in submenu the first time from scratch since this needs CPU time! It loads fresh icons for each item with each SensorViewController() call.
+            sortsensorlist?.forEach
+            {
+                let controller   = SensorViewController()
+                controller.name  = $0.key
+                controller.value = Int( $0.value )
+                let item         = NSMenuItem( title: $0.key, action: nil, keyEquivalent: "" )
+                item.view        = controller.view
+                
+                // create menu item list in same order as sensor list
+                self.sensorsMenu.addItem( item )
+                // also create a viewcontroller list with same order
+                self.sensorViewControllers.append(controller)
+            }
+        }
+        else
+        {
+            // if item list is already there just update the value inside each viewcontroller item
+            var menuIndex = 0
+            sortsensorlist?.forEach
+            {
+                // since viewcontroler list was created in same order as sensor list simply access by index now.
+                let viewcontroller = self.sensorViewControllers[menuIndex]
+                viewcontroller.value = Int( $0.value )
+                menuIndex = menuIndex + 1
+            }
         }
     }
     
