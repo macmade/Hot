@@ -74,6 +74,29 @@
 IOHIDEventSystemClientRef IOHIDEventSystemClientCreate( CFAllocatorRef );
 CFTypeRef                 IOHIDServiceClientCopyEvent( IOHIDServiceClientRef, int64_t, int32_t, int64_t );
 double                    IOHIDEventGetFloatValue( CFTypeRef, int32_t );
+int IOHIDEventSystemClientSetMatching(IOHIDEventSystemClientRef client, CFDictionaryRef match);
+
+CFDictionaryRef matching(int page, int usage);
+
+#define IOHIDUsagePageApple 0xFF00
+#define IOHIDUsageAppleTemperatureSensor 0x05
+#define IOHIDEventTemperature 0x0F
+#define IOHIDEventFieldBaseTemperature IOHIDEventTemperature << 16
+
+// create a dict ref for matching
+CFDictionaryRef matching(int page, int usage)
+{
+    CFNumberRef nums[2];
+    CFStringRef keys[2];
+
+    keys[0] = CFStringCreateWithCString(0, "PrimaryUsagePage", 0);
+    keys[1] = CFStringCreateWithCString(0, "PrimaryUsage", 0);
+    nums[0] = CFNumberCreate(0, kCFNumberSInt32Type, &page);
+    nums[1] = CFNumberCreate(0, kCFNumberSInt32Type, &usage);
+
+    CFDictionaryRef dict = CFDictionaryCreate(0, (const void**)keys, (const void**)nums, 2, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
+    return dict;
+}
 
 NSDictionary< NSString *, NSNumber * > * ReadM1Sensors( void )
 {
@@ -82,17 +105,23 @@ NSDictionary< NSString *, NSNumber * > * ReadM1Sensors( void )
     
     if( client != nil )
     {
+        // This matching of services needs CPU time too, but reduces the array size of services from 141 to 57 before doing the for-loop over it (that then found 52 results). In sum this change reduces CPU time of ReadM1Sensors() compared to overall CPU time of application from around 66% to 56%.
+        CFDictionaryRef tempsensormatching = matching(IOHIDUsagePageApple, IOHIDUsageAppleTemperatureSensor);
+        IOHIDEventSystemClientSetMatching(client, tempsensormatching);
+        
         NSArray * services = CFBridgingRelease( IOHIDEventSystemClientCopyServices( client ) );
+        
+        //NSLog(@"matching temperature services = %lu",(unsigned long)services.count);
         
         for( id o in services )
         {
             IOHIDServiceClientRef service = ( __bridge IOHIDServiceClientRef )o;
             NSString            * name    = CFBridgingRelease( IOHIDServiceClientCopyProperty( service, CFSTR( "Product" ) ) );
-            CFTypeRef             event   = IOHIDServiceClientCopyEvent( service, 0x0000000F, 0, 0 );
+            CFTypeRef             event   = IOHIDServiceClientCopyEvent( service, IOHIDEventTemperature, 0, 0 );
             
             if( name != nil && event != nil )
             {
-                values[ name ] = [ NSNumber numberWithDouble: IOHIDEventGetFloatValue( event, 0x000F0000 ) ];
+                values[ name ] = [ NSNumber numberWithDouble: IOHIDEventGetFloatValue( event, IOHIDEventFieldBaseTemperature ) ];
             }
             
             if( event != nil )
@@ -103,6 +132,7 @@ NSDictionary< NSString *, NSNumber * > * ReadM1Sensors( void )
         
         CFRelease( client );
     }
+    //NSLog(@"event values found = %lu",(unsigned long)values.count);
     
     return [ values copy ];
 }
