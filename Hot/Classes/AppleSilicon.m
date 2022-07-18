@@ -119,11 +119,10 @@ NSDictionary< NSString *, NSNumber * > * ReadM1Sensors( void )
             IOHIDEventSystemClientSetMatching(client, tempsensormatching);
             
             NSArray * servicesArr = CFBridgingRelease( IOHIDEventSystemClientCopyServices( client ) );
-            services = [servicesArr mutableCopy];
+
+            //NSLog(@"matching temperature services = %lu",(unsigned long)servicesArr.count);
             
-            //NSLog(@"matching temperature services = %lu",(unsigned long)services.count);
-            
-            for( id o in services )
+            for( id o in servicesArr )
             {
                 IOHIDServiceClientRef service = ( __bridge IOHIDServiceClientRef )o;
                 NSString            * name    = CFBridgingRelease( IOHIDServiceClientCopyProperty( service, CFSTR( "Product" ) ) );
@@ -131,7 +130,18 @@ NSDictionary< NSString *, NSNumber * > * ReadM1Sensors( void )
                 
                 if( name != nil && event != nil )
                 {
-                    values[ name ] = [ NSNumber numberWithDouble: IOHIDEventGetFloatValue( event, IOHIDEventFieldBaseTemperature ) ];
+                    // only add sensors to return value and sensors list that contains "ACC" in name (like pACC and eACC that are the CPU cores). In sum this change reduces CPU time of ReadM1Sensors() (in the regular called else-case) compared to overall CPU time of application from around 3% to 1.5% since no longer 57 sensors are readout regularly but only 9.
+                    NSRange isRange = [name rangeOfString:@"ACC" options:NSCaseInsensitiveSearch];
+                    if (isRange.location != NSNotFound)
+                    {
+                        if (services == nil)
+                        {
+                            services = [[NSMutableArray alloc] init];
+                        }
+                        [services addObject:o];
+                        values[ name ] = [ NSNumber numberWithDouble: IOHIDEventGetFloatValue( event, IOHIDEventFieldBaseTemperature ) ];
+                        //NSLog(@"add sensor to list : %@",name);
+                    }
                 }
                 
                 if( event != nil )
