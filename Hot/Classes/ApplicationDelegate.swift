@@ -283,22 +283,47 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
     
     private func updateSensors()
     {
-        self.sensorsMenu.removeAllItems()
-        self.sensorViewControllers.removeAll()
-        
-        self.infoViewController?.log.sensors.sorted
+        if self.sensorViewControllers.isEmpty
         {
-            $0.key.compare( $1.key, options: .numeric, range: nil, locale: nil ) == .orderedAscending
+            self.sensorsMenu.removeAllItems()
         }
-        .forEach
+        
+        guard let sensors = self.infoViewController?.log.sensors else
         {
-            let controller   = SensorViewController()
-            controller.name  = $0.key
-            controller.value = Int( $0.value )
-            let item         = NSMenuItem( title: $0.key, action: nil, keyEquivalent: "" )
-            item.view        = controller.view
+            return
+        }
+        
+        var controllers = self.sensorViewControllers
+        var items       = self.sensorsMenu.items
+        
+        controllers.removeAll { item in sensors.contains { $0.key == item.name  } == false }
+        items.removeAll       { item in sensors.contains { $0.key == item.title } == false }
+        
+        sensors.forEach
+        {
+            sensor in
             
-            self.sensorsMenu.addItem( item )
+            if let controller = self.sensorViewControllers.first( where: { $0.name  == sensor.key } )
+            {
+                controller.value = Int( sensor.value )
+            }
+            else
+            {
+                let controller   = SensorViewController()
+                controller.name  = sensor.key
+                controller.value = Int( sensor.value )
+                let item         = NSMenuItem( title: sensor.key, action: nil, keyEquivalent: "" )
+                item.view        = controller.view
+                
+                items.append( item )
+                controllers.append( controller )
+            }
+        }
+        
+        self.sensorViewControllers = controllers
+        self.sensorsMenu.items     = items.sorted
+        {
+            $0.title.compare( $1.title, options: .numeric, range: nil, locale: nil ) == .orderedAscending
         }
     }
     
