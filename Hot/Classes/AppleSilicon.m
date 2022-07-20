@@ -68,40 +68,45 @@
  ******************************************************************************/
 
 #import "AppleSilicon.h"
+#import "IOHID.h"
 #import <IOKit/hidsystem/IOHIDEventSystemClient.h>
 #import <IOKit/hidsystem/IOHIDServiceClient.h>
 
-IOHIDEventSystemClientRef IOHIDEventSystemClientCreate( CFAllocatorRef );
-CFTypeRef                 IOHIDServiceClientCopyEvent( IOHIDServiceClientRef, int64_t, int32_t, int64_t );
-double                    IOHIDEventGetFloatValue( CFTypeRef, int32_t );
+static IOHIDEventSystemClientRef client = nil;
 
 NSDictionary< NSString *, NSNumber * > * ReadM1Sensors( void )
 {
-    NSMutableDictionary< NSString *, NSNumber * > * values = [ NSMutableDictionary new ];
-    IOHIDEventSystemClientRef client                       = IOHIDEventSystemClientCreate( kCFAllocatorDefault );
-    
-    if( client != nil )
+    if( client == nil )
     {
-        NSArray * services = CFBridgingRelease( IOHIDEventSystemClientCopyServices( client ) );
+        client = IOHIDEventSystemClientCreate( kCFAllocatorDefault );
         
-        for( id o in services )
+        NSDictionary * filter =
+        @{
+            @"PrimaryUsagePage" : [ NSNumber numberWithLongLong: IOHIDPageAppleVendor ],
+            @"PrimaryUsage"     : [ NSNumber numberWithLongLong: IOHIDUsageAppleVendorTemperatureSensor ]
+        };
+        
+        IOHIDEventSystemClientSetMatching( client, ( __bridge CFDictionaryRef )filter );
+    }
+    
+    NSArray                                       * services = CFBridgingRelease( IOHIDEventSystemClientCopyServices( client ) );
+    NSMutableDictionary< NSString *, NSNumber * > * values   = [ NSMutableDictionary new ];
+    
+    for( id o in services )
+    {
+        IOHIDServiceClientRef service = ( __bridge IOHIDServiceClientRef )o;
+        NSString            * name    = CFBridgingRelease( IOHIDServiceClientCopyProperty( service, CFSTR( "Product" ) ) );
+        CFTypeRef             event   = IOHIDServiceClientCopyEvent( service, IOHIDEventTypeTemperature, 0, 0 );
+        
+        if( name != nil && event != nil )
         {
-            IOHIDServiceClientRef service = ( __bridge IOHIDServiceClientRef )o;
-            NSString            * name    = CFBridgingRelease( IOHIDServiceClientCopyProperty( service, CFSTR( "Product" ) ) );
-            CFTypeRef             event   = IOHIDServiceClientCopyEvent( service, 0x0000000F, 0, 0 );
-            
-            if( name != nil && event != nil )
-            {
-                values[ name ] = [ NSNumber numberWithDouble: IOHIDEventGetFloatValue( event, 0x000F0000 ) ];
-            }
-            
-            if( event != nil )
-            {
-                CFRelease( event );
-            }
+            values[ name ] = [ NSNumber numberWithDouble: IOHIDEventGetFloatValue( event, 0x000F0000 ) ];
         }
         
-        CFRelease( client );
+        if( event != nil )
+        {
+            CFRelease( event );
+        }
     }
     
     return [ values copy ];
