@@ -96,7 +96,7 @@ public class ThermalLog: NSObject
             
             #if arch( arm64 )
             
-            let pressure         = ProcessInfo().thermalState
+            let pressure         = ProcessInfo.processInfo.thermalState
             self.thermalPressure = NSNumber( integerLiteral: pressure.rawValue )
             
             #endif
