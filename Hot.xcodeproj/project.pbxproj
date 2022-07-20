@@ -25,6 +25,9 @@
 		055A932725277F6E0070F771 /* TemperatureToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055A932625277F6E0070F771 /* TemperatureToString.swift */; };
 		055A932925277F990070F771 /* PercentToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055A932825277F990070F771 /* PercentToString.swift */; };
 		055A932B252780FD0070F771 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055A932A252780FD0070F771 /* GraphView.swift */; };
+		057BA11728884BCD00324D16 /* CurrentTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 057BA11328884BCD00324D16 /* CurrentTemplate.pdf */; };
+		057BA11828884BCD00324D16 /* ThermalTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 057BA11528884BCD00324D16 /* ThermalTemplate.pdf */; };
+		057BA11928884BCD00324D16 /* VoltageTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 057BA11628884BCD00324D16 /* VoltageTemplate.pdf */; };
 		057F8B00251D22360048F1E1 /* StatusIconTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 057F8AFF251D22360048F1E1 /* StatusIconTemplate.pdf */; };
 		057F8B0C251D273E0048F1E1 /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057F8B0B251D273E0048F1E1 /* AboutWindowController.swift */; };
 		057F8B11251D274C0048F1E1 /* NSApplication+LaunchServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 057F8B10251D274C0048F1E1 /* NSApplication+LaunchServices.m */; };
@@ -115,6 +118,9 @@
 		055A932625277F6E0070F771 /* TemperatureToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureToString.swift; sourceTree = "<group>"; };
 		055A932825277F990070F771 /* PercentToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentToString.swift; sourceTree = "<group>"; };
 		055A932A252780FD0070F771 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		057BA11328884BCD00324D16 /* CurrentTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = CurrentTemplate.pdf; sourceTree = "<group>"; };
+		057BA11528884BCD00324D16 /* ThermalTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ThermalTemplate.pdf; sourceTree = "<group>"; };
+		057BA11628884BCD00324D16 /* VoltageTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = VoltageTemplate.pdf; sourceTree = "<group>"; };
 		057F8AFF251D22360048F1E1 /* StatusIconTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = StatusIconTemplate.pdf; sourceTree = "<group>"; };
 		057F8B0B251D273E0048F1E1 /* AboutWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
 		057F8B0E251D274C0048F1E1 /* Hot-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hot-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -215,6 +221,9 @@
 		057F8AFE251D22360048F1E1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				057BA11328884BCD00324D16 /* CurrentTemplate.pdf */,
+				057BA11528884BCD00324D16 /* ThermalTemplate.pdf */,
+				057BA11628884BCD00324D16 /* VoltageTemplate.pdf */,
 				05B0DFA8267150F40068FF9B /* TCXCTemplate.pdf */,
 				05B0DFA326714A830068FF9B /* eAccTemplate.pdf */,
 				05B0DFA026714A830068FF9B /* pAccTemplate.pdf */,
@@ -550,6 +559,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				057BA11728884BCD00324D16 /* CurrentTemplate.pdf in Resources */,
 				052FBCD4251F842C00C4322E /* SpeedTemplate.pdf in Resources */,
 				05BA0BAD26F347A500AA7BFC /* PressureTemplate.pdf in Resources */,
 				052FBCD6251F842C00C4322E /* TemperatureTemplate.pdf in Resources */,
@@ -561,6 +571,8 @@
 				055A9323252778D00070F771 /* InfoViewController.xib in Resources */,
 				05B0DFA526714A830068FF9B /* UnknownTemplate.pdf in Resources */,
 				05A012D726FB9B8B00D3F6B6 /* SensorsWindowController.xib in Resources */,
+				057BA11828884BCD00324D16 /* ThermalTemplate.pdf in Resources */,
+				057BA11928884BCD00324D16 /* VoltageTemplate.pdf in Resources */,
 				057F8B15251D27650048F1E1 /* AboutWindowController.xib in Resources */,
 				052FBCA7251EE46700C4322E /* PreferencesWindowController.xib in Resources */,
 				05AA407F251CF3D600106CEA /* MainMenu.xib in Resources */,
