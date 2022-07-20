@@ -167,7 +167,14 @@ NS_ASSUME_NONNULL_END
         [ self.sensors setObject: data forKey: key ];
     }
     
-    [ data addValue: value ];
+    dispatch_async
+    (
+        dispatch_get_main_queue(),
+        ^( void )
+        {
+            [ data addValue: value ];
+        }
+    );
 }
 
 @end
