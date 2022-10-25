@@ -47,7 +47,6 @@ public class SensorViewController: NSViewController
             {
                 self.icon = NSImage( named: "TCXCTemplate" )
             }
-            
             else
             {
                 self.icon = NSImage( named: "UnknownTemplate" )

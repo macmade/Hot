@@ -219,7 +219,7 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
         let transformer = TemperatureToString()
         
         if let n1 = self.infoViewController?.speedLimit,
-           let n2 = self.infoViewController?.cpuTemperature,
+           let n2 = self.infoViewController?.temperature,
            UserDefaults.standard.bool( forKey: "displayCPUTemperature" ),
            n1 > 0,
            n2 > 0
@@ -231,7 +231,7 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
         {
             title = "\( n )%"
         }
-        else if let n = self.infoViewController?.cpuTemperature,
+        else if let n = self.infoViewController?.temperature,
                 UserDefaults.standard.bool( forKey: "displayCPUTemperature" ),
                 n > 0
         {

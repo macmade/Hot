@@ -32,7 +32,7 @@ public class InfoViewController: NSViewController
     @objc public private( set ) dynamic var schedulerLimit:  Int  = 0
     @objc public private( set ) dynamic var availableCPUs:   Int  = 0
     @objc public private( set ) dynamic var speedLimit:      Int  = 0
-    @objc public private( set ) dynamic var cpuTemperature:  Int  = 0
+    @objc public private( set ) dynamic var temperature:     Int  = 0
     @objc public private( set ) dynamic var thermalPressure: Int  = 0
     
     public var onUpdate: ( () -> Void )?
@@ -130,9 +130,9 @@ public class InfoViewController: NSViewController
             self.speedLimit = n
         }
         
-        if let n = self.log.cpuTemperature?.intValue
+        if let n = self.log.temperature?.intValue
         {
-            self.cpuTemperature = n
+            self.temperature = n
         }
         
         if let n = self.log.thermalPressure?.intValue
@@ -140,13 +140,13 @@ public class InfoViewController: NSViewController
             self.thermalPressure = n
         }
         
-        if self.speedLimit > 0 && self.cpuTemperature > 0
+        if self.speedLimit > 0 && self.temperature > 0
         {
-            self.graphView.addData( speed: self.speedLimit, temperature: self.cpuTemperature )
+            self.graphView.addData( speed: self.speedLimit, temperature: self.temperature )
         }
-        else if self.cpuTemperature > 0
+        else if self.temperature > 0
         {
-            self.graphView.addData( speed: 100, temperature: self.cpuTemperature )
+            self.graphView.addData( speed: 100, temperature: self.temperature )
         }
         
         self.graphViewHeight.constant = self.graphView.canDisplay ? 100 : 0

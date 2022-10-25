@@ -29,7 +29,7 @@ public class ThermalLog: NSObject
     @objc public dynamic var schedulerLimit:  NSNumber?
     @objc public dynamic var availableCPUs:   NSNumber?
     @objc public dynamic var speedLimit:      NSNumber?
-    @objc public dynamic var cpuTemperature:  NSNumber?
+    @objc public dynamic var temperature:     NSNumber?
     @objc public dynamic var thermalPressure: NSNumber?
     @objc public dynamic var sensors:         [ String : Double ] = [:]
     
@@ -101,15 +101,15 @@ public class ThermalLog: NSObject
             
             #endif
             
-            let sensors = self.readSensors()
-            let cpu     = sensors.filter { $0.value.isCPU }.mapValues { $0.temperature }
-            let all     = sensors.mapValues { $0.temperature }
-            var temp    = 0.0
+            let sensors  = self.readSensors()
+            let cpu      = sensors.filter { $0.value.isCPU }.mapValues { $0.temperature }
+            let all      = sensors.mapValues { $0.temperature }
+            var temp     = 0.0
+            self.sensors = all
             
             if cpu.count > 0
             {
-                self.sensors = cpu
-                temp         = cpu.reduce( 0.0 ) { r, v in v.value > r ? v.value : r }
+                temp = cpu.reduce( 0.0 ) { r, v in v.value > r ? v.value : r }
             }
             else
             {
@@ -125,7 +125,7 @@ public class ThermalLog: NSObject
             
             if temp > 1
             {
-                self.cpuTemperature = NSNumber( value: temp )
+                self.temperature = NSNumber( value: temp )
             }
             
             let pipe            = Pipe()

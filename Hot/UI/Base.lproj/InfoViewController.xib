@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21225" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21225"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -233,8 +233,8 @@
                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="TemperatureTemplate" id="Uka-aH-8is"/>
                                 </imageView>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7Wl-A7-fA8">
-                                    <rect key="frame" x="22" y="0.0" width="116" height="16"/>
-                                    <textFieldCell key="cell" lineBreakMode="clipping" title="CPU Temperature:" id="2yb-dD-TBv">
+                                    <rect key="frame" x="22" y="0.0" width="85" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Temperature:" id="2yb-dD-TBv">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -248,7 +248,7 @@
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                     <connections>
-                                        <binding destination="-2" name="value" keyPath="self.cpuTemperature" id="wXd-oV-OHq">
+                                        <binding destination="-2" name="value" keyPath="self.temperature" id="22o-Ra-YM4">
                                             <dictionary key="options">
                                                 <string key="NSValueTransformerName">TemperatureToString</string>
                                             </dictionary>

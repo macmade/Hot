@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21225" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21225"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -695,9 +695,9 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="XCF-fq-sNA"/>
-                <menuItem title="CPU Sensors" id="Uyl-at-zXs">
+                <menuItem title="Temperature Sensors" id="Uyl-at-zXs">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="CPU Sensors" id="ub7-du-ljd">
+                    <menu key="submenu" title="Temperature Sensors" id="ub7-du-ljd">
                         <items>
                             <menuItem title="Item" id="e7y-6X-k2N">
                                 <modifierMask key="keyEquivalentModifierMask"/>
