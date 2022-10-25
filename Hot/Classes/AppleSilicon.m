@@ -74,7 +74,7 @@
 
 static IOHIDEventSystemClientRef client = nil;
 
-NSDictionary< NSString *, NSNumber * > * ReadM1Sensors( void )
+NSDictionary< NSString *, NSNumber * > * ReadAppleSiliconSensors( void )
 {
     if( client == nil )
     {

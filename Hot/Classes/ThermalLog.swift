@@ -47,7 +47,7 @@ public class ThermalLog: NSObject
         #if arch( arm64 )
         
         return Dictionary( uniqueKeysWithValues:
-            ReadM1Sensors().map
+            ReadAppleSiliconSensors().map
             {
                 let isCPU = $0.key.hasPrefix( "pACC" ) || $0.key.hasPrefix( "eACC" )
                 

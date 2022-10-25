@@ -31,6 +31,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-NSDictionary< NSString *, NSNumber * > * ReadM1Sensors( void );
+NSDictionary< NSString *, NSNumber * > * ReadAppleSiliconSensors( void );
 
 NS_ASSUME_NONNULL_END
