@@ -47,6 +47,14 @@ public class SensorViewController: NSViewController
             {
                 self.icon = NSImage( named: "TCXCTemplate" )
             }
+            else if self.name.lowercased().contains( "battery" )
+            {
+                self.icon = NSImage( named: "BatteryTemplate" )
+            }
+            else if self.name.lowercased().contains( "tcal" )
+            {
+                self.icon = NSImage( named: "TCalTemplate" )
+            }
             else
             {
                 self.icon = NSImage( named: "UnknownTemplate" )
