@@ -354,7 +354,7 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
         self.sensorViewControllers = controllers
         self.sensorsMenu.items     = items.sorted
         {
-            $0.title.compare( $1.title, options: .numeric, range: nil, locale: nil ) == .orderedAscending
+            $0.title.compare( $1.title, options: [ .numeric, .caseInsensitive ], range: nil, locale: nil ) == .orderedAscending
         }
     }
 

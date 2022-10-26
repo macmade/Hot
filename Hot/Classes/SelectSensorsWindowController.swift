@@ -55,7 +55,7 @@ public class SelectSensorsWindowController: NSWindowController, NSTableViewDeleg
 
         self.arrayController.sortDescriptors =
             [
-                NSSortDescriptor( key: "name", ascending: true ),
+                NSSortDescriptor( key: "name", ascending: true, selector: #selector( NSString.localizedCaseInsensitiveCompare( _: ) ) ),
             ]
 
         self.windowOpenObserver = NotificationCenter.default.addObserver( forName: NSWindow.didBecomeKeyNotification, object: self.window, queue: nil )
