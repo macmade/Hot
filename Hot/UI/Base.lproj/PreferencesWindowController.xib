@@ -19,14 +19,14 @@
             <rect key="contentRect" x="196" y="240" width="700" height="297"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1710" height="1069"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="700" height="332"/>
+                <rect key="frame" x="0.0" y="0.0" width="734" height="367"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BG6-RK-yaR">
-                        <rect key="frame" x="20" y="20" width="340" height="292"/>
+                        <rect key="frame" x="20" y="20" width="339" height="327"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aiX-U8-MD5">
-                                <rect key="frame" x="-2" y="275" width="300" height="18"/>
+                                <rect key="frame" x="-2" y="310" width="300" height="18"/>
                                 <buttonCell key="cell" type="check" title="Display the CPU temperature in the menu bar" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="g0X-sq-6lh">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -36,7 +36,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rog-WF-H8d">
-                                <rect key="frame" x="-2" y="244" width="59" height="18"/>
+                                <rect key="frame" x="-2" y="279" width="59" height="18"/>
                                 <buttonCell key="cell" type="check" title="Label" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="YMx-Az-Ken">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -47,7 +47,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HBx-Rv-VgA">
-                                <rect key="frame" x="-2" y="213" width="341" height="18"/>
+                                <rect key="frame" x="-2" y="248" width="341" height="18"/>
                                 <buttonCell key="cell" type="check" title="Display temperature in Fahrenheit instead of Celsius" bezelStyle="regularSquare" imagePosition="left" inset="2" id="mpF-Ss-xf7">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -57,7 +57,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cY4-xR-ECB">
-                                <rect key="frame" x="-2" y="182" width="233" height="18"/>
+                                <rect key="frame" x="-2" y="217" width="233" height="18"/>
                                 <buttonCell key="cell" type="check" title="Hide the Menu Bar icon if possible" bezelStyle="regularSquare" imagePosition="left" inset="2" id="J5N-yj-bbh">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -67,7 +67,7 @@
                                 </connections>
                             </button>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="EAB-dh-Hso">
-                                <rect key="frame" x="0.0" y="148" width="208" height="20"/>
+                                <rect key="frame" x="0.0" y="183" width="339" height="20"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PE9-ov-GuC">
                                         <rect key="frame" x="-2" y="2" width="103" height="16"/>
@@ -99,7 +99,7 @@
                                     </popUpButton>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="zSb-Uw-GGz" secondAttribute="trailing" id="IP7-vE-mw4"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zSb-Uw-GGz" secondAttribute="trailing" id="IP7-vE-mw4"/>
                                     <constraint firstItem="PE9-ov-GuC" firstAttribute="centerY" secondItem="zSb-Uw-GGz" secondAttribute="centerY" id="LHg-EA-GbT"/>
                                     <constraint firstItem="zSb-Uw-GGz" firstAttribute="leading" secondItem="PE9-ov-GuC" secondAttribute="trailing" constant="8" symbolic="YES" id="OFY-vz-fp6"/>
                                     <constraint firstAttribute="bottom" secondItem="zSb-Uw-GGz" secondAttribute="bottom" id="qDh-a7-ITs"/>
@@ -108,7 +108,7 @@
                                 </constraints>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="9tp-fh-UvQ">
-                                <rect key="frame" x="0.0" y="113" width="263" height="20"/>
+                                <rect key="frame" x="0.0" y="148" width="339" height="20"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BeJ-a6-VLL">
                                         <rect key="frame" x="-2" y="2" width="73" height="16"/>
@@ -151,7 +151,7 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="nY9-x0-twp" secondAttribute="trailing" id="4xs-uG-dsF"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="nY9-x0-twp" secondAttribute="trailing" id="4xs-uG-dsF"/>
                                     <constraint firstItem="nY9-x0-twp" firstAttribute="leading" secondItem="T2v-zD-kcg" secondAttribute="trailing" constant="12" symbolic="YES" id="5CH-zt-SUV"/>
                                     <constraint firstItem="T2v-zD-kcg" firstAttribute="leading" secondItem="9qW-vg-sZL" secondAttribute="trailing" constant="8" symbolic="YES" id="7tH-ff-VOI"/>
                                     <constraint firstItem="9qW-vg-sZL" firstAttribute="leading" secondItem="BeJ-a6-VLL" secondAttribute="trailing" constant="8" symbolic="YES" id="Fch-IB-Y24"/>
@@ -164,7 +164,7 @@
                                 </constraints>
                             </customView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LZ9-Qg-JiC">
-                                <rect key="frame" x="-7" y="71" width="144" height="32"/>
+                                <rect key="frame" x="-7" y="106" width="144" height="32"/>
                                 <buttonCell key="cell" type="push" title="Choose Sensors..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Z8r-qN-bMV">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -178,6 +178,50 @@
                                     </binding>
                                 </connections>
                             </button>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="dxG-rH-6k1">
+                                <rect key="frame" x="0.0" y="78" width="339" height="20"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wmy-ty-OoB">
+                                        <rect key="frame" x="-2" y="2" width="90" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Display Mode:" id="hOI-r9-En3">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qTC-Gr-NIW">
+                                        <rect key="frame" x="91" y="-4" width="89" height="25"/>
+                                        <popUpButtonCell key="cell" type="push" title="Highest" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="U4K-aP-QjX" id="z7d-0t-1Xu">
+                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="menu"/>
+                                            <menu key="menu" id="JRc-s1-p7Z">
+                                                <items>
+                                                    <menuItem title="Highest" state="on" id="U4K-aP-QjX"/>
+                                                    <menuItem title="Average" tag="1" id="pH3-eu-kox"/>
+                                                </items>
+                                            </menu>
+                                        </popUpButtonCell>
+                                        <connections>
+                                            <binding destination="-2" name="selectedTag" keyPath="self.temperatureDisplayMode" id="NVU-P3-s6D"/>
+                                        </connections>
+                                    </popUpButton>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="qTC-Gr-NIW" secondAttribute="bottom" id="2Iq-LR-hiU"/>
+                                    <constraint firstItem="Wmy-ty-OoB" firstAttribute="leading" secondItem="dxG-rH-6k1" secondAttribute="leading" id="9cr-9v-hql"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qTC-Gr-NIW" secondAttribute="trailing" id="cXe-v6-vkd"/>
+                                    <constraint firstItem="qTC-Gr-NIW" firstAttribute="leading" secondItem="Wmy-ty-OoB" secondAttribute="trailing" constant="8" symbolic="YES" id="egF-Rn-igw"/>
+                                    <constraint firstItem="Wmy-ty-OoB" firstAttribute="centerY" secondItem="qTC-Gr-NIW" secondAttribute="centerY" id="iSK-TY-aO8"/>
+                                    <constraint firstItem="qTC-Gr-NIW" firstAttribute="top" secondItem="dxG-rH-6k1" secondAttribute="top" id="lYu-Nb-orn"/>
+                                </constraints>
+                                <connections>
+                                    <binding destination="-2" name="hidden" keyPath="self.isAppleSilicon" id="D74-wa-bHF">
+                                        <dictionary key="options">
+                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </customView>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="O2I-yB-Cqr">
                                 <rect key="frame" x="0.0" y="60" width="317" height="5"/>
                             </box>
@@ -202,7 +246,13 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="9tp-fh-UvQ" secondAttribute="trailing" id="8SV-tp-Ri0"/>
+                            <constraint firstAttribute="trailing" secondItem="dxG-rH-6k1" secondAttribute="trailing" id="aDm-WO-P3a"/>
+                            <constraint firstAttribute="trailing" secondItem="EAB-dh-Hso" secondAttribute="trailing" id="fLN-Ft-mf7"/>
+                        </constraints>
                         <visibilityPriorities>
+                            <integer value="1000"/>
                             <integer value="1000"/>
                             <integer value="1000"/>
                             <integer value="1000"/>
@@ -225,10 +275,11 @@
                             <real value="3.4028234663852886e+38"/>
                             <real value="3.4028234663852886e+38"/>
                             <real value="3.4028234663852886e+38"/>
+                            <real value="3.4028234663852886e+38"/>
                         </customSpacing>
                     </stackView>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mxk-B1-lA8">
-                        <rect key="frame" x="368" y="20" width="312" height="312"/>
+                        <rect key="frame" x="367" y="20" width="347" height="347"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="mxk-B1-lA8" secondAttribute="height" multiplier="1:1" id="1gH-bx-NiI"/>
                         </constraints>

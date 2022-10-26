@@ -74,6 +74,14 @@ public class PreferencesWindowController: NSWindowController
         }
     }
 
+    @objc public dynamic var temperatureDisplayMode = UserDefaults.standard.integer( forKey: "temperatureDisplayMode" )
+    {
+        didSet
+        {
+            UserDefaults.standard.setValue( self.temperatureDisplayMode, forKey: "temperatureDisplayMode" )
+        }
+    }
+
     @objc public dynamic var fontName = UserDefaults.standard.string( forKey: "fontName" ) ?? "Default"
     {
         didSet

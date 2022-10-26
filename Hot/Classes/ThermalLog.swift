@@ -104,30 +104,42 @@ public class ThermalLog: NSObject
             let sensors  = self.readSensors()
             let cpu      = sensors.filter { $0.value.isCPU }.mapValues { $0.temperature }
             let all      = sensors.mapValues { $0.temperature }
-            var temp     = 0.0
             self.sensors = all
             let names    = UserDefaults.standard.object( forKey: "selectedSensors" ) as? [ String ] ?? []
             let selected = sensors.filter { names.contains( $0.key ) }.mapValues { $0.temperature }
 
-            if selected.count > 0
+            let temperatures: [ Double ] =
             {
-                temp = selected.reduce( 0.0 ) { r, v in v.value > r ? v.value : r }
-            }
-            else if cpu.count > 0
-            {
-                temp = cpu.reduce( 0.0 ) { r, v in v.value > r ? v.value : r }
-            }
-            else
-            {
-                temp = all.filter
+                if selected.count > 0
                 {
-                    $0.key.lowercased().hasSuffix( "tcal" ) == false
+                    return selected.values.map { $0 }
                 }
-                .reduce( 0.0 )
+                else if cpu.count > 0
                 {
-                    r, v in v.value > r ? v.value : r
+                    return cpu.values.map { $0 }
                 }
-            }
+                else
+                {
+                    return all.filter
+                    {
+                        $0.key.lowercased().hasSuffix( "tcal" ) == false
+                    }
+                    .values.map { $0 }
+                }
+            }()
+
+            let temp: Double =
+            {
+                if UserDefaults.standard.integer( forKey: "temperatureDisplayMode" ) == 1
+                {
+                    return temperatures.count == 0 ? 0 : temperatures.reduce( 0, + ) / Double( temperatures.count )
+                }
+
+                return temperatures.reduce( 0.0 )
+                {
+                    r, v in max( r, v )
+                }
+            }()
 
             if temp > 1
             {
