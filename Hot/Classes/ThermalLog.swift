@@ -106,8 +106,14 @@ public class ThermalLog: NSObject
             let all      = sensors.mapValues { $0.temperature }
             var temp     = 0.0
             self.sensors = all
+            let names    = UserDefaults.standard.object( forKey: "selectedSensors" ) as? [ String ] ?? []
+            let selected = sensors.filter { names.contains( $0.key ) }.mapValues { $0.temperature }
 
-            if cpu.count > 0
+            if selected.count > 0
+            {
+                temp = selected.reduce( 0.0 ) { r, v in v.value > r ? v.value : r }
+            }
+            else if cpu.count > 0
             {
                 temp = cpu.reduce( 0.0 ) { r, v in v.value > r ? v.value : r }
             }

@@ -52,6 +52,8 @@
 		05AA407A251CF3D200106CEA /* ApplicationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AA4079251CF3D200106CEA /* ApplicationDelegate.swift */; };
 		05AA407F251CF3D600106CEA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05AA407D251CF3D600106CEA /* MainMenu.xib */; };
 		05AA408D251CFA0600106CEA /* ThermalLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AA408C251CFA0600106CEA /* ThermalLog.swift */; };
+		05AD458829084FEF00A791C8 /* SelectSensorsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD458729084FEF00A791C8 /* SelectSensorsWindowController.swift */; };
+		05AD458C2908505900A791C8 /* SelectSensorsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05AD458E2908505900A791C8 /* SelectSensorsWindowController.xib */; };
 		05B0DFA426714A830068FF9B /* pAccTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 05B0DFA026714A830068FF9B /* pAccTemplate.pdf */; };
 		05B0DFA526714A830068FF9B /* UnknownTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 05B0DFA226714A830068FF9B /* UnknownTemplate.pdf */; };
 		05B0DFA626714A830068FF9B /* eAccTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 05B0DFA326714A830068FF9B /* eAccTemplate.pdf */; };
@@ -197,6 +199,8 @@
 		05AA4080251CF3D600106CEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05AA4081251CF3D600106CEA /* Hot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hot.entitlements; sourceTree = "<group>"; };
 		05AA408C251CFA0600106CEA /* ThermalLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThermalLog.swift; sourceTree = "<group>"; };
+		05AD458729084FEF00A791C8 /* SelectSensorsWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSensorsWindowController.swift; sourceTree = "<group>"; };
+		05AD458D2908505900A791C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SelectSensorsWindowController.xib; sourceTree = "<group>"; };
 		05B0DFA026714A830068FF9B /* pAccTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pAccTemplate.pdf; sourceTree = "<group>"; };
 		05B0DFA226714A830068FF9B /* UnknownTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = UnknownTemplate.pdf; sourceTree = "<group>"; };
 		05B0DFA326714A830068FF9B /* eAccTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = eAccTemplate.pdf; sourceTree = "<group>"; };
@@ -457,6 +461,7 @@
 				055A932625277F6E0070F771 /* TemperatureToString.swift */,
 				05BA0BA926F342DA00AA7BFC /* PressureToString.swift */,
 				05AA408C251CFA0600106CEA /* ThermalLog.swift */,
+				05AD458729084FEF00A791C8 /* SelectSensorsWindowController.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -471,6 +476,7 @@
 				05AA407D251CF3D600106CEA /* MainMenu.xib */,
 				052FBCA5251EE46700C4322E /* PreferencesWindowController.xib */,
 				05221E8926700A57007246FF /* SensorViewController.xib */,
+				05AD458E2908505900A791C8 /* SelectSensorsWindowController.xib */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -568,6 +574,7 @@
 				052FBCD5251F842C00C4322E /* CPUTemplate.pdf in Resources */,
 				05221E8B26700A57007246FF /* SensorViewController.xib in Resources */,
 				05A012D626FB9B8B00D3F6B6 /* SensorItem.xib in Resources */,
+				05AD458C2908505900A791C8 /* SelectSensorsWindowController.xib in Resources */,
 				055A9323252778D00070F771 /* InfoViewController.xib in Resources */,
 				05B0DFA526714A830068FF9B /* UnknownTemplate.pdf in Resources */,
 				05A012D726FB9B8B00D3F6B6 /* SensorsWindowController.xib in Resources */,
@@ -629,6 +636,7 @@
 				055A9320252778C10070F771 /* InfoViewController.swift in Sources */,
 				05A012CB26FB9AEB00D3F6B6 /* SensorGraphView.swift in Sources */,
 				05A012CF26FB9AEB00D3F6B6 /* Colors.swift in Sources */,
+				05AD458829084FEF00A791C8 /* SelectSensorsWindowController.swift in Sources */,
 				05AA408D251CFA0600106CEA /* ThermalLog.swift in Sources */,
 				055A932925277F990070F771 /* PercentToString.swift in Sources */,
 				05AA407A251CF3D200106CEA /* ApplicationDelegate.swift in Sources */,
@@ -705,6 +713,14 @@
 				05AA407E251CF3D600106CEA /* Base */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		05AD458E2908505900A791C8 /* SelectSensorsWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				05AD458D2908505900A791C8 /* Base */,
+			);
+			name = SelectSensorsWindowController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

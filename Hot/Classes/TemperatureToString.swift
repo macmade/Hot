@@ -39,7 +39,21 @@ public class TemperatureToString: ValueTransformer
 
     public override func transformedValue( _ value: Any? ) -> Any?
     {
-        guard var n = value as? Int, n > 0
+        let n: Int? =
+        {
+            if let n = value as? Int
+            {
+                return n
+            }
+            else if let n = value as? Double
+            {
+                return Int( n )
+            }
+
+            return nil
+        }()
+
+        guard var n = n, n > 0
         else
         {
             return "--" as NSString

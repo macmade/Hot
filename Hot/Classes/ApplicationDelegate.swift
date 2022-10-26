@@ -28,11 +28,12 @@ import GitHubUpdates
 @NSApplicationMain
 class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
 {
-    private var statusItem:                  NSStatusItem?
-    private var aboutWindowController:       AboutWindowController?
-    private var preferencesWindowController: PreferencesWindowController?
-    private var sensorsWindowController:     SensorsWindowController?
-    private var sensorViewControllers:       [ SensorViewController  ] = []
+    private var statusItem:                    NSStatusItem?
+    private var aboutWindowController:         AboutWindowController?
+    private var preferencesWindowController:   PreferencesWindowController?
+    private var sensorsWindowController:       SensorsWindowController?
+    private var selectSensorsWindowController: SelectSensorsWindowController?
+    private var sensorViewControllers:         [ SensorViewController  ] = []
 
     @IBOutlet private var menu:        NSMenu!
     @IBOutlet private var sensorsMenu: NSMenu!
@@ -80,6 +81,7 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
 
         self.aboutWindowController             = AboutWindowController()
         self.preferencesWindowController       = PreferencesWindowController()
+        self.selectSensorsWindowController     = SelectSensorsWindowController()
         self.statusItem                        = NSStatusBar.system.statusItem( withLength: NSStatusItem.variableLength )
         self.statusItem?.button?.image         = NSImage( named: "StatusIconTemplate" )
         self.statusItem?.button?.imagePosition = .imageLeading
@@ -197,6 +199,27 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
     public func showPreferencesWindow( _ sender: Any? )
     {
         guard let window = self.preferencesWindowController?.window
+        else
+        {
+            NSSound.beep()
+
+            return
+        }
+
+        if window.isVisible == false
+        {
+            window.layoutIfNeeded()
+            window.center()
+        }
+
+        NSApp.activate( ignoringOtherApps: true )
+        window.makeKeyAndOrderFront( nil )
+    }
+
+    @IBAction
+    public func showSelectSensorsWindow( _ sender: Any? )
+    {
+        guard let window = self.selectSensorsWindowController?.window
         else
         {
             NSSound.beep()
