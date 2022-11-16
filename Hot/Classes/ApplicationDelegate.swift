@@ -352,9 +352,16 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
         }
 
         self.sensorViewControllers = controllers
-        self.sensorsMenu.items     = items.sorted
+        
+        self.sensorsMenu.removeAllItems()
+
+        items.sorted
         {
             $0.title.compare( $1.title, options: [ .numeric, .caseInsensitive ], range: nil, locale: nil ) == .orderedAscending
+        }
+        .forEach
+        {
+            self.sensorsMenu.addItem( $0 )
         }
     }
 
