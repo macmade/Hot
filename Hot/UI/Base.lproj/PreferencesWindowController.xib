@@ -17,22 +17,32 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="700" height="297"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1710" height="1069"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1536" height="935"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="734" height="367"/>
+                <rect key="frame" x="0.0" y="0.0" width="765" height="398"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BG6-RK-yaR">
-                        <rect key="frame" x="20" y="20" width="339" height="327"/>
+                        <rect key="frame" x="20" y="20" width="339" height="358"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aiX-U8-MD5">
-                                <rect key="frame" x="-2" y="310" width="300" height="18"/>
+                                <rect key="frame" x="-2" y="341" width="300" height="18"/>
                                 <buttonCell key="cell" type="check" title="Display the CPU temperature in the menu bar" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="g0X-sq-6lh">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <binding destination="-2" name="value" keyPath="self.displayCPUTemperature" id="6xq-av-dp9"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="228-He-qR8">
+                                <rect key="frame" x="-2" y="310" width="261" height="18"/>
+                                <buttonCell key="cell" type="check" title="Display scheduler limit in the menu bar" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="r2t-uh-2lL">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <binding destination="-2" name="value" keyPath="self.displaySchedulerLimit" id="kZ4-qm-Woa"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rog-WF-H8d">
@@ -263,8 +273,10 @@
                             <integer value="1000"/>
                             <integer value="1000"/>
                             <integer value="1000"/>
+                            <integer value="1000"/>
                         </visibilityPriorities>
                         <customSpacing>
+                            <real value="3.4028234663852886e+38"/>
                             <real value="3.4028234663852886e+38"/>
                             <real value="3.4028234663852886e+38"/>
                             <real value="3.4028234663852886e+38"/>
@@ -279,7 +291,7 @@
                         </customSpacing>
                     </stackView>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mxk-B1-lA8">
-                        <rect key="frame" x="367" y="20" width="347" height="347"/>
+                        <rect key="frame" x="367" y="20" width="378" height="378"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="mxk-B1-lA8" secondAttribute="height" multiplier="1:1" id="1gH-bx-NiI"/>
                         </constraints>

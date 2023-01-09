@@ -44,6 +44,7 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
     deinit
     {
         UserDefaults.standard.removeObserver( self, forKeyPath: "displayCPUTemperature" )
+        UserDefaults.standard.removeObserver( self, forKeyPath: "displaySchedulerLimit" )
         UserDefaults.standard.removeObserver( self, forKeyPath: "colorizeStatusItemText" )
         UserDefaults.standard.removeObserver( self, forKeyPath: "convertToFahrenheit" )
         UserDefaults.standard.removeObserver( self, forKeyPath: "hideStatusIcon" )
@@ -55,6 +56,7 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
         {
             UserDefaults.standard.setValue( true,     forKey: "automaticallyCheckForUpdates" )
             UserDefaults.standard.setValue( true,     forKey: "displayCPUTemperature" )
+            UserDefaults.standard.setValue( true,     forKey: "displaySchedulerLimit" )
             UserDefaults.standard.setValue( true,     forKey: "colorizeStatusItemText" )
             UserDefaults.standard.setValue( NSDate(), forKey: "LastLaunch" )
         }
@@ -101,6 +103,7 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
         }
 
         UserDefaults.standard.addObserver( self, forKeyPath: "displayCPUTemperature",  options: [], context: nil )
+        UserDefaults.standard.addObserver( self, forKeyPath: "displaySchedulerLimit",  options: [], context: nil )
         UserDefaults.standard.addObserver( self, forKeyPath: "colorizeStatusItemText", options: [], context: nil )
         UserDefaults.standard.addObserver( self, forKeyPath: "convertToFahrenheit",    options: [], context: nil )
         UserDefaults.standard.addObserver( self, forKeyPath: "hideStatusIcon",         options: [], context: nil )
@@ -156,6 +159,7 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
         let keyPaths =
             [
                 "displayCPUTemperature",
+                "displaySchedulerLimit",
                 "colorizeStatusItemText",
                 "convertToFahrenheit",
                 "hideStatusIcon",
@@ -250,6 +254,7 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
 
         if let n1 = self.infoViewController?.speedLimit,
            let n2 = self.infoViewController?.temperature,
+           UserDefaults.standard.bool( forKey: "displaySchedulerLimit" ),
            UserDefaults.standard.bool( forKey: "displayCPUTemperature" ),
            n1 > 0,
            n2 > 0
@@ -257,7 +262,8 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
             let temp = transformer.transformedValue( n2 ) as? String ?? "--"
             title    = "\( n1 )% \( temp )"
         }
-        else if let n = self.infoViewController?.speedLimit, n > 0
+        else if let n = self.infoViewController?.speedLimit, n > 0,
+            UserDefaults.standard.bool( forKey: "displaySchedulerLimit" )
         {
             title = "\( n )%"
         }
