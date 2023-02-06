@@ -352,7 +352,7 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
         }
 
         self.sensorViewControllers = controllers
-        
+
         self.sensorsMenu.removeAllItems()
 
         items.sorted
