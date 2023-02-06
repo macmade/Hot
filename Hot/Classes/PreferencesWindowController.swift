@@ -34,6 +34,14 @@ public class PreferencesWindowController: NSWindowController
         }
     }
 
+    @objc public dynamic var displaySchedulerLimit = UserDefaults.standard.bool( forKey: "displaySchedulerLimit" )
+    {
+        didSet
+        {
+            UserDefaults.standard.setValue( self.displaySchedulerLimit, forKey: "displaySchedulerLimit" )
+        }
+    }
+
     @objc public dynamic var colorizeStatusItemText = UserDefaults.standard.bool( forKey: "colorizeStatusItemText" )
     {
         didSet
