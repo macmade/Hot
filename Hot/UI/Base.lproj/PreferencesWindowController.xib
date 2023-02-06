@@ -42,8 +42,8 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <binding destination="-2" name="hidden" keyPath="self.isAppleSilicon" id="Mcx-o5-yFk"/>
                                     <binding destination="-2" name="value" keyPath="self.displaySchedulerLimit" id="kZ4-qm-Woa"/>
+                                    <binding destination="-2" name="hidden" keyPath="self.isAppleSilicon" id="Mcx-o5-yFk"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rog-WF-H8d">
@@ -182,11 +182,6 @@
                                 </buttonCell>
                                 <connections>
                                     <action selector="showSelectSensorsWindow:" target="-1" id="46y-ap-vMY"/>
-                                    <binding destination="-2" name="hidden" keyPath="self.isAppleSilicon" id="C4K-LJ-bYJ">
-                                        <dictionary key="options">
-                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                        </dictionary>
-                                    </binding>
                                 </connections>
                             </button>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="dxG-rH-6k1">
@@ -225,13 +220,6 @@
                                     <constraint firstItem="Wmy-ty-OoB" firstAttribute="centerY" secondItem="qTC-Gr-NIW" secondAttribute="centerY" id="iSK-TY-aO8"/>
                                     <constraint firstItem="qTC-Gr-NIW" firstAttribute="top" secondItem="dxG-rH-6k1" secondAttribute="top" id="lYu-Nb-orn"/>
                                 </constraints>
-                                <connections>
-                                    <binding destination="-2" name="hidden" keyPath="self.isAppleSilicon" id="D74-wa-bHF">
-                                        <dictionary key="options">
-                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
                             </customView>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="O2I-yB-Cqr">
                                 <rect key="frame" x="0.0" y="60" width="317" height="5"/>
