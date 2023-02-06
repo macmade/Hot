@@ -26,7 +26,8 @@ import Cocoa
 
 public class SelectSensorsWindowController: NSWindowController, NSTableViewDelegate
 {
-    @objc private dynamic var items: [ SensorItem ] = []
+    @objc private dynamic var items         = [ SensorItem ]()
+    @objc private dynamic var selectionMode = UserDefaults.standard.integer( forKey: "selectedSensorsMode" )
 
     private var windowOpenObserver:  Any?
     private var windowCloseObserver: Any?
@@ -114,6 +115,7 @@ public class SelectSensorsWindowController: NSWindowController, NSTableViewDeleg
         }
 
         UserDefaults.standard.set( sensors, forKey: "selectedSensors" )
+        UserDefaults.standard.set( self.selectionMode, forKey: "selectedSensorsMode" )
         self.window?.close()
     }
 
@@ -177,6 +179,24 @@ public class SelectSensorsWindowController: NSWindowController, NSTableViewDeleg
             }
 
             return self.name == item.name
+        }
+    }
+
+    @IBAction
+    private func toggleAll( _ sender: Any? )
+    {
+        let allSelected = self.items.reduce( true )
+        {
+            $0 == false ? false : $1.enabled
+        }
+
+        if allSelected
+        {
+            self.items.forEach { $0.enabled = false }
+        }
+        else
+        {
+            self.items.forEach { $0.enabled = true }
         }
     }
 }

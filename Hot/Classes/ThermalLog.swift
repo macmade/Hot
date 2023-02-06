@@ -113,12 +113,20 @@ public class ThermalLog: NSObject
 
             #endif
 
-            let sensors  = self.readSensors()
-            let cpu      = sensors.filter { $0.value.isCPU }.mapValues { $0.temperature }
-            let all      = sensors.mapValues { $0.temperature }
-            self.sensors = all
-            let names    = UserDefaults.standard.object( forKey: "selectedSensors" ) as? [ String ] ?? []
-            let selected = sensors.filter { names.contains( $0.key ) }.mapValues { $0.temperature }
+            let sensors       = self.readSensors()
+            let cpu           = sensors.filter { $0.value.isCPU }.mapValues { $0.temperature }
+            let all           = sensors.mapValues { $0.temperature }
+            self.sensors      = all
+            let names         = UserDefaults.standard.object( forKey: "selectedSensors" ) as? [ String ] ?? []
+            let selectionMode = UserDefaults.standard.integer( forKey: "selectedSensorsMode" )
+            let selected      = sensors.filter
+            {
+                selectionMode == 0 ? names.contains( $0.key ) : names.contains( $0.key ) == false
+            }
+            .mapValues
+            {
+                $0.temperature
+            }
 
             let temperatures: [ Double ] =
             {
