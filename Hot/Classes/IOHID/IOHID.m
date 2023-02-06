@@ -109,15 +109,13 @@ NS_ASSUME_NONNULL_END
 
     for( id o in services )
     {
-        IOHIDServiceClientRef service    = ( __bridge IOHIDServiceClientRef )o;
-        NSString            * name       = CFBridgingRelease( IOHIDServiceClientCopyProperty( service, CFSTR( "Product" ) ) );
-        NSArray             * keys       = @[ @"IOClass", @"IOProviderClass", @"IONameMatch", @"Product", @"DeviceUsagePairs" ];
-        NSDictionary        * properties = CFBridgingRelease( IOHIDServiceClientCopyProperties( service, ( __bridge CFArrayRef )keys ) );
+        IOHIDServiceClientRef service = ( __bridge IOHIDServiceClientRef )o;
+        NSString            * name    = CFBridgingRelease( IOHIDServiceClientCopyProperty( service, CFSTR( "Product" ) ) );
         CFTypeRef             event   = IOHIDServiceClientCopyEvent( service, eventType, 0, 0 );
 
         if( name != nil && event != nil )
         {
-            values[ name ] = [ [ IOHIDData alloc ] initWithName: name value: IOHIDEventGetFloatValue( event, eventField ) properties: properties ];
+            values[ name ] = [ [ IOHIDData alloc ] initWithName: name value: IOHIDEventGetFloatValue( event, eventField ) ];
         }
 
         if( event != nil )

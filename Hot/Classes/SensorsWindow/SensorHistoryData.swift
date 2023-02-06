@@ -61,10 +61,9 @@ public class SensorHistoryData: NSObject, Synchronizable
         }
     }
 
-    @objc public private( set ) dynamic var source:     Source
-    @objc public private( set ) dynamic var kind:       Kind
-    @objc public private( set ) dynamic var name:       String
-    @objc public private( set ) dynamic var properties: [ AnyHashable: Any ]?
+    @objc public private( set ) dynamic var source: Source
+    @objc public private( set ) dynamic var kind:   Kind
+    @objc public private( set ) dynamic var name:   String
 
     private var data: [ Double ] = []
 
@@ -119,12 +118,11 @@ public class SensorHistoryData: NSObject, Synchronizable
     }
 
     @objc
-    public init( source: Source, kind: Kind, name: String, properties: [ AnyHashable: Any ]? )
+    public init( source: Source, kind: Kind, name: String )
     {
-        self.source     = source
-        self.kind       = kind
-        self.name       = name
-        self.properties = properties
+        self.source = source
+        self.kind   = kind
+        self.name   = name
     }
 
     @objc( addValue: )

@@ -115,7 +115,7 @@ public class Sensors: NSObject
 
         if self.sensors[ key ] == nil
         {
-            self.sensors[ key ] = SensorHistoryData( source: .hid, kind: kind, name: data.name, properties: data.properties )
+            self.sensors[ key ] = SensorHistoryData( source: .hid, kind: kind, name: data.name )
         }
 
         self.sensors[ key ]?.add( value: data.value )
@@ -142,7 +142,7 @@ public class Sensors: NSObject
 
         if self.sensors[ key ] == nil
         {
-            self.sensors[ key ] = SensorHistoryData( source: .smc, kind: kind, name: data.keyName, properties: [ : ] )
+            self.sensors[ key ] = SensorHistoryData( source: .smc, kind: kind, name: data.keyName )
         }
 
         self.sensors[ key ]?.add( value: value )

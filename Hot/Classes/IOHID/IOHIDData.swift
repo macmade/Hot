@@ -27,15 +27,13 @@ import Foundation
 @objc
 public class IOHIDData: NSObject
 {
-    @objc public dynamic var name:       String
-    @objc public dynamic var value:      Double
-    @objc public dynamic var properties: [ AnyHashable: Any ]
+    @objc public dynamic var name:  String
+    @objc public dynamic var value: Double
 
     @objc
-    public init( name: String, value: Double, properties: [ AnyHashable: Any ] )
+    public init( name: String, value: Double )
     {
         self.name       = name
         self.value      = value
-        self.properties = properties
     }
 }
