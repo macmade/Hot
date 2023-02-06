@@ -44,41 +44,53 @@ public class ThermalLog: NSObject
 
     private func readSensors() -> [ String: ( temperature: Double, isCPU: Bool ) ]
     {
-        #if arch( arm64 )
+        let ioHID = IOHID.shared.readTemperatureSensors().compactMap
+        {
+            self.sensorValue( data: $0 )
+        }
 
-            return Dictionary( uniqueKeysWithValues:
-                IOHID.shared.readTemperatureSensors().map
-                {
-                    let isCPU = $0.name.hasPrefix( "pACC" ) || $0.name.hasPrefix( "eACC" )
+        let smc = SMC.shared.readAllKeys
+        {
+            $0 >> 24 == 84 // T prefix (four char code)
+        }
+        .compactMap
+        {
+            self.sensorValue( data: $0 )
+        }
 
-                    return ( $0.name, ( temperature: $0.value, isCPU: isCPU ) )
-                }
-            )
+        let all = [ ioHID, smc ].flatMap { $0 }.filter
+        {
+            $0.1.temperature > 0 && $0.1.temperature < 150
+        }
 
-        #else
+        return Dictionary( uniqueKeysWithValues: all )
+    }
 
-            let sensors =
-                [
-                    "TCXC": SMCKeyTCXC,
-                    "CUS1": SMCKeyCUS1,
-                    "TC0D": SMCKeyTC0D,
-                    "TC0C": SMCKeyTC0C,
-                    "TCAD": SMCKeyTCAD,
-                ]
+    private func sensorValue( data: IOHIDData ) -> ( String, ( temperature: Double, isCPU: Bool ) )?
+    {
+        let isCPU = data.name.hasPrefix( "pACC" ) || data.name.hasPrefix( "eACC" )
 
-            for sensor in sensors
-            {
-                var temp = 0.0
+        return ( data.name, ( temperature: data.value, isCPU: isCPU ) )
+    }
 
-                if SMCGetCPUTemperature( sensor.value, &temp )
-                {
-                    return [ sensor.key: ( temperature: temp, isCPU: true ) ]
-                }
-            }
+    private func sensorValue( data: SMCData ) -> ( String, ( temperature: Double, isCPU: Bool ) )?
+    {
+        let value: Double
 
-            return [ : ]
+        if let f = data.value as? Double
+        {
+            value = f
+        }
+        else if let f = data.value as? Float32
+        {
+            value = Double( f )
+        }
+        else
+        {
+            return nil
+        }
 
-        #endif
+        return ( data.keyName, ( temperature: value, isCPU: false ) )
     }
 
     public func refresh( completion: @escaping () -> Void )
