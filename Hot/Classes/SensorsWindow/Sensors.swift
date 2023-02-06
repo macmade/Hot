@@ -70,8 +70,11 @@ public class Sensors: NSObject
             RunLoop.current.run( until: Date( timeIntervalSinceNow: 5 ) )
         }
 
+        timer.invalidate()
+
         let completion  = self.completion
         self.completion = nil
+        self.data       = []
 
         completion?()
     }
