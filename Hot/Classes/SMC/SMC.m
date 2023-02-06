@@ -104,7 +104,7 @@ NS_ASSUME_NONNULL_END
     [ self close ];
 }
 
-- ( NSArray< SMCData * > *  )readAllKeys
+- ( NSArray< SMCData * > *  )readAllKeys: ( BOOL ( ^ _Nullable )( uint32_t ) )filter
 {
     if( self.connection == IO_OBJECT_NULL )
     {
@@ -135,6 +135,11 @@ NS_ASSUME_NONNULL_END
 
     for( NSNumber * key in self.keys )
     {
+        if( filter == nil || filter( key.unsignedIntValue ) == NO )
+        {
+            continue;
+        }
+
         SMCKeyInfoData info;
         uint8_t        data[ 32 ];
         uint32_t       size = sizeof( data );

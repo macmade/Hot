@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property( class, nonatomic, readonly ) SMC * shared;
 
 - ( instancetype )init;
-- ( NSArray< SMCData * > *  )readAllKeys;
+- ( NSArray< SMCData * > *  )readAllKeys: ( BOOL ( ^ _Nullable )( uint32_t ) )filter;
 
 @end
 
