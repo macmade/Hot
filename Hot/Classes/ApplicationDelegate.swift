@@ -385,41 +385,29 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
     @IBAction
     public func viewAllSensors( _ sender: Any? )
     {
-        #if arch( arm64 )
+        if self.sensorsWindowController == nil
+        {
+            self.sensorsWindowController = SensorsWindowController()
+        }
 
-            if self.sensorsWindowController == nil
-            {
-                self.sensorsWindowController = SensorsWindowController()
-            }
+        guard let window = self.sensorsWindowController?.window
+        else
+        {
+            NSSound.beep()
 
-            guard let window = self.sensorsWindowController?.window
-            else
-            {
-                NSSound.beep()
+            return
+        }
 
-                return
-            }
+        window.delegate = self
 
-            window.delegate = self
+        if window.isVisible == false
+        {
+            window.layoutIfNeeded()
+            window.center()
+        }
 
-            if window.isVisible == false
-            {
-                window.layoutIfNeeded()
-                window.center()
-            }
-
-            NSApp.activate( ignoringOtherApps: true )
-            window.makeKeyAndOrderFront( nil )
-
-        #else
-
-            let alert             = NSAlert()
-            alert.messageText     = "Feature not available"
-            alert.informativeText = "This feature is only available for Macs with ARM processors."
-
-            alert.runModal()
-
-        #endif
+        NSApp.activate( ignoringOtherApps: true )
+        window.makeKeyAndOrderFront( nil )
     }
 
     func windowWillClose( _ notification: Notification )
