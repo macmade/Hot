@@ -25,6 +25,20 @@
                 <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
+                    <button translatesAutoresizingMaskIntoConstraints="NO" id="sNB-OZ-xD3">
+                        <rect key="frame" x="280" y="180" width="15" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="15" id="Ei0-bt-16k"/>
+                            <constraint firstAttribute="height" constant="15" id="ngE-oY-o1A"/>
+                        </constraints>
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSActionTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="cwq-LT-YvW">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="showOptions:" target="-2" id="oZq-HN-0e1"/>
+                        </connections>
+                    </button>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="psa-0V-CfC" customClass="GraphView" customModule="Hot" customModuleProvider="target">
                         <rect key="frame" x="10" y="90" width="280" height="90"/>
                     </customView>
@@ -252,8 +266,10 @@
                     <constraint firstItem="psa-0V-CfC" firstAttribute="top" secondItem="d04-7F-4tv" secondAttribute="top" constant="20" symbolic="YES" id="6bx-re-Vp9"/>
                     <constraint firstAttribute="trailing" secondItem="kk4-S5-WiX" secondAttribute="trailing" constant="10" id="8fi-tI-2lM"/>
                     <constraint firstItem="kk4-S5-WiX" firstAttribute="leading" secondItem="d04-7F-4tv" secondAttribute="leading" constant="10" id="9cA-bK-d0m"/>
+                    <constraint firstAttribute="trailing" secondItem="sNB-OZ-xD3" secondAttribute="trailing" constant="5" id="HTx-eb-hJD"/>
                     <constraint firstItem="psa-0V-CfC" firstAttribute="leading" secondItem="d04-7F-4tv" secondAttribute="leading" constant="10" id="Ifw-wU-oRV"/>
                     <constraint firstAttribute="bottom" secondItem="kk4-S5-WiX" secondAttribute="bottom" constant="10" id="pWJ-pj-aV8"/>
+                    <constraint firstItem="sNB-OZ-xD3" firstAttribute="top" secondItem="d04-7F-4tv" secondAttribute="top" constant="2" id="rOM-Va-fDA"/>
                     <constraint firstAttribute="trailing" secondItem="psa-0V-CfC" secondAttribute="trailing" constant="10" id="xmw-Rd-wH3"/>
                 </constraints>
             </view>
@@ -261,6 +277,7 @@
         </window>
     </objects>
     <resources>
+        <image name="NSActionTemplate" width="20" height="20"/>
         <image name="PressureTemplate" width="150" height="150"/>
         <image name="SchedulerTemplate" width="150" height="150"/>
         <image name="SpeedTemplate" width="150" height="150"/>
