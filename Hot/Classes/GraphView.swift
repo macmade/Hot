@@ -26,7 +26,13 @@ import Cocoa
 
 public class GraphView: NSView
 {
-    public private( set ) var data = [ ( speed: Int, temperature: Int ) ]()
+    public dynamic var data = [ ( speed: Int, temperature: Int ) ]()
+    {
+        didSet
+        {
+            self.needsDisplay = true
+        }
+    }
 
     public func addData( speed: Int, temperature: Int )
     {

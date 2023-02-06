@@ -34,6 +34,8 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
     private var sensorsWindowController:       SensorsWindowController?
     private var selectSensorsWindowController: SelectSensorsWindowController?
     private var sensorViewControllers:         [ SensorViewController  ] = []
+    private var graphWindowController:         GraphWindowController?
+    private var exiting                      = false
 
     @IBOutlet private var menu:        NSMenu!
     @IBOutlet private var sensorsMenu: NSMenu!
@@ -73,6 +75,13 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
 
             self?.updateTitle()
             self?.updateSensors()
+
+            self?.graphWindowController?.graphView?.data = self?.infoViewController?.graphView?.data ?? []
+            self?.graphWindowController?.schedulerLimit  = self?.infoViewController?.schedulerLimit  ?? 0
+            self?.graphWindowController?.availableCPUs   = self?.infoViewController?.availableCPUs   ?? 0
+            self?.graphWindowController?.speedLimit      = self?.infoViewController?.speedLimit      ?? 0
+            self?.graphWindowController?.temperature     = self?.infoViewController?.temperature     ?? 0
+            self?.graphWindowController?.thermalPressure = self?.infoViewController?.thermalPressure ?? 0
         }
 
         UserDefaults.standard.addObserver( self, forKeyPath: "displayCPUTemperature",  options: [], context: nil )
@@ -99,6 +108,19 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
                 self.updater.checkForUpdatesInBackground()
             }
         }
+
+        if UserDefaults.standard.bool( forKey: "showGraphPanel" )
+        {
+            DispatchQueue.main.asyncAfter( deadline: .now() + .seconds( 1 ) )
+            {
+                self.detachGraph( nil )
+            }
+        }
+    }
+
+    func applicationWillTerminate( _ notification: Notification )
+    {
+        self.exiting = true
     }
 
     private func initializePreferences()
@@ -412,8 +434,56 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
 
     func windowWillClose( _ notification: Notification )
     {
-        self.sensorsWindowController?.stop( completion: nil )
+        guard let window = notification.object as? NSWindow
+        else
+        {
+            return
+        }
 
-        self.sensorsWindowController = nil
+        if window == self.sensorsWindowController?.window
+        {
+            self.sensorsWindowController?.stop( completion: nil )
+
+            self.sensorsWindowController = nil
+        }
+        else if window == self.graphWindowController?.window
+        {
+            self.graphWindowController = nil
+
+            if self.exiting == false
+            {
+                UserDefaults.standard.set( false, forKey: "showGraphPanel" )
+            }
+        }
+    }
+
+    @IBAction
+    public func detachGraph( _ sender: Any? )
+    {
+        if self.graphWindowController == nil
+        {
+            self.graphWindowController                  = GraphWindowController()
+            self.graphWindowController?.graphView?.data = self.infoViewController?.graphView?.data ?? []
+        }
+
+        guard let window = self.graphWindowController?.window
+        else
+        {
+            NSSound.beep()
+
+            return
+        }
+
+        window.delegate = self
+
+        if UserDefaults.standard.object( forKey: "NSWindow Frame GraphPanel" ) == nil
+        {
+            window.layoutIfNeeded()
+            window.center()
+        }
+
+        NSApp.activate( ignoringOtherApps: true )
+        window.makeKeyAndOrderFront( nil )
+        UserDefaults.standard.set( true, forKey: "showGraphPanel" )
     }
 }

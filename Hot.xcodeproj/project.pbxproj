@@ -38,6 +38,8 @@
 		05566A1A2990F85200E7A5F1 /* IOHID.m in Sources */ = {isa = PBXBuildFile; fileRef = 05566A022990F85200E7A5F1 /* IOHID.m */; };
 		05566A1B2990F85200E7A5F1 /* SMC.m in Sources */ = {isa = PBXBuildFile; fileRef = 05566A042990F85200E7A5F1 /* SMC.m */; };
 		05566A1C2990F85200E7A5F1 /* SMCData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05566A052990F85200E7A5F1 /* SMCData.swift */; };
+		05566A75299195F400E7A5F1 /* GraphWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05566A74299195F400E7A5F1 /* GraphWindowController.swift */; };
+		05566A782991963400E7A5F1 /* GraphWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05566A772991963400E7A5F1 /* GraphWindowController.xib */; };
 		055A9320252778C10070F771 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055A931F252778C10070F771 /* InfoViewController.swift */; };
 		055A9323252778D00070F771 /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 055A9321252778D00070F771 /* InfoViewController.xib */; };
 		055A932525277E9E0070F771 /* IntegerToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055A932425277E9E0070F771 /* IntegerToString.swift */; };
@@ -139,6 +141,8 @@
 		05566A052990F85200E7A5F1 /* SMCData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCData.swift; sourceTree = "<group>"; };
 		05566A062990F85200E7A5F1 /* SMC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMC.h; sourceTree = "<group>"; };
 		05566A072990F85200E7A5F1 /* SMC-Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SMC-Internal.h"; sourceTree = "<group>"; };
+		05566A74299195F400E7A5F1 /* GraphWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphWindowController.swift; sourceTree = "<group>"; };
+		05566A772991963400E7A5F1 /* GraphWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GraphWindowController.xib; sourceTree = "<group>"; };
 		055A931F252778C10070F771 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		055A9322252778D00070F771 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/InfoViewController.xib; sourceTree = "<group>"; };
 		055A932425277E9E0070F771 /* IntegerToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegerToString.swift; sourceTree = "<group>"; };
@@ -491,6 +495,7 @@
 				05BA0BA926F342DA00AA7BFC /* PressureToString.swift */,
 				05AA408C251CFA0600106CEA /* ThermalLog.swift */,
 				05AD458729084FEF00A791C8 /* SelectSensorsWindowController.swift */,
+				05566A74299195F400E7A5F1 /* GraphWindowController.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -505,6 +510,7 @@
 				052FBCA5251EE46700C4322E /* PreferencesWindowController.xib */,
 				05221E8926700A57007246FF /* SensorViewController.xib */,
 				05AD458E2908505900A791C8 /* SelectSensorsWindowController.xib */,
+				05566A772991963400E7A5F1 /* GraphWindowController.xib */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -613,6 +619,7 @@
 				05AA407F251CF3D600106CEA /* MainMenu.xib in Resources */,
 				052FBCD7251F842C00C4322E /* SchedulerTemplate.pdf in Resources */,
 				05B0DFA626714A830068FF9B /* eAccTemplate.pdf in Resources */,
+				05566A782991963400E7A5F1 /* GraphWindowController.xib in Resources */,
 				05566A0A2990F85200E7A5F1 /* VoltageTemplate.pdf in Resources */,
 				05566A122990F85200E7A5F1 /* SensorsWindowController.xib in Resources */,
 				05B0DFAA267150F40068FF9B /* TCXCTemplate.pdf in Resources */,
@@ -671,6 +678,7 @@
 				05AD458829084FEF00A791C8 /* SelectSensorsWindowController.swift in Sources */,
 				05566A1A2990F85200E7A5F1 /* IOHID.m in Sources */,
 				05566A0F2990F85200E7A5F1 /* ArrayIsNotEmpty.swift in Sources */,
+				05566A75299195F400E7A5F1 /* GraphWindowController.swift in Sources */,
 				05AA408D251CFA0600106CEA /* ThermalLog.swift in Sources */,
 				055A932925277F990070F771 /* PercentToString.swift in Sources */,
 				05566A132990F85200E7A5F1 /* ArrayIsEmpty.swift in Sources */,

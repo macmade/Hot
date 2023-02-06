@@ -43,8 +43,8 @@ public class InfoViewController: NSViewController
         @objc public private( set ) dynamic var isARM = false
     #endif
 
-    @IBOutlet private var graphView:       GraphView!
-    @IBOutlet private var graphViewHeight: NSLayoutConstraint!
+    @IBOutlet public private( set ) var graphView:       GraphView?
+    @IBOutlet private               var graphViewHeight: NSLayoutConstraint!
 
     deinit
     {
@@ -142,14 +142,14 @@ public class InfoViewController: NSViewController
 
         if self.speedLimit > 0, self.temperature > 0
         {
-            self.graphView.addData( speed: self.speedLimit, temperature: self.temperature )
+            self.graphView?.addData( speed: self.speedLimit, temperature: self.temperature )
         }
         else if self.temperature > 0
         {
-            self.graphView.addData( speed: 100, temperature: self.temperature )
+            self.graphView?.addData( speed: 100, temperature: self.temperature )
         }
 
-        self.graphViewHeight.constant = self.graphView.canDisplay ? 100 : 0
+        self.graphViewHeight.constant = self.graphView?.canDisplay ?? false ? 100 : 0
 
         self.onUpdate?()
     }

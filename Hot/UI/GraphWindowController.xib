@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="GraphWindowController" customModule="Hot" customModuleProvider="target">
+            <connections>
+                <outlet property="graphView" destination="psa-0V-CfC" id="aqI-Oo-YKq"/>
+                <outlet property="window" destination="E95-MK-K4g" id="KQ3-si-L13"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Hot" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="GraphPanel" animationBehavior="default" titlebarAppearsTransparent="YES" id="E95-MK-K4g" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES" nonactivatingPanel="YES" HUD="YES" fullSizeContentView="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="116" y="166" width="300" height="200"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1710" height="1069"/>
+            <value key="minSize" type="size" width="300" height="200"/>
+            <value key="maxSize" type="size" width="300" height="200"/>
+            <view key="contentView" id="d04-7F-4tv">
+                <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="psa-0V-CfC" customClass="GraphView" customModule="Hot" customModuleProvider="target">
+                        <rect key="frame" x="10" y="90" width="280" height="90"/>
+                    </customView>
+                    <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kk4-S5-WiX">
+                        <rect key="frame" x="10" y="10" width="280" height="70"/>
+                        <subviews>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="UDc-Nf-iV3">
+                                <rect key="frame" x="0.0" y="54" width="280" height="16"/>
+                                <subviews>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5vd-I6-ADD">
+                                        <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="16" id="1qN-QT-u4Y"/>
+                                            <constraint firstAttribute="height" constant="16" id="cqz-dm-eHX"/>
+                                        </constraints>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="SchedulerTemplate" id="zN3-Gy-vPy"/>
+                                    </imageView>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="u7z-t1-3uz">
+                                        <rect key="frame" x="22" y="1" width="89" height="14"/>
+                                        <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Scheduler Limit:" id="xzB-6g-MgQ">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SAO-oi-MRP">
+                                        <rect key="frame" x="249" y="1" width="33" height="14"/>
+                                        <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Label" id="Hyv-3A-6dg">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <connections>
+                                            <binding destination="-2" name="value" keyPath="self.schedulerLimit" id="FtF-32-4ud">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">PercentToString</string>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="u7z-t1-3uz" firstAttribute="leading" secondItem="5vd-I6-ADD" secondAttribute="trailing" constant="8" symbolic="YES" id="5Az-7K-shG"/>
+                                    <constraint firstItem="u7z-t1-3uz" firstAttribute="centerY" secondItem="5vd-I6-ADD" secondAttribute="centerY" id="5qC-2Q-Wyu"/>
+                                    <constraint firstItem="SAO-oi-MRP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="u7z-t1-3uz" secondAttribute="trailing" constant="8" symbolic="YES" id="GYD-BG-qkv"/>
+                                    <constraint firstAttribute="trailing" secondItem="SAO-oi-MRP" secondAttribute="trailing" id="HT7-yB-Ixa"/>
+                                    <constraint firstItem="SAO-oi-MRP" firstAttribute="centerY" secondItem="u7z-t1-3uz" secondAttribute="centerY" id="IOp-fa-TrT"/>
+                                    <constraint firstAttribute="bottom" secondItem="5vd-I6-ADD" secondAttribute="bottom" id="eMK-y7-c0v"/>
+                                    <constraint firstItem="5vd-I6-ADD" firstAttribute="leading" secondItem="UDc-Nf-iV3" secondAttribute="leading" id="hoS-Qq-m4e"/>
+                                    <constraint firstItem="5vd-I6-ADD" firstAttribute="top" secondItem="UDc-Nf-iV3" secondAttribute="top" id="mAl-Ef-62l"/>
+                                </constraints>
+                                <connections>
+                                    <binding destination="-2" name="hidden" keyPath="self.isARM" id="Mjd-8e-cFp"/>
+                                </connections>
+                            </customView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="i09-rq-HcB">
+                                <rect key="frame" x="0.0" y="36" width="280" height="16"/>
+                                <subviews>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7No-PC-pRf">
+                                        <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="16" id="OHy-7X-MyB"/>
+                                            <constraint firstAttribute="height" constant="16" id="cZM-Yh-VVs"/>
+                                        </constraints>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="SpeedTemplate" id="bVA-x4-mOw"/>
+                                    </imageView>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wcq-SE-w4N">
+                                        <rect key="frame" x="22" y="1" width="70" height="14"/>
+                                        <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Speed Limit:" id="CDq-Bd-Qfy">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EzT-L5-NnR">
+                                        <rect key="frame" x="249" y="1" width="33" height="14"/>
+                                        <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Label" id="XUE-bU-Vgb">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <connections>
+                                            <binding destination="-2" name="value" keyPath="self.speedLimit" id="X4u-S8-f0Q">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">PercentToString</string>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="EzT-L5-NnR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Wcq-SE-w4N" secondAttribute="trailing" constant="8" symbolic="YES" id="2qb-zi-ezK"/>
+                                    <constraint firstAttribute="bottom" secondItem="7No-PC-pRf" secondAttribute="bottom" id="Hzx-x4-Qc5"/>
+                                    <constraint firstItem="Wcq-SE-w4N" firstAttribute="leading" secondItem="7No-PC-pRf" secondAttribute="trailing" constant="8" symbolic="YES" id="Oc0-SH-uFO"/>
+                                    <constraint firstItem="Wcq-SE-w4N" firstAttribute="centerY" secondItem="7No-PC-pRf" secondAttribute="centerY" id="eDa-tu-b1u"/>
+                                    <constraint firstItem="7No-PC-pRf" firstAttribute="top" secondItem="i09-rq-HcB" secondAttribute="top" id="hza-cv-I7Y"/>
+                                    <constraint firstItem="7No-PC-pRf" firstAttribute="leading" secondItem="i09-rq-HcB" secondAttribute="leading" id="iyE-aT-HFy"/>
+                                    <constraint firstItem="EzT-L5-NnR" firstAttribute="centerY" secondItem="Wcq-SE-w4N" secondAttribute="centerY" id="k1g-QC-OAM"/>
+                                    <constraint firstAttribute="trailing" secondItem="EzT-L5-NnR" secondAttribute="trailing" id="kbo-VR-Mxd"/>
+                                </constraints>
+                                <connections>
+                                    <binding destination="-2" name="hidden" keyPath="self.isARM" id="rHk-RI-des"/>
+                                </connections>
+                            </customView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="uyS-K8-13K">
+                                <rect key="frame" x="0.0" y="18" width="280" height="16"/>
+                                <subviews>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="euY-bg-3y3">
+                                        <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="Nr3-tf-G83"/>
+                                            <constraint firstAttribute="width" constant="16" id="pM2-gW-L1v"/>
+                                        </constraints>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="PressureTemplate" id="bm2-xQ-stq"/>
+                                    </imageView>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bVz-Uk-OFd">
+                                        <rect key="frame" x="22" y="1" width="100" height="14"/>
+                                        <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Thermal Pressure:" id="jRC-vr-dyd">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bpu-4s-Y9j">
+                                        <rect key="frame" x="249" y="1" width="33" height="14"/>
+                                        <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Label" id="COD-yV-zJa">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <connections>
+                                            <binding destination="-2" name="value" keyPath="self.thermalPressure" id="M28-E3-h6Q">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">PressureToString</string>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="euY-bg-3y3" firstAttribute="top" secondItem="uyS-K8-13K" secondAttribute="top" id="16o-10-K4i"/>
+                                    <constraint firstItem="Bpu-4s-Y9j" firstAttribute="centerY" secondItem="bVz-Uk-OFd" secondAttribute="centerY" id="CtR-Vb-JQM"/>
+                                    <constraint firstAttribute="trailing" secondItem="Bpu-4s-Y9j" secondAttribute="trailing" id="Eeo-1u-Bxh"/>
+                                    <constraint firstItem="bVz-Uk-OFd" firstAttribute="centerY" secondItem="euY-bg-3y3" secondAttribute="centerY" id="Q4M-lp-Qf3"/>
+                                    <constraint firstItem="euY-bg-3y3" firstAttribute="leading" secondItem="uyS-K8-13K" secondAttribute="leading" id="Wpg-zk-YGD"/>
+                                    <constraint firstItem="bVz-Uk-OFd" firstAttribute="leading" secondItem="euY-bg-3y3" secondAttribute="trailing" constant="8" symbolic="YES" id="afQ-cf-fCI"/>
+                                    <constraint firstAttribute="bottom" secondItem="euY-bg-3y3" secondAttribute="bottom" id="hKz-Y4-DXo"/>
+                                    <constraint firstItem="Bpu-4s-Y9j" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bVz-Uk-OFd" secondAttribute="trailing" constant="8" symbolic="YES" id="if1-cE-qpP"/>
+                                </constraints>
+                                <connections>
+                                    <binding destination="-2" name="hidden" keyPath="self.isARM" id="YcG-zR-q9Q">
+                                        <dictionary key="options">
+                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </customView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="t5M-Ql-jJq">
+                                <rect key="frame" x="0.0" y="0.0" width="280" height="16"/>
+                                <subviews>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jN0-7D-Rq5">
+                                        <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="16" id="Mte-3n-m9t"/>
+                                            <constraint firstAttribute="height" constant="16" id="s97-Nt-KyT"/>
+                                        </constraints>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="TemperatureTemplate" id="bfY-Gi-cTO"/>
+                                    </imageView>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7Pg-7n-TUk">
+                                        <rect key="frame" x="22" y="1" width="74" height="14"/>
+                                        <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Temperature:" id="szg-2B-tA1">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="i3f-IU-Yug">
+                                        <rect key="frame" x="249" y="1" width="33" height="14"/>
+                                        <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Label" id="Nay-J4-eps">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <connections>
+                                            <binding destination="-2" name="value" keyPath="self.temperature" id="SHN-vV-Ivh">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">TemperatureToString</string>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="i3f-IU-Yug" firstAttribute="centerY" secondItem="7Pg-7n-TUk" secondAttribute="centerY" id="21H-y5-L0j"/>
+                                    <constraint firstAttribute="trailing" secondItem="i3f-IU-Yug" secondAttribute="trailing" id="7QU-xa-S5X"/>
+                                    <constraint firstItem="7Pg-7n-TUk" firstAttribute="centerY" secondItem="jN0-7D-Rq5" secondAttribute="centerY" id="7UX-5y-Je9"/>
+                                    <constraint firstItem="jN0-7D-Rq5" firstAttribute="top" secondItem="t5M-Ql-jJq" secondAttribute="top" id="MYt-Gp-VES"/>
+                                    <constraint firstItem="i3f-IU-Yug" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7Pg-7n-TUk" secondAttribute="trailing" constant="8" symbolic="YES" id="Ugq-FN-Bfi"/>
+                                    <constraint firstItem="7Pg-7n-TUk" firstAttribute="leading" secondItem="jN0-7D-Rq5" secondAttribute="trailing" constant="8" symbolic="YES" id="f5O-1t-iyB"/>
+                                    <constraint firstAttribute="bottom" secondItem="jN0-7D-Rq5" secondAttribute="bottom" id="jkB-lM-PhF"/>
+                                    <constraint firstItem="jN0-7D-Rq5" firstAttribute="leading" secondItem="t5M-Ql-jJq" secondAttribute="leading" id="q0y-In-fJg"/>
+                                </constraints>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="UDc-Nf-iV3" secondAttribute="trailing" id="Cek-3N-2gI"/>
+                            <constraint firstItem="UDc-Nf-iV3" firstAttribute="leading" secondItem="kk4-S5-WiX" secondAttribute="leading" id="gmf-4n-Z7u"/>
+                        </constraints>
+                        <visibilityPriorities>
+                            <integer value="1000"/>
+                            <integer value="1000"/>
+                            <integer value="1000"/>
+                            <integer value="1000"/>
+                        </visibilityPriorities>
+                        <customSpacing>
+                            <real value="3.4028234663852886e+38"/>
+                            <real value="3.4028234663852886e+38"/>
+                            <real value="3.4028234663852886e+38"/>
+                            <real value="3.4028234663852886e+38"/>
+                        </customSpacing>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="kk4-S5-WiX" firstAttribute="top" secondItem="psa-0V-CfC" secondAttribute="bottom" constant="10" id="15S-D2-cB5"/>
+                    <constraint firstItem="psa-0V-CfC" firstAttribute="top" secondItem="d04-7F-4tv" secondAttribute="top" constant="20" symbolic="YES" id="6bx-re-Vp9"/>
+                    <constraint firstAttribute="trailing" secondItem="kk4-S5-WiX" secondAttribute="trailing" constant="10" id="8fi-tI-2lM"/>
+                    <constraint firstItem="kk4-S5-WiX" firstAttribute="leading" secondItem="d04-7F-4tv" secondAttribute="leading" constant="10" id="9cA-bK-d0m"/>
+                    <constraint firstItem="psa-0V-CfC" firstAttribute="leading" secondItem="d04-7F-4tv" secondAttribute="leading" constant="10" id="Ifw-wU-oRV"/>
+                    <constraint firstAttribute="bottom" secondItem="kk4-S5-WiX" secondAttribute="bottom" constant="10" id="pWJ-pj-aV8"/>
+                    <constraint firstAttribute="trailing" secondItem="psa-0V-CfC" secondAttribute="trailing" constant="10" id="xmw-Rd-wH3"/>
+                </constraints>
+            </view>
+            <point key="canvasLocation" x="-183" y="-247"/>
+        </window>
+    </objects>
+    <resources>
+        <image name="PressureTemplate" width="150" height="150"/>
+        <image name="SchedulerTemplate" width="150" height="150"/>
+        <image name="SpeedTemplate" width="150" height="150"/>
+        <image name="TemperatureTemplate" width="150" height="150"/>
+    </resources>
+</document>
