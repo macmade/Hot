@@ -60,7 +60,7 @@ public class ThermalLog: NSObject
 
         let all = [ ioHID, smc ].flatMap { $0 }.filter
         {
-            $0.1.temperature > 0 && $0.1.temperature < 150
+            $0.1.temperature > 0 && $0.1.temperature < 120
         }
 
         return Dictionary( uniqueKeysWithValues: all )
