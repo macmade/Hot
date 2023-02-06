@@ -407,7 +407,7 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
 
     func windowWillClose( _ notification: Notification )
     {
-        self.sensorsWindowController?.stop()
+        self.sensorsWindowController?.stop( completion: nil )
 
         self.sensorsWindowController = nil
     }

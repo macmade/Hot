@@ -120,6 +120,14 @@ typedef NS_ENUM( int64_t, IOHIDEvent )
     IOHIDEventTypeReset                 = 0x1D
 };
 
+#define IOHIDEventFieldBase( _type_ ) ( _type_ << 16 )
+
+typedef NS_ENUM( int64_t, IOHIDEventField )
+{
+    IOHIDEventFieldTemperatureLevel = IOHIDEventFieldBase( IOHIDEventTypeTemperature ),
+    IOHIDEventFieldPowerMeasurement = IOHIDEventFieldBase( IOHIDEventTypePower )
+};
+
 extern IOHIDEventSystemClientRef IOHIDEventSystemClientCreate( CFAllocatorRef );
 extern void                      IOHIDEventSystemClientSetMatching( IOHIDEventSystemClientRef, CFDictionaryRef );
 extern CFTypeRef                 IOHIDServiceClientCopyEvent( IOHIDServiceClientRef, IOHIDEvent, int64_t, int64_t );

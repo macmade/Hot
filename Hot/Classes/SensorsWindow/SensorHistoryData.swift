@@ -25,9 +25,9 @@
 import Foundation
 
 @objc
-public class SensorData: NSObject
+public class SensorHistoryData: NSObject, Synchronizable
 {
-    @objc( SensorDataKind )
+    @objc( SensorHistoryDataKind )
     public enum Kind: Int, CustomStringConvertible
     {
         case thermal
@@ -45,53 +45,83 @@ public class SensorData: NSObject
         }
     }
 
+    @objc( SensorHistoryDataSource )
+    public enum Source: Int, CustomStringConvertible
+    {
+        case hid
+        case smc
+
+        public var description: String
+        {
+            switch self
+            {
+                case .hid: return "IOHID"
+                case .smc: return "SMC"
+            }
+        }
+    }
+
+    @objc public private( set ) dynamic var source:     Source
     @objc public private( set ) dynamic var kind:       Kind
     @objc public private( set ) dynamic var name:       String
-    @objc public private( set ) dynamic var properties: [ String: Any ]?
+    @objc public private( set ) dynamic var properties: [ AnyHashable: Any ]?
 
     private var data: [ Double ] = []
 
     @objc public dynamic var values: [ NSNumber ]
     {
-        self.data.map { NSNumber( floatLiteral: $0 ) }
+        return self.synchronized
+        {
+            return self.data.map { NSNumber( floatLiteral: $0 ) }
+        }
     }
 
     @objc public dynamic var min: NSNumber?
     {
-        guard let max = self.data.min()
-        else
+        return self.synchronized
         {
-            return nil
-        }
+            guard let max = self.data.min()
+            else
+            {
+                return nil
+            }
 
-        return NSNumber( floatLiteral: max )
+            return NSNumber( floatLiteral: max )
+        }
     }
 
     @objc public dynamic var max: NSNumber?
     {
-        guard let min = self.data.max()
-        else
+        return self.synchronized
         {
-            return nil
-        }
+            guard let min = self.data.max()
+            else
+            {
+                return nil
+            }
 
-        return NSNumber( floatLiteral: min )
+            return NSNumber( floatLiteral: min )
+        }
     }
 
     @objc public dynamic var last: NSNumber?
     {
-        guard let last = self.data.last
-        else
+        return self.synchronized
         {
-            return nil
-        }
+            guard let last = self.data.last
+            else
+            {
+                return nil
+            }
 
-        return NSNumber( floatLiteral: last )
+            return NSNumber( floatLiteral: last )
+        }
     }
 
     @objc
-    public init( kind: Kind, name: String, properties: [ String: Any ]? )
+    public init( source: Source, kind: Kind, name: String, properties: [ AnyHashable: Any ]? )
     {
+        self.source     = source
         self.kind       = kind
         self.name       = name
         self.properties = properties
@@ -100,21 +130,24 @@ public class SensorData: NSObject
     @objc( addValue: )
     public func add( value: Double )
     {
-        var data = self.data
+        self.synchronized
+        {
+            var data = self.data
 
-        data.append( value )
+            data.append( value )
 
-        self.willChangeValue( for: \.values )
-        self.willChangeValue( for: \.min )
-        self.willChangeValue( for: \.max )
-        self.willChangeValue( for: \.last )
+            self.willChangeValue( for: \.values )
+            self.willChangeValue( for: \.min )
+            self.willChangeValue( for: \.max )
+            self.willChangeValue( for: \.last )
 
-        self.data = data.suffix( 50 )
+            self.data = data.suffix( 50 )
 
-        self.didChangeValue( for: \.values )
-        self.didChangeValue( for: \.min )
-        self.didChangeValue( for: \.max )
-        self.didChangeValue( for: \.last )
+            self.didChangeValue( for: \.values )
+            self.didChangeValue( for: \.min )
+            self.didChangeValue( for: \.max )
+            self.didChangeValue( for: \.last )
+        }
     }
 
     public override var description: String

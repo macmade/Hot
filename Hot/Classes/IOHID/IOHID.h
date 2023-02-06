@@ -1,7 +1,7 @@
 /*******************************************************************************
  * The MIT License (MIT)
  *
- * Copyright (c) 2021 Jean-David Gadina - www.xs-labs.com
+ * Copyright (c) 2022 Jean-David Gadina - www.xs-labs.com
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,15 +22,21 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-/*!
- * @header      AppleSilicon.h
- * @copyright   (c) 2021, Jean-David Gadina - www.xs-labs.com
- */
-
 @import Foundation;
+
+@class IOHIDData;
 
 NS_ASSUME_NONNULL_BEGIN
 
-NSDictionary< NSString *, NSNumber * > * ReadAppleSiliconSensors( void );
+@interface IOHID: NSObject
+
+@property( class, nonatomic, readonly ) IOHID * shared;
+
+- ( instancetype )init;
+- ( NSArray< IOHIDData * > *  )readTemperatureSensors;
+- ( NSArray< IOHIDData * > *  )readVoltageSensors;
+- ( NSArray< IOHIDData * > *  )readCurrentSensors;
+
+@end
 
 NS_ASSUME_NONNULL_END

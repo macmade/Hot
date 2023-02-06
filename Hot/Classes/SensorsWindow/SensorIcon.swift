@@ -24,18 +24,32 @@
 
 import Cocoa
 
-public class Colors
+@objc( SensorIcon )
+public class SensorIcon: ValueTransformer
 {
-    public class func color( for kind: SensorData.Kind ) -> NSColor
+    public override class func transformedValueClass() -> AnyClass
     {
-        switch kind
-        {
-            case .thermal: return NSColor.systemOrange
-            case .voltage: return NSColor.systemPurple
-            case .current: return NSColor.systemTeal
-        }
+        NSImage.self
     }
 
-    private init()
-    {}
+    public override class func allowsReverseTransformation() -> Bool
+    {
+        false
+    }
+
+    public override func transformedValue( _ value: Any? ) -> Any?
+    {
+        guard let data = value as? SensorHistoryData
+        else
+        {
+            return nil
+        }
+
+        switch data.kind
+        {
+            case .thermal: return NSImage( named: "ThermalTemplate" )?.tinted( with: Colors.color( for: data.kind ) )
+            case .voltage: return NSImage( named: "VoltageTemplate" )?.tinted( with: Colors.color( for: data.kind ) )
+            case .current: return NSImage( named: "CurrentTemplate" )?.tinted( with: Colors.color( for: data.kind ) )
+        }
+    }
 }

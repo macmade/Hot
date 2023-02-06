@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19162" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19162"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="SensorsWindowController" customModule="Hot" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="SensorsWindowController" customModule="Sensors" customModuleProvider="target">
             <connections>
                 <outlet property="arrayController" destination="k4f-4o-be4" id="F6X-Lo-Fc0"/>
                 <outlet property="collectionView" destination="d8j-id-ziA" id="tbm-Yo-sK6"/>
@@ -19,7 +19,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="800" height="515"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1710" height="1069"/>
             <value key="minSize" type="size" width="800" height="515"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="515"/>
@@ -113,6 +113,26 @@
                                             <binding destination="-2" name="value" keyPath="self.showCurrent" id="McY-1z-eLE"/>
                                         </connections>
                                     </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AZ7-l5-9da">
+                                        <rect key="frame" x="481" y="21" width="62" height="18"/>
+                                        <buttonCell key="cell" type="check" title="IOHID" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="B30-xT-MxH">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <binding destination="-2" name="value" keyPath="self.showIOHID" id="BgH-kZ-wRG"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wQZ-5m-sLD">
+                                        <rect key="frame" x="549" y="21" width="55" height="18"/>
+                                        <buttonCell key="cell" type="check" title="SMC" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="lBw-Xe-W5E">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <binding destination="-2" name="value" keyPath="self.showSMC" id="vG2-nh-ynR"/>
+                                        </connections>
+                                    </button>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wh8-P7-8p4">
                                         <rect key="frame" x="610" y="22" width="79" height="16"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Graph Style:" id="6Ty-8X-UI6">
@@ -142,12 +162,14 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="0b0-bM-ppa" firstAttribute="leading" secondItem="X4f-ON-Yh7" secondAttribute="leading" constant="20" symbolic="YES" id="7Hg-zM-lO0"/>
-                                    <constraint firstItem="wh8-P7-8p4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DL0-ry-nBa" secondAttribute="trailing" constant="8" symbolic="YES" id="AMf-YL-aMc"/>
+                                    <constraint firstItem="AZ7-l5-9da" firstAttribute="centerY" secondItem="DL0-ry-nBa" secondAttribute="centerY" id="95S-Ic-EYV"/>
                                     <constraint firstItem="YH9-KV-isM" firstAttribute="centerY" secondItem="CWx-dr-5aC" secondAttribute="centerY" id="DiY-62-WNM"/>
                                     <constraint firstItem="0b0-bM-ppa" firstAttribute="top" secondItem="X4f-ON-Yh7" secondAttribute="top" constant="20" symbolic="YES" id="MLt-9Q-NWw"/>
+                                    <constraint firstItem="wQZ-5m-sLD" firstAttribute="leading" secondItem="AZ7-l5-9da" secondAttribute="trailing" constant="8" symbolic="YES" id="TAj-3M-Ri4"/>
                                     <constraint firstItem="wh8-P7-8p4" firstAttribute="centerY" secondItem="DL0-ry-nBa" secondAttribute="centerY" id="TS8-6H-T7P"/>
                                     <constraint firstItem="DL0-ry-nBa" firstAttribute="centerY" secondItem="YH9-KV-isM" secondAttribute="centerY" id="UFB-Be-d69"/>
                                     <constraint firstItem="b2Z-bC-lIL" firstAttribute="leading" secondItem="wh8-P7-8p4" secondAttribute="trailing" constant="8" symbolic="YES" id="V4o-Be-jIe"/>
+                                    <constraint firstItem="AZ7-l5-9da" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DL0-ry-nBa" secondAttribute="trailing" constant="8" symbolic="YES" id="guo-9T-pSR"/>
                                     <constraint firstItem="CWx-dr-5aC" firstAttribute="leading" secondItem="X4f-ON-Yh7" secondAttribute="leading" constant="20" symbolic="YES" id="kHN-fy-wU3"/>
                                     <constraint firstItem="DL0-ry-nBa" firstAttribute="leading" secondItem="YH9-KV-isM" secondAttribute="trailing" constant="8" symbolic="YES" id="kXC-gz-rYd"/>
                                     <constraint firstItem="b2Z-bC-lIL" firstAttribute="top" secondItem="0b0-bM-ppa" secondAttribute="bottom" constant="20" symbolic="YES" id="nmc-VG-jfo"/>
@@ -156,7 +178,8 @@
                                     <constraint firstAttribute="trailing" secondItem="0b0-bM-ppa" secondAttribute="trailing" constant="20" symbolic="YES" id="vhy-3U-orM"/>
                                     <constraint firstAttribute="trailing" secondItem="b2Z-bC-lIL" secondAttribute="trailing" constant="20" symbolic="YES" id="vmq-Sh-oFu"/>
                                     <constraint firstItem="b2Z-bC-lIL" firstAttribute="centerY" secondItem="wh8-P7-8p4" secondAttribute="centerY" id="wRu-AK-pi5"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DL0-ry-nBa" secondAttribute="trailing" constant="20" symbolic="YES" id="yDe-dg-UV7"/>
+                                    <constraint firstItem="wh8-P7-8p4" firstAttribute="leading" secondItem="wQZ-5m-sLD" secondAttribute="trailing" constant="8" symbolic="YES" id="ywZ-bR-CBb"/>
+                                    <constraint firstItem="wQZ-5m-sLD" firstAttribute="centerY" secondItem="AZ7-l5-9da" secondAttribute="centerY" id="zw8-PQ-uUL"/>
                                 </constraints>
                                 <connections>
                                     <binding destination="-2" name="hidden" keyPath="self.sensors.data" id="oYT-Hj-xEu">

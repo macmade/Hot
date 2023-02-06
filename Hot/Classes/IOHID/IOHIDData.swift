@@ -22,34 +22,20 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-import Cocoa
+import Foundation
 
-@objc( SensorIcon )
-public class SensorIcon: ValueTransformer
+@objc
+public class IOHIDData: NSObject
 {
-    public override class func transformedValueClass() -> AnyClass
-    {
-        NSImage.self
-    }
+    @objc public dynamic var name:       String
+    @objc public dynamic var value:      Double
+    @objc public dynamic var properties: [ AnyHashable: Any ]
 
-    public override class func allowsReverseTransformation() -> Bool
+    @objc
+    public init( name: String, value: Double, properties: [ AnyHashable: Any ] )
     {
-        false
-    }
-
-    public override func transformedValue( _ value: Any? ) -> Any?
-    {
-        guard let data = value as? SensorData
-        else
-        {
-            return nil
-        }
-
-        switch data.kind
-        {
-            case .thermal: return NSImage( named: "ThermalTemplate" )?.tinted( with: Colors.color( for: data.kind ) )
-            case .voltage: return NSImage( named: "VoltageTemplate" )?.tinted( with: Colors.color( for: data.kind ) )
-            case .current: return NSImage( named: "CurrentTemplate" )?.tinted( with: Colors.color( for: data.kind ) )
-        }
+        self.name       = name
+        self.value      = value
+        self.properties = properties
     }
 }

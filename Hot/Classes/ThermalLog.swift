@@ -47,11 +47,11 @@ public class ThermalLog: NSObject
         #if arch( arm64 )
 
             return Dictionary( uniqueKeysWithValues:
-                ReadAppleSiliconSensors().map
+                IOHID.shared.readTemperatureSensors().map
                 {
-                    let isCPU = $0.key.hasPrefix( "pACC" ) || $0.key.hasPrefix( "eACC" )
+                    let isCPU = $0.name.hasPrefix( "pACC" ) || $0.name.hasPrefix( "eACC" )
 
-                    return ( $0.key, ( temperature: $0.value.doubleValue, isCPU: isCPU ) )
+                    return ( $0.name, ( temperature: $0.value, isCPU: isCPU ) )
                 }
             )
 

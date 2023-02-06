@@ -7,27 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		05221E62266FD5BD007246FF /* AppleSilicon.m in Sources */ = {isa = PBXBuildFile; fileRef = 05221E61266FD5BD007246FF /* AppleSilicon.m */; };
 		05221E8626700772007246FF /* DictionaryIsEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05221E8526700772007246FF /* DictionaryIsEmpty.swift */; };
 		05221E88267009A8007246FF /* SensorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05221E87267009A8007246FF /* SensorViewController.swift */; };
 		05221E8B26700A57007246FF /* SensorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05221E8926700A57007246FF /* SensorViewController.xib */; };
 		052FBC34251ECA8600C4322E /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 052FBC33251ECA8600C4322E /* IOKit.framework */; };
-		052FBC38251ECB8B00C4322E /* SMC.c in Sources */ = {isa = PBXBuildFile; fileRef = 052FBC37251ECB8B00C4322E /* SMC.c */; };
 		052FBCA3251EE43B00C4322E /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052FBCA2251EE43B00C4322E /* PreferencesWindowController.swift */; };
 		052FBCA7251EE46700C4322E /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 052FBCA5251EE46700C4322E /* PreferencesWindowController.xib */; };
 		052FBCD4251F842C00C4322E /* SpeedTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 052FBCCF251F842C00C4322E /* SpeedTemplate.pdf */; };
 		052FBCD5251F842C00C4322E /* CPUTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 052FBCD1251F842C00C4322E /* CPUTemplate.pdf */; };
 		052FBCD6251F842C00C4322E /* TemperatureTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 052FBCD2251F842C00C4322E /* TemperatureTemplate.pdf */; };
 		052FBCD7251F842C00C4322E /* SchedulerTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 052FBCD3251F842C00C4322E /* SchedulerTemplate.pdf */; };
+		05566A082990F85200E7A5F1 /* SensorIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055669EA2990F85200E7A5F1 /* SensorIcon.swift */; };
+		05566A092990F85200E7A5F1 /* SensorsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055669EB2990F85200E7A5F1 /* SensorsWindowController.swift */; };
+		05566A0A2990F85200E7A5F1 /* VoltageTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 055669ED2990F85200E7A5F1 /* VoltageTemplate.pdf */; };
+		05566A0B2990F85200E7A5F1 /* CurrentTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 055669EE2990F85200E7A5F1 /* CurrentTemplate.pdf */; };
+		05566A0C2990F85200E7A5F1 /* ThermalTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 055669EF2990F85200E7A5F1 /* ThermalTemplate.pdf */; };
+		05566A0D2990F85200E7A5F1 /* SensorValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055669F02990F85200E7A5F1 /* SensorValue.swift */; };
+		05566A0E2990F85200E7A5F1 /* SensorHistoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055669F12990F85200E7A5F1 /* SensorHistoryData.swift */; };
+		05566A0F2990F85200E7A5F1 /* ArrayIsNotEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055669F22990F85200E7A5F1 /* ArrayIsNotEmpty.swift */; };
+		05566A102990F85200E7A5F1 /* SensorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055669F32990F85200E7A5F1 /* SensorItem.swift */; };
+		05566A112990F85200E7A5F1 /* SensorItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 055669F42990F85200E7A5F1 /* SensorItem.xib */; };
+		05566A122990F85200E7A5F1 /* SensorsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 055669F62990F85200E7A5F1 /* SensorsWindowController.xib */; };
+		05566A132990F85200E7A5F1 /* ArrayIsEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055669F82990F85200E7A5F1 /* ArrayIsEmpty.swift */; };
+		05566A142990F85200E7A5F1 /* SensorGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055669F92990F85200E7A5F1 /* SensorGraphView.swift */; };
+		05566A152990F85200E7A5F1 /* NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055669FA2990F85200E7A5F1 /* NSImage.swift */; };
+		05566A162990F85200E7A5F1 /* Sensors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055669FB2990F85200E7A5F1 /* Sensors.swift */; };
+		05566A172990F85200E7A5F1 /* Synchronizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055669FC2990F85200E7A5F1 /* Synchronizable.swift */; };
+		05566A182990F85200E7A5F1 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055669FD2990F85200E7A5F1 /* Colors.swift */; };
+		05566A192990F85200E7A5F1 /* IOHIDData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05566A012990F85200E7A5F1 /* IOHIDData.swift */; };
+		05566A1A2990F85200E7A5F1 /* IOHID.m in Sources */ = {isa = PBXBuildFile; fileRef = 05566A022990F85200E7A5F1 /* IOHID.m */; };
+		05566A1B2990F85200E7A5F1 /* SMC.m in Sources */ = {isa = PBXBuildFile; fileRef = 05566A042990F85200E7A5F1 /* SMC.m */; };
+		05566A1C2990F85200E7A5F1 /* SMCData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05566A052990F85200E7A5F1 /* SMCData.swift */; };
 		055A9320252778C10070F771 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055A931F252778C10070F771 /* InfoViewController.swift */; };
 		055A9323252778D00070F771 /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 055A9321252778D00070F771 /* InfoViewController.xib */; };
 		055A932525277E9E0070F771 /* IntegerToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055A932425277E9E0070F771 /* IntegerToString.swift */; };
 		055A932725277F6E0070F771 /* TemperatureToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055A932625277F6E0070F771 /* TemperatureToString.swift */; };
 		055A932925277F990070F771 /* PercentToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055A932825277F990070F771 /* PercentToString.swift */; };
 		055A932B252780FD0070F771 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055A932A252780FD0070F771 /* GraphView.swift */; };
-		057BA11728884BCD00324D16 /* CurrentTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 057BA11328884BCD00324D16 /* CurrentTemplate.pdf */; };
-		057BA11828884BCD00324D16 /* ThermalTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 057BA11528884BCD00324D16 /* ThermalTemplate.pdf */; };
-		057BA11928884BCD00324D16 /* VoltageTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 057BA11628884BCD00324D16 /* VoltageTemplate.pdf */; };
 		057F8B00251D22360048F1E1 /* StatusIconTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 057F8AFF251D22360048F1E1 /* StatusIconTemplate.pdf */; };
 		057F8B0C251D273E0048F1E1 /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057F8B0B251D273E0048F1E1 /* AboutWindowController.swift */; };
 		057F8B11251D274C0048F1E1 /* NSApplication+LaunchServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 057F8B10251D274C0048F1E1 /* NSApplication+LaunchServices.m */; };
@@ -35,20 +51,6 @@
 		057F8B1B251D2A970048F1E1 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 057F8B1A251D2A970048F1E1 /* Icon.icns */; };
 		057F8B65251D2D5F0048F1E1 /* GitHubUpdates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 057F8B5C251D2D510048F1E1 /* GitHubUpdates.framework */; };
 		057F8B67251D2D680048F1E1 /* GitHubUpdates.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 057F8B5C251D2D510048F1E1 /* GitHubUpdates.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		05A012C226FB9AEB00D3F6B6 /* SensorIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A012B026FB9AEB00D3F6B6 /* SensorIcon.swift */; };
-		05A012C326FB9AEB00D3F6B6 /* SensorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A012B126FB9AEB00D3F6B6 /* SensorData.swift */; };
-		05A012C426FB9AEB00D3F6B6 /* SensorsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A012B226FB9AEB00D3F6B6 /* SensorsWindowController.swift */; };
-		05A012C626FB9AEB00D3F6B6 /* SensorValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A012B526FB9AEB00D3F6B6 /* SensorValue.swift */; };
-		05A012C826FB9AEB00D3F6B6 /* ArrayIsNotEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A012B726FB9AEB00D3F6B6 /* ArrayIsNotEmpty.swift */; };
-		05A012C926FB9AEB00D3F6B6 /* SensorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A012B826FB9AEB00D3F6B6 /* SensorItem.swift */; };
-		05A012CA26FB9AEB00D3F6B6 /* ArrayIsEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A012BA26FB9AEB00D3F6B6 /* ArrayIsEmpty.swift */; };
-		05A012CB26FB9AEB00D3F6B6 /* SensorGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A012BB26FB9AEB00D3F6B6 /* SensorGraphView.swift */; };
-		05A012CC26FB9AEB00D3F6B6 /* NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A012BC26FB9AEB00D3F6B6 /* NSImage.swift */; };
-		05A012CD26FB9AEB00D3F6B6 /* Synchronizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A012BD26FB9AEB00D3F6B6 /* Synchronizable.swift */; };
-		05A012CE26FB9AEB00D3F6B6 /* Sensors.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A012BE26FB9AEB00D3F6B6 /* Sensors.m */; };
-		05A012CF26FB9AEB00D3F6B6 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A012BF26FB9AEB00D3F6B6 /* Colors.swift */; };
-		05A012D626FB9B8B00D3F6B6 /* SensorItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05A012D226FB9B8B00D3F6B6 /* SensorItem.xib */; };
-		05A012D726FB9B8B00D3F6B6 /* SensorsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05A012D426FB9B8B00D3F6B6 /* SensorsWindowController.xib */; };
 		05AA407A251CF3D200106CEA /* ApplicationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AA4079251CF3D200106CEA /* ApplicationDelegate.swift */; };
 		05AA407F251CF3D600106CEA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05AA407D251CF3D600106CEA /* MainMenu.xib */; };
 		05AA408D251CFA0600106CEA /* ThermalLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AA408C251CFA0600106CEA /* ThermalLog.swift */; };
@@ -102,29 +104,47 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		05221E60266FD5BD007246FF /* AppleSilicon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppleSilicon.h; sourceTree = "<group>"; };
-		05221E61266FD5BD007246FF /* AppleSilicon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppleSilicon.m; sourceTree = "<group>"; };
 		05221E8526700772007246FF /* DictionaryIsEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryIsEmpty.swift; sourceTree = "<group>"; };
 		05221E87267009A8007246FF /* SensorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorViewController.swift; sourceTree = "<group>"; };
 		05221E8A26700A57007246FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SensorViewController.xib; sourceTree = "<group>"; };
-		052FBC32251EC69B00C4322E /* SMC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMC.h; sourceTree = "<group>"; };
 		052FBC33251ECA8600C4322E /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
-		052FBC37251ECB8B00C4322E /* SMC.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SMC.c; sourceTree = "<group>"; };
 		052FBCA2251EE43B00C4322E /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		052FBCA6251EE46700C4322E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreferencesWindowController.xib; sourceTree = "<group>"; };
 		052FBCCF251F842C00C4322E /* SpeedTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = SpeedTemplate.pdf; sourceTree = "<group>"; };
 		052FBCD1251F842C00C4322E /* CPUTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = CPUTemplate.pdf; sourceTree = "<group>"; };
 		052FBCD2251F842C00C4322E /* TemperatureTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TemperatureTemplate.pdf; sourceTree = "<group>"; };
 		052FBCD3251F842C00C4322E /* SchedulerTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = SchedulerTemplate.pdf; sourceTree = "<group>"; };
+		055669EA2990F85200E7A5F1 /* SensorIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorIcon.swift; sourceTree = "<group>"; };
+		055669EB2990F85200E7A5F1 /* SensorsWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorsWindowController.swift; sourceTree = "<group>"; };
+		055669ED2990F85200E7A5F1 /* VoltageTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = VoltageTemplate.pdf; sourceTree = "<group>"; };
+		055669EE2990F85200E7A5F1 /* CurrentTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = CurrentTemplate.pdf; sourceTree = "<group>"; };
+		055669EF2990F85200E7A5F1 /* ThermalTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ThermalTemplate.pdf; sourceTree = "<group>"; };
+		055669F02990F85200E7A5F1 /* SensorValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorValue.swift; sourceTree = "<group>"; };
+		055669F12990F85200E7A5F1 /* SensorHistoryData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorHistoryData.swift; sourceTree = "<group>"; };
+		055669F22990F85200E7A5F1 /* ArrayIsNotEmpty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayIsNotEmpty.swift; sourceTree = "<group>"; };
+		055669F32990F85200E7A5F1 /* SensorItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorItem.swift; sourceTree = "<group>"; };
+		055669F52990F85200E7A5F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SensorItem.xib; sourceTree = "<group>"; };
+		055669F72990F85200E7A5F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SensorsWindowController.xib; sourceTree = "<group>"; };
+		055669F82990F85200E7A5F1 /* ArrayIsEmpty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayIsEmpty.swift; sourceTree = "<group>"; };
+		055669F92990F85200E7A5F1 /* SensorGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorGraphView.swift; sourceTree = "<group>"; };
+		055669FA2990F85200E7A5F1 /* NSImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSImage.swift; sourceTree = "<group>"; };
+		055669FB2990F85200E7A5F1 /* Sensors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sensors.swift; sourceTree = "<group>"; };
+		055669FC2990F85200E7A5F1 /* Synchronizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Synchronizable.swift; sourceTree = "<group>"; };
+		055669FD2990F85200E7A5F1 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		055669FF2990F85200E7A5F1 /* IOHID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOHID.h; sourceTree = "<group>"; };
+		05566A002990F85200E7A5F1 /* IOHID-Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IOHID-Internal.h"; sourceTree = "<group>"; };
+		05566A012990F85200E7A5F1 /* IOHIDData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOHIDData.swift; sourceTree = "<group>"; };
+		05566A022990F85200E7A5F1 /* IOHID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IOHID.m; sourceTree = "<group>"; };
+		05566A042990F85200E7A5F1 /* SMC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMC.m; sourceTree = "<group>"; };
+		05566A052990F85200E7A5F1 /* SMCData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCData.swift; sourceTree = "<group>"; };
+		05566A062990F85200E7A5F1 /* SMC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMC.h; sourceTree = "<group>"; };
+		05566A072990F85200E7A5F1 /* SMC-Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SMC-Internal.h"; sourceTree = "<group>"; };
 		055A931F252778C10070F771 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		055A9322252778D00070F771 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/InfoViewController.xib; sourceTree = "<group>"; };
 		055A932425277E9E0070F771 /* IntegerToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegerToString.swift; sourceTree = "<group>"; };
 		055A932625277F6E0070F771 /* TemperatureToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureToString.swift; sourceTree = "<group>"; };
 		055A932825277F990070F771 /* PercentToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentToString.swift; sourceTree = "<group>"; };
 		055A932A252780FD0070F771 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
-		057BA11328884BCD00324D16 /* CurrentTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = CurrentTemplate.pdf; sourceTree = "<group>"; };
-		057BA11528884BCD00324D16 /* ThermalTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ThermalTemplate.pdf; sourceTree = "<group>"; };
-		057BA11628884BCD00324D16 /* VoltageTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = VoltageTemplate.pdf; sourceTree = "<group>"; };
 		057F8AFF251D22360048F1E1 /* StatusIconTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = StatusIconTemplate.pdf; sourceTree = "<group>"; };
 		057F8B0B251D273E0048F1E1 /* AboutWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
 		057F8B0E251D274C0048F1E1 /* Hot-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hot-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -179,22 +199,6 @@
 		057F8B53251D2C840048F1E1 /* ccache.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ccache.sh; sourceTree = "<group>"; };
 		057F8B54251D2C840048F1E1 /* Debug - zld.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Debug - zld.xcconfig"; sourceTree = "<group>"; };
 		057F8B56251D2D510048F1E1 /* GitHubUpdates.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GitHubUpdates.xcodeproj; path = Submodules/GitHubUpdates/GitHubUpdates.xcodeproj; sourceTree = "<group>"; };
-		05A012B026FB9AEB00D3F6B6 /* SensorIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorIcon.swift; sourceTree = "<group>"; };
-		05A012B126FB9AEB00D3F6B6 /* SensorData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorData.swift; sourceTree = "<group>"; };
-		05A012B226FB9AEB00D3F6B6 /* SensorsWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorsWindowController.swift; sourceTree = "<group>"; };
-		05A012B426FB9AEB00D3F6B6 /* Sensors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sensors.h; sourceTree = "<group>"; };
-		05A012B526FB9AEB00D3F6B6 /* SensorValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorValue.swift; sourceTree = "<group>"; };
-		05A012B726FB9AEB00D3F6B6 /* ArrayIsNotEmpty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayIsNotEmpty.swift; sourceTree = "<group>"; };
-		05A012B826FB9AEB00D3F6B6 /* SensorItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorItem.swift; sourceTree = "<group>"; };
-		05A012B926FB9AEB00D3F6B6 /* IOHID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOHID.h; sourceTree = "<group>"; };
-		05A012BA26FB9AEB00D3F6B6 /* ArrayIsEmpty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayIsEmpty.swift; sourceTree = "<group>"; };
-		05A012BB26FB9AEB00D3F6B6 /* SensorGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorGraphView.swift; sourceTree = "<group>"; };
-		05A012BC26FB9AEB00D3F6B6 /* NSImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSImage.swift; sourceTree = "<group>"; };
-		05A012BD26FB9AEB00D3F6B6 /* Synchronizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Synchronizable.swift; sourceTree = "<group>"; };
-		05A012BE26FB9AEB00D3F6B6 /* Sensors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sensors.m; sourceTree = "<group>"; };
-		05A012BF26FB9AEB00D3F6B6 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		05A012D326FB9B8B00D3F6B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SensorItem.xib; sourceTree = "<group>"; };
-		05A012D526FB9B8B00D3F6B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SensorsWindowController.xib; sourceTree = "<group>"; };
 		05AA4076251CF3D200106CEA /* Hot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05AA4079251CF3D200106CEA /* ApplicationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDelegate.swift; sourceTree = "<group>"; };
 		05AA407E251CF3D600106CEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -226,13 +230,64 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		055669E92990F85200E7A5F1 /* SensorsWindow */ = {
+			isa = PBXGroup;
+			children = (
+				055669EA2990F85200E7A5F1 /* SensorIcon.swift */,
+				055669EB2990F85200E7A5F1 /* SensorsWindowController.swift */,
+				055669EC2990F85200E7A5F1 /* Images */,
+				055669F02990F85200E7A5F1 /* SensorValue.swift */,
+				055669F12990F85200E7A5F1 /* SensorHistoryData.swift */,
+				055669F22990F85200E7A5F1 /* ArrayIsNotEmpty.swift */,
+				055669F32990F85200E7A5F1 /* SensorItem.swift */,
+				055669F42990F85200E7A5F1 /* SensorItem.xib */,
+				055669F62990F85200E7A5F1 /* SensorsWindowController.xib */,
+				055669F82990F85200E7A5F1 /* ArrayIsEmpty.swift */,
+				055669F92990F85200E7A5F1 /* SensorGraphView.swift */,
+				055669FA2990F85200E7A5F1 /* NSImage.swift */,
+				055669FB2990F85200E7A5F1 /* Sensors.swift */,
+				055669FC2990F85200E7A5F1 /* Synchronizable.swift */,
+				055669FD2990F85200E7A5F1 /* Colors.swift */,
+			);
+			path = SensorsWindow;
+			sourceTree = "<group>";
+		};
+		055669EC2990F85200E7A5F1 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				055669ED2990F85200E7A5F1 /* VoltageTemplate.pdf */,
+				055669EE2990F85200E7A5F1 /* CurrentTemplate.pdf */,
+				055669EF2990F85200E7A5F1 /* ThermalTemplate.pdf */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		055669FE2990F85200E7A5F1 /* IOHID */ = {
+			isa = PBXGroup;
+			children = (
+				055669FF2990F85200E7A5F1 /* IOHID.h */,
+				05566A002990F85200E7A5F1 /* IOHID-Internal.h */,
+				05566A012990F85200E7A5F1 /* IOHIDData.swift */,
+				05566A022990F85200E7A5F1 /* IOHID.m */,
+			);
+			path = IOHID;
+			sourceTree = "<group>";
+		};
+		05566A032990F85200E7A5F1 /* SMC */ = {
+			isa = PBXGroup;
+			children = (
+				05566A042990F85200E7A5F1 /* SMC.m */,
+				05566A052990F85200E7A5F1 /* SMCData.swift */,
+				05566A062990F85200E7A5F1 /* SMC.h */,
+				05566A072990F85200E7A5F1 /* SMC-Internal.h */,
+			);
+			path = SMC;
+			sourceTree = "<group>";
+		};
 		057F8AFE251D22360048F1E1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
 				05AD458F29092B8400A791C8 /* BatteryTemplate.pdf */,
-				057BA11328884BCD00324D16 /* CurrentTemplate.pdf */,
-				057BA11528884BCD00324D16 /* ThermalTemplate.pdf */,
-				057BA11628884BCD00324D16 /* VoltageTemplate.pdf */,
 				05AD459129092CEB00A791C8 /* TCalTemplate.pdf */,
 				05B0DFA8267150F40068FF9B /* TCXCTemplate.pdf */,
 				05B0DFA326714A830068FF9B /* eAccTemplate.pdf */,
@@ -382,36 +437,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		05A012AF26FB9AEB00D3F6B6 /* Sensors */ = {
-			isa = PBXGroup;
-			children = (
-				05A012BA26FB9AEB00D3F6B6 /* ArrayIsEmpty.swift */,
-				05A012B726FB9AEB00D3F6B6 /* ArrayIsNotEmpty.swift */,
-				05A012BF26FB9AEB00D3F6B6 /* Colors.swift */,
-				05A012B926FB9AEB00D3F6B6 /* IOHID.h */,
-				05A012B226FB9AEB00D3F6B6 /* SensorsWindowController.swift */,
-				05A012BC26FB9AEB00D3F6B6 /* NSImage.swift */,
-				05A012B126FB9AEB00D3F6B6 /* SensorData.swift */,
-				05A012BB26FB9AEB00D3F6B6 /* SensorGraphView.swift */,
-				05A012B026FB9AEB00D3F6B6 /* SensorIcon.swift */,
-				05A012B826FB9AEB00D3F6B6 /* SensorItem.swift */,
-				05A012B426FB9AEB00D3F6B6 /* Sensors.h */,
-				05A012BE26FB9AEB00D3F6B6 /* Sensors.m */,
-				05A012B526FB9AEB00D3F6B6 /* SensorValue.swift */,
-				05A012BD26FB9AEB00D3F6B6 /* Synchronizable.swift */,
-			);
-			path = Sensors;
-			sourceTree = "<group>";
-		};
-		05A012D126FB9B8B00D3F6B6 /* Sensors */ = {
-			isa = PBXGroup;
-			children = (
-				05A012D226FB9B8B00D3F6B6 /* SensorItem.xib */,
-				05A012D426FB9B8B00D3F6B6 /* SensorsWindowController.xib */,
-			);
-			path = Sensors;
-			sourceTree = "<group>";
-		};
 		05AA406D251CF3D200106CEA = {
 			isa = PBXGroup;
 			children = (
@@ -447,7 +472,9 @@
 		05AA4088251CF3F400106CEA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				05A012AF26FB9AEB00D3F6B6 /* Sensors */,
+				055669FE2990F85200E7A5F1 /* IOHID */,
+				055669E92990F85200E7A5F1 /* SensorsWindow */,
+				05566A032990F85200E7A5F1 /* SMC */,
 				057F8B0B251D273E0048F1E1 /* AboutWindowController.swift */,
 				05AA4079251CF3D200106CEA /* ApplicationDelegate.swift */,
 				05221E87267009A8007246FF /* SensorViewController.swift */,
@@ -460,10 +487,6 @@
 				057F8B10251D274C0048F1E1 /* NSApplication+LaunchServices.m */,
 				055A932825277F990070F771 /* PercentToString.swift */,
 				052FBCA2251EE43B00C4322E /* PreferencesWindowController.swift */,
-				052FBC37251ECB8B00C4322E /* SMC.c */,
-				052FBC32251EC69B00C4322E /* SMC.h */,
-				05221E60266FD5BD007246FF /* AppleSilicon.h */,
-				05221E61266FD5BD007246FF /* AppleSilicon.m */,
 				055A932625277F6E0070F771 /* TemperatureToString.swift */,
 				05BA0BA926F342DA00AA7BFC /* PressureToString.swift */,
 				05AA408C251CFA0600106CEA /* ThermalLog.swift */,
@@ -475,7 +498,6 @@
 		05AA4089251CF3FC00106CEA /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				05A012D126FB9B8B00D3F6B6 /* Sensors */,
 				057F8B13251D27650048F1E1 /* AboutWindowController.xib */,
 				057F8AFE251D22360048F1E1 /* Images */,
 				055A9321252778D00070F771 /* InfoViewController.xib */,
@@ -571,28 +593,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				057BA11728884BCD00324D16 /* CurrentTemplate.pdf in Resources */,
 				052FBCD4251F842C00C4322E /* SpeedTemplate.pdf in Resources */,
 				05BA0BAD26F347A500AA7BFC /* PressureTemplate.pdf in Resources */,
 				052FBCD6251F842C00C4322E /* TemperatureTemplate.pdf in Resources */,
 				057F8B00251D22360048F1E1 /* StatusIconTemplate.pdf in Resources */,
 				057F8B1B251D2A970048F1E1 /* Icon.icns in Resources */,
 				052FBCD5251F842C00C4322E /* CPUTemplate.pdf in Resources */,
+				05566A0C2990F85200E7A5F1 /* ThermalTemplate.pdf in Resources */,
 				05221E8B26700A57007246FF /* SensorViewController.xib in Resources */,
 				05AD459229092CEB00A791C8 /* TCalTemplate.pdf in Resources */,
-				05A012D626FB9B8B00D3F6B6 /* SensorItem.xib in Resources */,
 				05AD458C2908505900A791C8 /* SelectSensorsWindowController.xib in Resources */,
 				055A9323252778D00070F771 /* InfoViewController.xib in Resources */,
 				05B0DFA526714A830068FF9B /* UnknownTemplate.pdf in Resources */,
-				05A012D726FB9B8B00D3F6B6 /* SensorsWindowController.xib in Resources */,
+				05566A112990F85200E7A5F1 /* SensorItem.xib in Resources */,
+				05566A0B2990F85200E7A5F1 /* CurrentTemplate.pdf in Resources */,
 				05AD459029092B8400A791C8 /* BatteryTemplate.pdf in Resources */,
-				057BA11828884BCD00324D16 /* ThermalTemplate.pdf in Resources */,
-				057BA11928884BCD00324D16 /* VoltageTemplate.pdf in Resources */,
 				057F8B15251D27650048F1E1 /* AboutWindowController.xib in Resources */,
 				052FBCA7251EE46700C4322E /* PreferencesWindowController.xib in Resources */,
 				05AA407F251CF3D600106CEA /* MainMenu.xib in Resources */,
 				052FBCD7251F842C00C4322E /* SchedulerTemplate.pdf in Resources */,
 				05B0DFA626714A830068FF9B /* eAccTemplate.pdf in Resources */,
+				05566A0A2990F85200E7A5F1 /* VoltageTemplate.pdf in Resources */,
+				05566A122990F85200E7A5F1 /* SensorsWindowController.xib in Resources */,
 				05B0DFAA267150F40068FF9B /* TCXCTemplate.pdf in Resources */,
 				05B0DFA426714A830068FF9B /* pAccTemplate.pdf in Resources */,
 			);
@@ -626,34 +648,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05566A0E2990F85200E7A5F1 /* SensorHistoryData.swift in Sources */,
 				055A932525277E9E0070F771 /* IntegerToString.swift in Sources */,
+				05566A172990F85200E7A5F1 /* Synchronizable.swift in Sources */,
 				055A932725277F6E0070F771 /* TemperatureToString.swift in Sources */,
-				05A012CD26FB9AEB00D3F6B6 /* Synchronizable.swift in Sources */,
+				05566A0D2990F85200E7A5F1 /* SensorValue.swift in Sources */,
+				05566A1C2990F85200E7A5F1 /* SMCData.swift in Sources */,
+				05566A192990F85200E7A5F1 /* IOHIDData.swift in Sources */,
+				05566A152990F85200E7A5F1 /* NSImage.swift in Sources */,
 				05221E8626700772007246FF /* DictionaryIsEmpty.swift in Sources */,
-				05A012C626FB9AEB00D3F6B6 /* SensorValue.swift in Sources */,
-				05A012C326FB9AEB00D3F6B6 /* SensorData.swift in Sources */,
 				052FBCA3251EE43B00C4322E /* PreferencesWindowController.swift in Sources */,
 				055A932B252780FD0070F771 /* GraphView.swift in Sources */,
-				05A012CC26FB9AEB00D3F6B6 /* NSImage.swift in Sources */,
-				05221E62266FD5BD007246FF /* AppleSilicon.m in Sources */,
 				05221E88267009A8007246FF /* SensorViewController.swift in Sources */,
-				05A012C426FB9AEB00D3F6B6 /* SensorsWindowController.swift in Sources */,
 				057F8B11251D274C0048F1E1 /* NSApplication+LaunchServices.m in Sources */,
-				05A012C926FB9AEB00D3F6B6 /* SensorItem.swift in Sources */,
 				057F8B0C251D273E0048F1E1 /* AboutWindowController.swift in Sources */,
-				05A012CA26FB9AEB00D3F6B6 /* ArrayIsEmpty.swift in Sources */,
 				055A9320252778C10070F771 /* InfoViewController.swift in Sources */,
-				05A012CB26FB9AEB00D3F6B6 /* SensorGraphView.swift in Sources */,
-				05A012CF26FB9AEB00D3F6B6 /* Colors.swift in Sources */,
+				05566A162990F85200E7A5F1 /* Sensors.swift in Sources */,
+				05566A102990F85200E7A5F1 /* SensorItem.swift in Sources */,
+				05566A082990F85200E7A5F1 /* SensorIcon.swift in Sources */,
+				05566A182990F85200E7A5F1 /* Colors.swift in Sources */,
+				05566A092990F85200E7A5F1 /* SensorsWindowController.swift in Sources */,
 				05AD458829084FEF00A791C8 /* SelectSensorsWindowController.swift in Sources */,
+				05566A1A2990F85200E7A5F1 /* IOHID.m in Sources */,
+				05566A0F2990F85200E7A5F1 /* ArrayIsNotEmpty.swift in Sources */,
 				05AA408D251CFA0600106CEA /* ThermalLog.swift in Sources */,
 				055A932925277F990070F771 /* PercentToString.swift in Sources */,
+				05566A132990F85200E7A5F1 /* ArrayIsEmpty.swift in Sources */,
 				05AA407A251CF3D200106CEA /* ApplicationDelegate.swift in Sources */,
 				05BA0BAA26F342DA00AA7BFC /* PressureToString.swift in Sources */,
-				05A012C226FB9AEB00D3F6B6 /* SensorIcon.swift in Sources */,
-				05A012CE26FB9AEB00D3F6B6 /* Sensors.m in Sources */,
-				052FBC38251ECB8B00C4322E /* SMC.c in Sources */,
-				05A012C826FB9AEB00D3F6B6 /* ArrayIsNotEmpty.swift in Sources */,
+				05566A1B2990F85200E7A5F1 /* SMC.m in Sources */,
+				05566A142990F85200E7A5F1 /* SensorGraphView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -684,6 +708,22 @@
 			name = PreferencesWindowController.xib;
 			sourceTree = "<group>";
 		};
+		055669F42990F85200E7A5F1 /* SensorItem.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				055669F52990F85200E7A5F1 /* Base */,
+			);
+			name = SensorItem.xib;
+			sourceTree = "<group>";
+		};
+		055669F62990F85200E7A5F1 /* SensorsWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				055669F72990F85200E7A5F1 /* Base */,
+			);
+			name = SensorsWindowController.xib;
+			sourceTree = "<group>";
+		};
 		055A9321252778D00070F771 /* InfoViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -698,22 +738,6 @@
 				057F8B14251D27650048F1E1 /* Base */,
 			);
 			name = AboutWindowController.xib;
-			sourceTree = "<group>";
-		};
-		05A012D226FB9B8B00D3F6B6 /* SensorItem.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				05A012D326FB9B8B00D3F6B6 /* Base */,
-			);
-			name = SensorItem.xib;
-			sourceTree = "<group>";
-		};
-		05A012D426FB9B8B00D3F6B6 /* SensorsWindowController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				05A012D526FB9B8B00D3F6B6 /* Base */,
-			);
-			name = SensorsWindowController.xib;
 			sourceTree = "<group>";
 		};
 		05AA407D251CF3D600106CEA /* MainMenu.xib */ = {

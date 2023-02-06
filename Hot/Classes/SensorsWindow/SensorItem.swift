@@ -26,7 +26,7 @@ import Cocoa
 
 public class SensorItem: NSCollectionViewItem
 {
-    @objc public dynamic var sensor: SensorData?
+    @objc public dynamic var sensor: SensorHistoryData?
     {
         didSet
         {

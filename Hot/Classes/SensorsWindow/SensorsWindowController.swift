@@ -26,9 +26,9 @@ import Cocoa
 
 public class SensorsWindowController: NSWindowController
 {
-    @objc private dynamic var sensors: Sensors? = Sensors()
+    @objc private dynamic var sensors = Sensors()
 
-    @objc private dynamic var showTemperature = UserDefaults.standard.bool( forKey: "sensorsWindowShowTemperature" )
+    @objc private dynamic var showTemperature = UserDefaults.standard.object( forKey: "sensorsWindowShowTemperature" ) as? Bool ?? true
     {
         didSet
         {
@@ -37,7 +37,7 @@ public class SensorsWindowController: NSWindowController
         }
     }
 
-    @objc private dynamic var showVoltage = UserDefaults.standard.bool( forKey: "sensorsWindowShowVoltage" )
+    @objc private dynamic var showVoltage =  UserDefaults.standard.object( forKey: "sensorsWindowShowVoltage" ) as? Bool ?? true
     {
         didSet
         {
@@ -46,7 +46,7 @@ public class SensorsWindowController: NSWindowController
         }
     }
 
-    @objc private dynamic var showCurrent = UserDefaults.standard.bool( forKey: "sensorsWindowShowCurrent" )
+    @objc private dynamic var showCurrent =  UserDefaults.standard.object( forKey: "sensorsWindowShowCurrent" ) as? Bool ?? true
     {
         didSet
         {
@@ -55,16 +55,34 @@ public class SensorsWindowController: NSWindowController
         }
     }
 
+    @objc private dynamic var showIOHID =  UserDefaults.standard.object( forKey: "sensorsWindowShowIOHID" ) as? Bool ?? true
+    {
+        didSet
+        {
+            self.updateFilters()
+            UserDefaults.standard.set( self.showIOHID, forKey: "sensorsWindowShowIOHID" )
+        }
+    }
+
+    @objc private dynamic var showSMC =  UserDefaults.standard.object( forKey: "sensorsWindowShowSMC" ) as? Bool ?? true
+    {
+        didSet
+        {
+            self.updateFilters()
+            UserDefaults.standard.set( self.showSMC, forKey: "sensorsWindowShowSMC" )
+        }
+    }
+
     @objc private dynamic var searchText: String?
     {
         didSet { self.updateFilters() }
     }
 
-    @objc private dynamic var graphStyle = UserDefaults.standard.integer( forKey: "graphStyle" )
+    @objc private dynamic var graphStyle = UserDefaults.standard.integer( forKey: "sensorsWindowGraphStyle" )
     {
         didSet
         {
-            UserDefaults.standard.set( self.graphStyle, forKey: "graphStyle" )
+            UserDefaults.standard.set( self.graphStyle, forKey: "sensorsWindowGraphStyle" )
         }
     }
 
@@ -79,20 +97,15 @@ public class SensorsWindowController: NSWindowController
     public override func windowDidLoad()
     {
         super.windowDidLoad()
-        self.updateFilters()
 
         self.arrayController.sortDescriptors = [ NSSortDescriptor( key: "name", ascending: true, selector: #selector( NSString.localizedCaseInsensitiveCompare( _: ) ) ) ]
+
+        self.updateFilters()
     }
 
-    public func stop()
+    public func stop( completion: ( () -> Void )? )
     {
-        self.sensors?.stop
-        {
-            DispatchQueue.main.async
-            {
-                self.sensors = nil
-            }
-        }
+        self.sensors.stop( completion: completion )
     }
 
     private func updateFilters()
@@ -101,17 +114,27 @@ public class SensorsWindowController: NSWindowController
 
         if self.showTemperature == false
         {
-            predicates.append( NSPredicate { o, i in ( o as? SensorData )?.kind != .thermal } )
+            predicates.append( NSPredicate { o, i in ( o as? SensorHistoryData )?.kind != .thermal } )
         }
 
         if self.showVoltage == false
         {
-            predicates.append( NSPredicate { o, i in ( o as? SensorData )?.kind != .voltage } )
+            predicates.append( NSPredicate { o, i in ( o as? SensorHistoryData )?.kind != .voltage } )
         }
 
         if self.showCurrent == false
         {
-            predicates.append( NSPredicate { o, i in ( o as? SensorData )?.kind != .current } )
+            predicates.append( NSPredicate { o, i in ( o as? SensorHistoryData )?.kind != .current } )
+        }
+
+        if self.showIOHID == false
+        {
+            predicates.append( NSPredicate { o, i in ( o as? SensorHistoryData )?.source != .hid } )
+        }
+
+        if self.showSMC == false
+        {
+            predicates.append( NSPredicate { o, i in ( o as? SensorHistoryData )?.source != .smc } )
         }
 
         if let search = self.searchText, search.count > 0
@@ -139,14 +162,14 @@ extension SensorsWindowController: NSCollectionViewDataSource
 
     public func collectionView( _ collectionView: NSCollectionView, numberOfItemsInSection section: Int ) -> Int
     {
-        ( self.arrayController.arrangedObjects as? [ SensorData ] )?.count ?? 0
+        ( self.arrayController.arrangedObjects as? [ SensorHistoryData ] )?.count ?? 0
     }
 
     public func collectionView( _ itemForRepresentedObjectAtcollectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath ) -> NSCollectionViewItem
     {
         let item = self.collectionView.makeItem( withIdentifier: NSUserInterfaceItemIdentifier( rawValue: "SensorItem" ), for: indexPath )
 
-        if let item = item as? SensorItem, let sensors = self.arrayController.arrangedObjects as? [ SensorData ]
+        if let item = item as? SensorItem, let sensors = self.arrayController.arrangedObjects as? [ SensorHistoryData ]
         {
             if sensors.count > indexPath.item
             {

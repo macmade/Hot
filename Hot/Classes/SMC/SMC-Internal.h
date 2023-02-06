@@ -1,18 +1,18 @@
 /*******************************************************************************
  * The MIT License (MIT)
- * 
- * Copyright (c) 2020 Jean-David Gadina - www.xs-labs.com
- * 
+ *
+ * Copyright (c) 2022 Jean-David Gadina - www.xs-labs.com
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -22,34 +22,29 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-/*!
- * @header      SMC.h
- * @copyright   (c) 2020, Jean-David Gadina - www.xs-labs.com
- */
-
-#ifndef SMC_H
-#define SMC_H
-
-#include <stdint.h>
-#include <IOKit/IOKitLib.h>
+@import IOKit;
 
 /*
  * Reference:
+ *   - https://github.com/apple-oss-distributions/IOKitUser
  *   - https://opensource.apple.com/source/IOKitUser/
  *   - https://opensource.apple.com/source/IOKitUser/IOKitUser-647.6/pwr_mgt.subproj/IOPMLibPrivate.c
  */
 
+/* Do not modify - defined by AppleSMC.kext */
 enum
 {
     kSMCKeyNotFound = 0x84
 };
 
+/* Do not modify - defined by AppleSMC.kext */
 enum
 {
-    kSMCSuccess = 0,
-    kSMCError   = 1
+    kSMCSuccess	= 0,
+    kSMCError	= 1
 };
 
+/* Do not modify - defined by AppleSMC.kext */
 enum
 {
     kSMCUserClientOpen  = 0,
@@ -62,6 +57,7 @@ enum
     kSMCGetKeyInfo      = 9
 };
 
+/* Do not modify - defined by AppleSMC.kext */
 typedef struct
 {
     unsigned char  major;
@@ -72,6 +68,7 @@ typedef struct
 }
 SMCVersion;
 
+/* Do not modify - defined by AppleSMC.kext */
 typedef struct
 {
     uint16_t version;
@@ -82,14 +79,16 @@ typedef struct
 }
 SMCPLimitData;
 
+/* Do not modify - defined by AppleSMC.kext */
 typedef struct
 {
-    IOByteCount dataSize;
-    uint32_t    dataType;
-    uint8_t     dataAttributes;
+    uint32_t dataSize;
+    uint32_t dataType;
+    uint8_t  dataAttributes;
 }
 SMCKeyInfoData;
 
+/* Do not modify - defined by AppleSMC.kext */
 typedef struct
 {
     uint32_t       key;
@@ -104,14 +103,5 @@ typedef struct
 }
 SMCParamStruct;
 
-extern uint32_t SMCKeyTCXC;
-extern uint32_t SMCKeyCUS1;
-extern uint32_t SMCKeyTC0D;
-extern uint32_t SMCKeyTC0C;
-extern uint32_t SMCKeyTCAD;
-
-IOReturn SMCReadKey( uint32_t key, uint8_t * buf, IOByteCount * maxSize );
-IOReturn SMCCallFunction( uint32_t function, SMCParamStruct * input, SMCParamStruct * output );
-bool SMCGetCPUTemperature( uint32_t key, double * valueOut );
-
-#endif /* SMC_H */
+extern const uint32_t kSMCKeyNKEY;
+extern const uint32_t kSMCKeyACID;
