@@ -27,6 +27,7 @@ import Cocoa
 @objc
 public class Sensors: NSObject
 {
+    @objc public private( set ) dynamic var loading = true
     @objc public private( set ) dynamic var data    = [ SensorHistoryData ]()
     @objc private               dynamic var sensors = [ String: SensorHistoryData ]()
 
@@ -84,7 +85,8 @@ public class Sensors: NSObject
 
         DispatchQueue.main.async
         {
-            self.data = [ SensorHistoryData ]( sensors.values )
+            self.data    = [ SensorHistoryData ]( sensors.values )
+            self.loading = false
         }
     }
 

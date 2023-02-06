@@ -136,17 +136,20 @@ public class SensorHistoryData: NSObject, Synchronizable
 
             data.append( value )
 
-            self.willChangeValue( for: \.values )
-            self.willChangeValue( for: \.min )
-            self.willChangeValue( for: \.max )
-            self.willChangeValue( for: \.last )
-
             self.data = data.suffix( 50 )
 
-            self.didChangeValue( for: \.values )
-            self.didChangeValue( for: \.min )
-            self.didChangeValue( for: \.max )
-            self.didChangeValue( for: \.last )
+            DispatchQueue.main.async
+            {
+                self.willChangeValue( for: \.values )
+                self.willChangeValue( for: \.min )
+                self.willChangeValue( for: \.max )
+                self.willChangeValue( for: \.last )
+
+                self.didChangeValue( for: \.values )
+                self.didChangeValue( for: \.min )
+                self.didChangeValue( for: \.max )
+                self.didChangeValue( for: \.last )
+            }
         }
     }
 

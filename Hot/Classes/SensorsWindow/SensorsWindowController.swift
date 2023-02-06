@@ -73,6 +73,15 @@ public class SensorsWindowController: NSWindowController
         }
     }
 
+    @objc private dynamic var sorting =  UserDefaults.standard.integer( forKey: "sensorsWindowSorting" )
+    {
+        didSet
+        {
+            self.updateFilters()
+            UserDefaults.standard.set( self.sorting, forKey: "sensorsWindowSorting" )
+        }
+    }
+
     @objc private dynamic var searchText: String?
     {
         didSet { self.updateFilters() }
@@ -141,6 +150,14 @@ public class SensorsWindowController: NSWindowController
         {
             predicates.append( NSPredicate( format: "name contains[c] %@", search ) )
         }
+
+        let descriptors =
+            [
+                NSSortDescriptor( key: "name", ascending: true, selector: #selector( NSString.localizedCaseInsensitiveCompare( _: ) ) ),
+                NSSortDescriptor( key: "last", ascending: false ),
+            ]
+
+        self.arrayController.sortDescriptors = self.sorting == 1 ? descriptors.reversed() : descriptors
 
         if predicates.count > 0
         {
