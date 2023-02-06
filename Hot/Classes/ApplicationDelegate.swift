@@ -263,7 +263,7 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
             title    = "\( n1 )% \( temp )"
         }
         else if let n = self.infoViewController?.speedLimit, n > 0,
-            UserDefaults.standard.bool( forKey: "displaySchedulerLimit" )
+                UserDefaults.standard.bool( forKey: "displaySchedulerLimit" )
         {
             title = "\( n )%"
         }
