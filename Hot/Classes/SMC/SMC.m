@@ -135,7 +135,7 @@ NS_ASSUME_NONNULL_END
 
     for( NSNumber * key in self.keys )
     {
-        if( filter == nil || filter( key.unsignedIntValue ) == NO )
+        if( filter != nil && filter( key.unsignedIntValue ) == NO )
         {
             continue;
         }
