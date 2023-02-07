@@ -113,44 +113,26 @@ public class InfoViewController: NSViewController
         self.timer = timer
     }
 
-    private func update()
-    {
-        if let n = self.log.schedulerLimit?.intValue
-        {
-            self.schedulerLimit = n
+    private func update() {
+      let properties = [("schedulerLimit", log.schedulerLimit),
+                        ("availableCPUs", log.availableCPUs),
+                        ("speedLimit", log.speedLimit),
+                        ("temperature", log.temperature),
+                        ("thermalPressure", log.thermalPressure)]
+      
+      for (property, value) in properties {
+        if let n = value?.intValue {
+          self.setValue(n, forKey: property)
         }
-
-        if let n = self.log.availableCPUs?.intValue
-        {
-            self.availableCPUs = n
-        }
-
-        if let n = self.log.speedLimit?.intValue
-        {
-            self.speedLimit = n
-        }
-
-        if let n = self.log.temperature?.intValue
-        {
-            self.temperature = n
-        }
-
-        if let n = self.log.thermalPressure?.intValue
-        {
-            self.thermalPressure = n
-        }
-
-        if self.speedLimit > 0, self.temperature > 0
-        {
-            self.graphView?.addData( speed: self.speedLimit, temperature: self.temperature )
-        }
-        else if self.temperature > 0
-        {
-            self.graphView?.addData( speed: 100, temperature: self.temperature )
-        }
-
-        self.graphViewHeight.constant = self.graphView?.canDisplay ?? false ? 100 : 0
-
-        self.onUpdate?()
+      }
+      
+      if self.speedLimit > 0, self.temperature > 0 {
+        self.graphView?.addData(speed: self.speedLimit, temperature: self.temperature)
+      } else if self.temperature > 0 {
+        self.graphView?.addData(speed: 100, temperature: self.temperature)
+      }
+      
+      self.graphViewHeight.constant = self.graphView?.canDisplay ?? false ? 100 : 0
+      self.onUpdate?()
     }
 }

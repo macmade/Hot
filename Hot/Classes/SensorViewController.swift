@@ -31,33 +31,23 @@ public class SensorViewController: NSViewController
     @objc public  dynamic var value = 0
     @objc public  dynamic var name  = "Unknown"
     {
-        didSet
-        {
-            self.label = self.name.hasSuffix( ":" ) ? self.name : "\( self.name ):"
-
-            if self.name.lowercased().hasPrefix( "eacc" )
-            {
-                self.icon = NSImage( named: "eAccTemplate" )
-            }
-            else if self.name.lowercased().hasPrefix( "pacc" )
-            {
-                self.icon = NSImage( named: "pAccTemplate" )
-            }
-            else if self.name.lowercased().hasPrefix( "tcxc" )
-            {
-                self.icon = NSImage( named: "TCXCTemplate" )
-            }
-            else if self.name.lowercased().contains( "battery" )
-            {
-                self.icon = NSImage( named: "BatteryTemplate" )
-            }
-            else if self.name.lowercased().contains( "tcal" )
-            {
-                self.icon = NSImage( named: "TCalTemplate" )
-            }
-            else
-            {
-                self.icon = NSImage( named: "UnknownTemplate" )
+        didSet {
+            self.label = self.name.hasSuffix(":") ? self.name : "\(self.name):"
+            
+            let lowercasedName = self.name.lowercased()
+            switch true {
+            case lowercasedName.hasPrefix("eacc"):
+                self.icon = NSImage(named: "eAccTemplate")
+            case lowercasedName.hasPrefix("pacc"):
+                self.icon = NSImage(named: "pAccTemplate")
+            case lowercasedName.hasPrefix("tcxc"):
+                self.icon = NSImage(named: "TCXCTemplate")
+            case lowercasedName.contains("battery"):
+                self.icon = NSImage(named: "BatteryTemplate")
+            case lowercasedName.contains("tcal"):
+                self.icon = NSImage(named: "TCalTemplate")
+            default:
+                self.icon = NSImage(named: "UnknownTemplate")
             }
         }
     }
