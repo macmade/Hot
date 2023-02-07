@@ -123,41 +123,24 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
         self.exiting = true
     }
 
-    private func initializePreferences()
-    {
-        if UserDefaults.standard.object( forKey: "LastLaunch" ) == nil
-        {
-            UserDefaults.standard.setValue( true,     forKey: "automaticallyCheckForUpdates" )
-            UserDefaults.standard.setValue( true,     forKey: "displayCPUTemperature" )
-            UserDefaults.standard.setValue( true,     forKey: "displaySchedulerLimit" )
-            UserDefaults.standard.setValue( true,     forKey: "colorizeStatusItemText" )
-            UserDefaults.standard.setValue( NSDate(), forKey: "LastLaunch" )
-        }
-
-        if UserDefaults.standard.object( forKey: "refreshInterval" ) == nil
-        {
-            UserDefaults.standard.setValue( 2, forKey: "refreshInterval" )
-        }
-
-        if UserDefaults.standard.object( forKey: "sensorsWindowShowTemperature" ) == nil
-        {
-            UserDefaults.standard.setValue( true, forKey: "sensorsWindowShowTemperature" )
-        }
-
-        if UserDefaults.standard.object( forKey: "sensorsWindowShowVoltage" ) == nil
-        {
-            UserDefaults.standard.setValue( true, forKey: "sensorsWindowShowVoltage" )
-        }
-
-        if UserDefaults.standard.object( forKey: "sensorsWindowShowCurrent" ) == nil
-        {
-            UserDefaults.standard.setValue( true, forKey: "sensorsWindowShowCurrent" )
-        }
-
-        if UserDefaults.standard.object( forKey: "displaySchedulerLimit" ) == nil
-        {
-            // Added in 1.8.0
-            UserDefaults.standard.setValue( true, forKey: "displaySchedulerLimit" )
+    private func initializePreferences() {
+        let defaults = UserDefaults.standard
+        let preferences = [
+            "automaticallyCheckForUpdates": true,
+            "displayCPUTemperature": true,
+            "displaySchedulerLimit": true,
+            "colorizeStatusItemText": true,
+            "LastLaunch": NSDate(),
+            "refreshInterval": 2,
+            "sensorsWindowShowTemperature": true,
+            "sensorsWindowShowVoltage": true,
+            "sensorsWindowShowCurrent": true
+        ]
+        
+        preferences.forEach {
+            if defaults.object(forKey: $0.key) == nil {
+                defaults.setValue($0.value, forKey: $0.key)
+            }
         }
     }
 
