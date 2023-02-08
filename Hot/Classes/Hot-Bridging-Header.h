@@ -23,5 +23,3 @@
  ******************************************************************************/
 
 #import "NSApplication+LaunchServices.h"
-#import "SMC.h"
-#import "IOHID.h"
