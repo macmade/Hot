@@ -4,3 +4,6 @@
 [submodule "Submodules/GitHubUpdates"]
 	path = Submodules/GitHubUpdates
 	url = https://github.com/macmade/GitHubUpdates.git
+[submodule "Submodules/Sensors"]
+	path = Submodules/Sensors
+	url = https://github.com/macmade/Sensors.git
