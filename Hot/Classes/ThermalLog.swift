@@ -142,9 +142,27 @@ public class ThermalLog: NSObject
                 }
                 else
                 {
+                    let tcal = all.first { $0.key.lowercased().hasSuffix( "tcal" ) }
+
                     return all.filter
                     {
-                        $0.key.lowercased().hasSuffix( "tcal" ) == false
+                        if $0.key.lowercased().hasSuffix( "tcal" )
+                        {
+                            return false
+                        }
+
+                        if let tcal = tcal
+                        {
+                            let x = Int( ceil( tcal.value * 100 ) )
+                            let y = Int( ceil( $0.value   * 100 ) )
+
+                            if x == y
+                            {
+                                return false
+                            }
+                        }
+
+                        return true
                     }
                     .values.map { $0 }
                 }
