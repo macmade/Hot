@@ -25,6 +25,7 @@
 import Foundation
 import IOHIDKit
 import SMCKit
+import IOKit.pwr_mgt
 
 public class ThermalLog: NSObject
 {
@@ -185,67 +186,20 @@ public class ThermalLog: NSObject
             {
                 self.temperature = NSNumber( value: temp )
             }
-
-            let pipe            = Pipe()
-            let task            = Process()
-            task.launchPath     = "/usr/bin/pmset"
-            task.arguments      = [ "-g", "therm" ]
-            task.standardOutput = pipe
-
-            task.launch()
-            task.waitUntilExit()
-
-            if task.terminationStatus != 0
-            {
-                self.refreshing = false
-
-                completion()
-
-                return
-            }
-
-            let data = pipe.fileHandleForReading.readDataToEndOfFile()
-
-            guard let str = String( data: data, encoding: .utf8 ), str.count > 0
-            else
-            {
-                self.refreshing = false
-
-                completion()
-
-                return
-            }
-
-            let lines = str.replacingOccurrences( of: " ",  with: "" ).replacingOccurrences( of: "\t", with: "" ).split( separator: "\n" )
-
-            for line in lines
-            {
-                let p = line.split( separator: "=" )
-
-                if p.count < 2
-                {
-                    continue
-                }
-
-                guard let n = UInt( p[ 1 ] )
-                else
-                {
-                    continue
-                }
-
-                if p[ 0 ] == "CPU_Scheduler_Limit"
-                {
-                    self.schedulerLimit = NSNumber( value: n )
-                }
-                else if p[ 0 ] == "CPU_Available_CPUs"
-                {
-                    self.availableCPUs = NSNumber( value: n )
-                }
-                else if p[ 0 ] == "CPU_Speed_Limit"
-                {
-                    self.speedLimit = NSNumber( value: n )
-                }
-            }
+			
+			let status = UnsafeMutablePointer<Unmanaged<CFDictionary>?>.allocate(capacity: 3)
+			let result = IOPMCopyCPUPowerStatus(status)
+			
+			if result == kIOReturnSuccess,
+			   let data = status.move()?.takeUnretainedValue() {
+				let dataMap = data as NSDictionary
+				
+				self.speedLimit		= (dataMap[kIOPMCPUPowerLimitProcessorSpeedKey]! as! Double) as NSNumber
+				self.availableCPUs	= (dataMap[kIOPMCPUPowerLimitProcessorCountKey]! as! Int)    as NSNumber
+				self.schedulerLimit	= (dataMap[kIOPMCPUPowerLimitSchedulerTimeKey]!  as! Double) as NSNumber
+			}
+			
+			status.deallocate()
 
             self.refreshing = false
 
