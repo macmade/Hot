@@ -187,6 +187,7 @@ public class ThermalLog: NSObject
                 self.temperature = NSNumber( value: temp )
             }
 			
+#if arch(x86_64)
 			let status = UnsafeMutablePointer<Unmanaged<CFDictionary>?>.allocate(capacity: 3)
 			let result = IOPMCopyCPUPowerStatus(status)
 			
@@ -200,6 +201,7 @@ public class ThermalLog: NSObject
 			}
 			
 			status.deallocate()
+#endif
 
             self.refreshing = false
 
