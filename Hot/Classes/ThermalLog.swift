@@ -194,9 +194,9 @@ public class ThermalLog: NSObject
 			   let data = status.move()?.takeUnretainedValue() {
 				let dataMap = data as NSDictionary
 				
-				self.speedLimit		= (dataMap[kIOPMCPUPowerLimitProcessorSpeedKey]! as! Double) as NSNumber
-				self.availableCPUs	= (dataMap[kIOPMCPUPowerLimitProcessorCountKey]! as! Int)    as NSNumber
-				self.schedulerLimit	= (dataMap[kIOPMCPUPowerLimitSchedulerTimeKey]!  as! Double) as NSNumber
+				self.speedLimit		= dataMap[kIOPMCPUPowerLimitProcessorSpeedKey] as? NSNumber
+				self.availableCPUs	= dataMap[kIOPMCPUPowerLimitProcessorCountKey] as? NSNumber
+				self.schedulerLimit	= dataMap[kIOPMCPUPowerLimitSchedulerTimeKey]  as? NSNumber
 			}
 			
 			status.deallocate()
