@@ -23,6 +23,7 @@
  ******************************************************************************/
 
 #import "NSApplication+LaunchServices.h"
+#import <ServiceManagement/ServiceManagement.h>
 
 /*
  * LaunchServices functions for managing login items are deprecated,
@@ -205,12 +206,32 @@
 
 - ( BOOL )isLoginItemEnabled
 {
-    return [ NSApplication isLoginItemEnabledForBundleURL: [ NSURL fileURLWithPath: [ [ NSBundle mainBundle ] bundlePath ] ] ];
+	if (@available(macOS 13.0, *)) {
+		
+		SMAppServiceStatus status		= SMAppService.mainAppService.status;
+		NSLog(@"SMAppServiceStatus=%li", status);
+		return status == SMAppServiceStatusEnabled;
+	} else {
+		return [ NSApplication isLoginItemEnabledForBundleURL: [ NSURL fileURLWithPath: [ [ NSBundle mainBundle ] bundlePath ] ] ];
+	}
 }
 
 - ( void )setLoginItemEnabled: ( BOOL )enabled
 {
-    [ NSApplication setLoginItemEnabled: enabled forBundleURL: [ NSURL fileURLWithPath: [ [ NSBundle mainBundle ] bundlePath ] ] ];
+	if (@available(macOS 13.0, *)) {
+		
+		NSError *error;
+		
+		if (enabled) {
+			[SMAppService.mainAppService registerAndReturnError:&error];
+			NSLog(@"SMAppService   Registered with error: %@",error);
+		} else {
+			NSLog(@"SMAppService Unregistered with error: %@",error);
+			[SMAppService.mainAppService unregisterAndReturnError:&error];
+		}
+	} else {
+		[ NSApplication setLoginItemEnabled: enabled forBundleURL: [ NSURL fileURLWithPath: [ [ NSBundle mainBundle ] bundlePath ] ] ];
+	}
 }
 
 - ( void )enableLoginItem
