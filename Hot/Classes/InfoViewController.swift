@@ -34,6 +34,7 @@ public class InfoViewController: NSViewController
     @objc public private( set ) dynamic var speedLimit:      Int  = 0
     @objc public private( set ) dynamic var temperature:     Int  = 0
     @objc public private( set ) dynamic var thermalPressure: Int  = 0
+    @objc public private( set ) dynamic var hasSensors:      Bool = false
 
     public var onUpdate: ( () -> Void )?
 
@@ -115,6 +116,8 @@ public class InfoViewController: NSViewController
 
     private func update()
     {
+        self.hasSensors = self.log.sensors.isEmpty == false
+
         if let n = self.log.schedulerLimit?.intValue
         {
             self.schedulerLimit = n
