@@ -54,7 +54,7 @@ public class GraphView: NSView
             return
         }
 
-        let path = NSBezierPath( roundedRect: rect.insetBy( dx: 1, dy: 1 ), xRadius: 10, yRadius: 10 )
+        let path = NSBezierPath( roundedRect: self.bounds.insetBy( dx: 1, dy: 1 ), xRadius: 10, yRadius: 10 )
 
         NSColor.controlTextColor.withAlphaComponent( 0.2 ).setStroke()
         NSColor.controlTextColor.withAlphaComponent( 0.05 ).setFill()
@@ -64,7 +64,7 @@ public class GraphView: NSView
         let path1  = NSBezierPath()
         let path2  = NSBezierPath()
         var i      = CGFloat( 0 )
-        let rect   = rect.insetBy( dx: 10, dy: 10 )
+        let rect   = self.bounds.insetBy( dx: 10, dy: 10 )
 
         for i in 0 ... 100
         {
