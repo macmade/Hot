@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22689"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="SensorViewController" customModule="Hot" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="c22-O7-iKe" id="USD-JN-7Yy"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="118" height="20"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ySR-dZ-ri6">
+                    <rect key="frame" x="10" y="2" width="16" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="16" id="Mgj-aj-MOI"/>
+                        <constraint firstAttribute="height" constant="16" id="N0L-Xc-fDJ"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="UnknownTemplate" id="DuB-2f-0AL"/>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="self.icon" id="TXu-hh-p9j"/>
+                    </connections>
+                </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="nmS-91-jK5">
+                    <rect key="frame" x="32" y="2" width="37" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="Qv6-kj-N1d">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="self.label" id="Ils-7x-vc6"/>
+                    </connections>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="A6f-It-Ygp">
+                    <rect key="frame" x="73" y="2" width="37" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="eFB-nu-f70">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="self.value" id="3zI-0w-IQw">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">FanSpeedToString</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="A6f-It-Ygp" secondAttribute="trailing" constant="10" id="5mN-yT-Y2e"/>
+                <constraint firstItem="ySR-dZ-ri6" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="10" id="6wf-x9-wgA"/>
+                <constraint firstItem="ySR-dZ-ri6" firstAttribute="centerY" secondItem="nmS-91-jK5" secondAttribute="centerY" id="Bsc-89-AfS"/>
+                <constraint firstItem="nmS-91-jK5" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="2" id="WbG-Sr-1i0"/>
+                <constraint firstItem="A6f-It-Ygp" firstAttribute="centerY" secondItem="nmS-91-jK5" secondAttribute="centerY" id="e6c-qC-Tm3"/>
+                <constraint firstAttribute="bottom" secondItem="nmS-91-jK5" secondAttribute="bottom" constant="2" id="fTX-OV-nFU"/>
+                <constraint firstItem="A6f-It-Ygp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="nmS-91-jK5" secondAttribute="trailing" constant="8" symbolic="YES" id="fzR-lo-Taw"/>
+                <constraint firstItem="nmS-91-jK5" firstAttribute="leading" secondItem="ySR-dZ-ri6" secondAttribute="trailing" constant="8" symbolic="YES" id="mu5-hU-1IZ"/>
+            </constraints>
+            <point key="canvasLocation" x="-188" y="154"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="UnknownTemplate" width="150" height="150"/>
+    </resources>
+</document>
