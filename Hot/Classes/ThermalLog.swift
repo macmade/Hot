@@ -120,7 +120,7 @@ public class ThermalLog: NSObject
             let sensors       = self.readSensors()
             let cpu           = sensors.filter { $0.value.isCPU }.mapValues { $0.value }
             let allTemperatures = sensors.filter { $0.value.isFan == false && ($0.value.value > 0 && $0.value.value < 120) }.mapValues { $0.value }
-            let allFans = sensors.filter { $0.value.isFan == true }.mapValues { $0.value + 10 }
+            let allFans = sensors.filter { $0.value.isFan == true }.mapValues { $0.value }
             self.sensors      = allTemperatures
             self.fans         = allFans
             let names         = UserDefaults.standard.object( forKey: "selectedSensors" ) as? [ String ] ?? []
