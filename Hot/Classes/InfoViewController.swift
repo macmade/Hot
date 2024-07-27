@@ -33,8 +33,10 @@ public class InfoViewController: NSViewController
     @objc public private( set ) dynamic var availableCPUs:   Int  = 0
     @objc public private( set ) dynamic var speedLimit:      Int  = 0
     @objc public private( set ) dynamic var temperature:     Int  = 0
+    @objc public private( set ) dynamic var fanSpeed:        Int  = 0
     @objc public private( set ) dynamic var thermalPressure: Int  = 0
     @objc public private( set ) dynamic var hasSensors:      Bool = false
+    @objc public private( set ) dynamic var hasFans:         Bool = false
 
     public var onUpdate: ( () -> Void )?
 
@@ -117,6 +119,7 @@ public class InfoViewController: NSViewController
     private func update()
     {
         self.hasSensors = self.log.sensors.isEmpty == false
+        self.hasFans = self.log.fans.isEmpty == false
 
         if let n = self.log.schedulerLimit?.intValue
         {
@@ -136,6 +139,11 @@ public class InfoViewController: NSViewController
         if let n = self.log.temperature?.intValue
         {
             self.temperature = n
+        }
+
+        if let n = self.log.fanSpeed?.intValue
+        {
+            self.fanSpeed = n
         }
 
         if let n = self.log.thermalPressure?.intValue
