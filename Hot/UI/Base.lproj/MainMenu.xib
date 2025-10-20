@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22689"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -14,6 +14,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="ApplicationDelegate" customModule="Hot" customModuleProvider="target">
             <connections>
+                <outlet property="fansMenu" destination="4Ys-M6-kdZ" id="RbZ-ys-yZz"/>
                 <outlet property="menu" destination="YdR-H7-b4a" id="jeu-CN-jol"/>
                 <outlet property="sensorsMenu" destination="ub7-du-ljd" id="LPJ-gc-4R1"/>
                 <outlet property="updater" destination="O40-Rx-Vw9" id="ApT-sO-5me"/>
@@ -705,6 +706,23 @@
                     </menu>
                     <connections>
                         <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.infoViewController.hasSensors" id="Iwh-ax-u58">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </menuItem>
+                <menuItem title="Fan Sensors" id="5og-2e-kpr">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Fan Sensors" id="4Ys-M6-kdZ">
+                        <items>
+                            <menuItem title="Item" id="iwI-p2-w2Z">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.infoViewController.hasFans" id="ozh-Sa-4zI">
                             <dictionary key="options">
                                 <string key="NSValueTransformerName">NSNegateBoolean</string>
                             </dictionary>

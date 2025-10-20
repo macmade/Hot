@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22689"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,13 +16,13 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="c22-O7-iKe">
-            <rect key="frame" x="0.0" y="0.0" width="217" height="225"/>
+            <rect key="frame" x="0.0" y="0.0" width="217" height="249"/>
             <subviews>
                 <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9GX-0h-uwG">
-                    <rect key="frame" x="20" y="0.0" width="177" height="220"/>
+                    <rect key="frame" x="20" y="0.0" width="177" height="244"/>
                     <subviews>
                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="8Gt-35-5Ho">
-                            <rect key="frame" x="0.0" y="204" width="177" height="16"/>
+                            <rect key="frame" x="0.0" y="228" width="177" height="16"/>
                             <subviews>
                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="akm-E3-Tgs">
                                     <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
@@ -71,7 +71,7 @@
                             </connections>
                         </customView>
                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="0nY-ns-CoD">
-                            <rect key="frame" x="0.0" y="180" width="177" height="16"/>
+                            <rect key="frame" x="0.0" y="204" width="177" height="16"/>
                             <subviews>
                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m7e-nq-HAY">
                                     <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
@@ -120,7 +120,7 @@
                             </connections>
                         </customView>
                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="hoW-7N-EgX">
-                            <rect key="frame" x="0.0" y="156" width="177" height="16"/>
+                            <rect key="frame" x="0.0" y="180" width="177" height="16"/>
                             <subviews>
                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lMd-EU-MeV">
                                     <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
@@ -169,7 +169,7 @@
                             </connections>
                         </customView>
                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="EZc-c0-cip">
-                            <rect key="frame" x="0.0" y="132" width="177" height="16"/>
+                            <rect key="frame" x="0.0" y="156" width="177" height="16"/>
                             <subviews>
                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dLg-xH-BAs">
                                     <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
@@ -222,7 +222,7 @@
                             </connections>
                         </customView>
                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="9NI-ca-EZ2">
-                            <rect key="frame" x="0.0" y="108" width="177" height="16"/>
+                            <rect key="frame" x="0.0" y="132" width="177" height="16"/>
                             <subviews>
                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pkt-sq-9yP">
                                     <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
@@ -267,6 +267,52 @@
                                 <constraint firstItem="7Wl-A7-fA8" firstAttribute="leading" secondItem="Pkt-sq-9yP" secondAttribute="trailing" constant="8" symbolic="YES" id="tqr-Yj-DRl"/>
                             </constraints>
                         </customView>
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="9xm-le-geD">
+                            <rect key="frame" x="0.0" y="108" width="177" height="16"/>
+                            <subviews>
+                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xOG-gg-jQ1">
+                                    <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="16" id="9r3-yh-wce"/>
+                                        <constraint firstAttribute="height" constant="16" id="Cqf-62-TXY"/>
+                                    </constraints>
+                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="FanTemplate" id="wTk-Tj-ub2"/>
+                                </imageView>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="G1N-Jm-VAf">
+                                    <rect key="frame" x="22" y="0.0" width="30" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Fan:" id="GeM-Uv-Vdj">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="F01-KG-WAt">
+                                    <rect key="frame" x="142" y="0.0" width="37" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="YN4-so-Lw0">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <binding destination="-2" name="value" keyPath="self.fanSpeed" id="Cdl-MQ-Qgh">
+                                            <dictionary key="options">
+                                                <string key="NSValueTransformerName">FanSpeedToString</string>
+                                            </dictionary>
+                                        </binding>
+                                    </connections>
+                                </textField>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="G1N-Jm-VAf" firstAttribute="centerY" secondItem="xOG-gg-jQ1" secondAttribute="centerY" id="19f-fQ-a4c"/>
+                                <constraint firstAttribute="trailing" secondItem="F01-KG-WAt" secondAttribute="trailing" id="I76-wh-p6x"/>
+                                <constraint firstItem="G1N-Jm-VAf" firstAttribute="leading" secondItem="xOG-gg-jQ1" secondAttribute="trailing" constant="8" symbolic="YES" id="OeB-fM-N3o"/>
+                                <constraint firstItem="F01-KG-WAt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="G1N-Jm-VAf" secondAttribute="trailing" constant="8" symbolic="YES" id="XZ5-eZ-ytO"/>
+                                <constraint firstItem="xOG-gg-jQ1" firstAttribute="top" secondItem="9xm-le-geD" secondAttribute="top" id="dSD-s6-5hK"/>
+                                <constraint firstItem="F01-KG-WAt" firstAttribute="centerY" secondItem="G1N-Jm-VAf" secondAttribute="centerY" id="rwZ-0D-WNj"/>
+                                <constraint firstAttribute="bottom" secondItem="xOG-gg-jQ1" secondAttribute="bottom" id="vA4-Z5-hwM"/>
+                                <constraint firstItem="xOG-gg-jQ1" firstAttribute="leading" secondItem="9xm-le-geD" secondAttribute="leading" id="vF2-il-Hsl"/>
+                            </constraints>
+                        </customView>
                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="fKC-eM-8Gr" customClass="GraphView" customModule="Hot" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="177" height="100"/>
                             <constraints>
@@ -286,8 +332,10 @@
                         <integer value="1000"/>
                         <integer value="1000"/>
                         <integer value="1000"/>
+                        <integer value="1000"/>
                     </visibilityPriorities>
                     <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
                         <real value="3.4028234663852886e+38"/>
                         <real value="3.4028234663852886e+38"/>
                         <real value="3.4028234663852886e+38"/>
@@ -308,6 +356,7 @@
     </objects>
     <resources>
         <image name="CPUTemplate" width="150" height="150"/>
+        <image name="FanTemplate" width="384" height="384"/>
         <image name="PressureTemplate" width="150" height="150"/>
         <image name="SchedulerTemplate" width="150" height="150"/>
         <image name="SpeedTemplate" width="150" height="150"/>

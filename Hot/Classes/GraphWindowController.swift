@@ -33,6 +33,7 @@ public class GraphWindowController: NSWindowController
     @objc public dynamic var availableCPUs:   Int  = 0
     @objc public dynamic var speedLimit:      Int  = 0
     @objc public dynamic var temperature:     Int  = 0
+    @objc public dynamic var fanSpeed:        Int  = 0
     @objc public dynamic var thermalPressure: Int  = 0
     @objc public dynamic var showOnAllSpaces: Bool = false
     {
