@@ -152,7 +152,22 @@ public class InfoViewController: NSViewController
             self.graphView?.addData( speed: 100, temperature: self.temperature )
         }
 
-        self.graphViewHeight.constant = self.graphView?.canDisplay ?? false ? 100 : 0
+        let newGraphHeight: CGFloat = self.graphView?.canDisplay ?? false ? 100 : 0
+
+        if self.graphViewHeight.constant != newGraphHeight
+        {
+            self.graphViewHeight.constant = newGraphHeight
+
+            // The InfoViewController's view is hosted inside an NSMenuItem (see
+            // ApplicationDelegate.applicationDidFinishLaunching). NSMenu measures
+            // the custom view once and does not observe later Auto Layout changes,
+            // so when the graph height flips from 0 -> 100 the menu item's host
+            // frame stays at the original (smaller) size and clips the top of the
+            // graph. Force a layout pass and propagate the new fitting size to the
+            // view's frame so the menu picks up the change.
+            self.view.layoutSubtreeIfNeeded()
+            self.view.frame.size = self.view.fittingSize
+        }
 
         self.onUpdate?()
     }
